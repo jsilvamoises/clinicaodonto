@@ -11,8 +11,9 @@ public enum StatusCliente {
 	public static StatusCliente getStatusCliente(String status){
 		if(status != null) {
 			for(StatusCliente t : values()) {
-				if(status.equalsIgnoreCase(t.name()));
+				if(status.equalsIgnoreCase(t.name())) {
 					return t;
+                            }
 			}
 		}
 		return null;

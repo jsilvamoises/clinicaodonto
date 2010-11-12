@@ -67,6 +67,22 @@ public class SistemaFacade {
 		dao.criar(cliente);
 	}
 
+        public void atualizarCliente(String nome, String codigo, String cPF,
+			String rG, String dataDeNascimento, String telefone,
+			String email, String profissao, String rua, String numero,
+			String complemento, String bairro, String cidade, String cep,
+			Sexo sexo, Estado estado, EstadoCivil estadoCivil,
+			StatusCliente status, StatusFinanceiro statusFinanceiro)
+			throws IOException, Exception {
+
+		ClientesDAO dao = ClientesDAO.getInstance();
+		Cliente cliente = new Cliente(nome, new Codigo(codigo), cPF, rG, new Data(
+				dataDeNascimento), telefone, profissao, email, new Endereco(
+				rua, numero, complemento, bairro, cidade, cep), estado, sexo,
+				estadoCivil, status, statusFinanceiro);
+		dao.atualizar(cliente);
+	}
+
 	public Logavel verificaLogin(String login, String senha) throws Exception {
 		LogaveisDAO logavelDao = LogaveisDAO.getInstance();
 		return logavelDao.recuperaLogavel(new classes.Login(login), new Senha(senha));

@@ -41,7 +41,6 @@ public class CadastroEditavelFrame extends javax.swing.JFrame {
         //reiniciaCampos();
         carregaCombosEnums();
         inicializaCampos();
-        
         setVisible(true);
     }
 
@@ -69,20 +68,50 @@ public class CadastroEditavelFrame extends javax.swing.JFrame {
         StatusFinanceiro financeiro = cliente.getFinanceiro();
         if (estado != null)
             comboEstado.setSelectedItem(cliente.getEstado());
-        if(ano != null && ano != 0)
+        else
+            comboEstado.setSelectedIndex(-1);
+
+        if(ano != null && ano > 0)
             comboAno.setSelectedItem(String.valueOf(cliente.getDataDeNascimento().getAno()));
-        if(dia != null && dia != 0)
-            comboDia.setSelectedIndex(cliente.getDataDeNascimento().getDia() - 1);
+        else
+            comboAno.setSelectedIndex(-1);
+        
+        if(dia != null && dia > 0)
+            comboDia.setSelectedItem(String.valueOf(cliente.getDataDeNascimento().getDia()));
+        else
+            comboDia.setSelectedIndex(-1);
+        
         if(estadoCivil != null)
             comboEstadoCivil.setSelectedItem(cliente.getEstadoCivil());
-        if(mes != null && mes != 0)
-            comboMes.setSelectedIndex(cliente.getDataDeNascimento().getMes() - 1);
+        else
+            comboEstadoCivil.setSelectedIndex(-1);
+
+        if(mes != null && mes > 0)
+            comboMes.setSelectedItem(String.valueOf(cliente.getDataDeNascimento().getMes()));
+        else
+            comboMes.setSelectedIndex(-1);
+        
         if(sexo != null)
             comboSexo.setSelectedItem(cliente.getSexo());
+        else
+            comboSexo.setSelectedIndex(-1);
+
         if(status != null)
             comboStatus.setSelectedItem(cliente.getStatus());
+        else
+            comboStatus.setSelectedIndex(-1);
+
         if(financeiro != null)
             comboFinanceiro.setSelectedItem(cliente.getFinanceiro());
+        else
+            comboFinanceiro.setSelectedIndex(-1);
+    }
+
+    public String[] arrayDias() {
+        String[] retorno = new String[31];
+        for(int i = 1; i <= retorno.length; i++)
+            retorno[i - 1] = String.valueOf(i);
+        return retorno;
     }
 
     private void reiniciaCampos() {
@@ -122,6 +151,17 @@ public class CadastroEditavelFrame extends javax.swing.JFrame {
                 DefaultComboBoxModel(fachada.carregaStatusCliente()));
         comboFinanceiro.setModel(new javax.swing.
                 DefaultComboBoxModel(fachada.carregaStatusFinanceiro()));
+        comboDia.setModel(new javax.swing.
+                DefaultComboBoxModel(arrayDias()));
+        comboMes.setModel(new javax.swing.
+                DefaultComboBoxModel(arrayMeses()));
+    }
+
+    private String[] arrayMeses() {
+        String[] retorno = new String[12];
+        for(int i = 1; i <= retorno.length; i++)
+            retorno[i - 1] = String.valueOf(i);
+        return retorno;
     }
 
     private String[] arrayAnos() {
@@ -175,8 +215,7 @@ public class CadastroEditavelFrame extends javax.swing.JFrame {
         comboEstadoCivil = new javax.swing.JComboBox();
         comboSexo = new javax.swing.JComboBox();
         botaoCadastrar = new javax.swing.JButton();
-        botaoLimpar = new javax.swing.JButton();
-        botaoCancelar = new javax.swing.JButton();
+        botaoFechar = new javax.swing.JButton();
         comboEstado = new javax.swing.JComboBox();
         fieldNome = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -231,34 +270,29 @@ public class CadastroEditavelFrame extends javax.swing.JFrame {
 
         jLabel18.setText("Estado Civil");
 
-        comboMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-
-        botaoCadastrar.setText("Cadastrar");
+        botaoCadastrar.setText("Alterar");
         botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCadastrarActionPerformed(evt);
             }
         });
 
-        botaoLimpar.setText("Limpar");
-        botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
+        botaoFechar.setText("Fechar");
+        botaoFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoLimparActionPerformed(evt);
-            }
-        });
-
-        botaoCancelar.setText("Cancelar");
-        botaoCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoCancelarActionPerformed(evt);
+                botaoFecharActionPerformed(evt);
             }
         });
 
         jLabel7.setText("Código");
 
+        fieldCodigo.setEditable(false);
+
         jLabel19.setText("Status do Cliente");
 
         jLabel20.setText("Financeiro");
+
+        comboFinanceiro.setEnabled(false);
 
         jLabel21.setText("Último Pagamento");
 
@@ -318,22 +352,20 @@ public class CadastroEditavelFrame extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel20))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(fieldCEP)
-                            .addComponent(fieldRua, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldRG)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fieldCEP, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                            .addComponent(fieldRua, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                            .addComponent(fieldRG, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                             .addComponent(fieldProfissao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                             .addComponent(fieldCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                             .addComponent(comboEstadoCivil, javax.swing.GroupLayout.Alignment.LEADING, 0, 231, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(botaoCancelar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botaoLimpar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(botaoFechar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                                 .addComponent(botaoCadastrar))
-                            .addComponent(comboFinanceiro, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboFinanceiro, javax.swing.GroupLayout.Alignment.LEADING, 0, 231, Short.MAX_VALUE)
                             .addComponent(fieldComplemento, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                            .addComponent(fieldCidade))))
+                            .addComponent(fieldCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))))
                 .addGap(124, 124, 124))
         );
         jPanel1Layout.setVerticalGroup(
@@ -409,9 +441,8 @@ public class CadastroEditavelFrame extends javax.swing.JFrame {
                     .addComponent(fieldUltimoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoCancelar)
                     .addComponent(botaoCadastrar)
-                    .addComponent(botaoLimpar))
+                    .addComponent(botaoFechar))
                 .addGap(30, 30, 30))
         );
 
@@ -421,7 +452,7 @@ public class CadastroEditavelFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -435,9 +466,18 @@ public class CadastroEditavelFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botaoFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFecharActionPerformed
+        reiniciaCampos();
+        dispose();
+}//GEN-LAST:event_botaoFecharActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        setVisible(false);
+    }//GEN-LAST:event_formWindowClosing
+
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
         try {
-            SistemaFacade.getInstance().cadastrarCliente(fieldNome.getText(),
+            fachada.atualizarCliente(fieldNome.getText(),
                     fieldCodigo.getText(), fieldCPF.getText(), fieldRG.getText(),
                     String.valueOf(comboDia.getSelectedItem()) + "/"
                     + String.valueOf(comboMes.getSelectedItem())
@@ -454,39 +494,20 @@ public class CadastroEditavelFrame extends javax.swing.JFrame {
                     String.valueOf(comboStatus.getSelectedItem())),
                     StatusFinanceiro.getStatusFinanceiro(
                     String.valueOf(comboFinanceiro.getSelectedItem())));
-            JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso",
-                    "Cadastrado",
-                    JOptionPane.CLOSED_OPTION);
-            reiniciaCampos();
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(),
-                    "Problemas com o cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(),
-                    "Problemas com o cadastro",
-                    JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Dados do Cliente atualizados",
+                "Cadastrado",
+                JOptionPane.CLOSED_OPTION);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+                "Problemas com o cadastro",
+                JOptionPane.ERROR_MESSAGE);
         }
-}//GEN-LAST:event_botaoCadastrarActionPerformed
-
-    private void botaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLimparActionPerformed
-        reiniciaCampos();
-}//GEN-LAST:event_botaoLimparActionPerformed
-
-    private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
-        dispose();
-        reiniciaCampos();
-}//GEN-LAST:event_botaoCancelarActionPerformed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        setVisible(false);
-    }//GEN-LAST:event_formWindowClosing
+    }//GEN-LAST:event_botaoCadastrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCadastrar;
-    private javax.swing.JButton botaoCancelar;
-    private javax.swing.JButton botaoLimpar;
+    private javax.swing.JButton botaoFechar;
     private javax.swing.JComboBox comboAno;
     private javax.swing.JComboBox comboDia;
     private javax.swing.JComboBox comboEstado;
