@@ -356,10 +356,11 @@ public class PagamentoClientePanel extends javax.swing.JPanel implements KeyList
 }//GEN-LAST:event_botaoFecharActionPerformed
 
     private void botaoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPagamentoActionPerformed
-        if(jList1.isSelectionEmpty())
+        if(jList1.isSelectionEmpty()) {
             JOptionPane.showMessageDialog(null, "Nenhum cliente foi selecionado",
                     "Selecione um cliente",
                     JOptionPane.ERROR_MESSAGE);
+        }
         
         try{
             Cliente cliente = (Cliente)jList1.getSelectedValue();
