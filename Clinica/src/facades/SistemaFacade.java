@@ -209,11 +209,9 @@ public class SistemaFacade {
 		List<Cliente> listaClientesPorStatus = new ArrayList<Cliente>();
 		StatusContrato statusDoContrato = StatusContrato.getStatusContrato(status);
 
-                for (Cliente cliente : listaClientes) {
-			if(cliente.getContrato() != null)
-				if(cliente.getContrato().getStatus() == statusDoContrato){
-					listaClientesPorStatus.add(cliente);
-				}
+		for (Cliente cliente : listaClientes) {
+			if(cliente.getContratoComStatus(statusDoContrato) != null)
+				listaClientesPorStatus.add(cliente);
 		}
 		
 		if(listaClientesPorStatus.isEmpty()){
