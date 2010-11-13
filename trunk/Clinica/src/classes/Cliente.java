@@ -282,28 +282,40 @@ public class Cliente implements User {
 		return null;
 	}
 
+	// NESSE CASO ELE RETORNA TODOS OS CONTRATOS DO CLIENTE
+	public Contrato getContratoComStatus(StatusContrato status) {
+		for (Contrato c : contrato) {
+			if (c.getStatus() == status) {
+				return c;
+			}
+		}
+		return null;
+	}
+
 	public String getDadosDoContrato() throws Exception {
 		Contrato c = getContrato();
-		if(c == null){
+		if (c == null) {
 			throw new Exception("O Usuário não possui contrato em andamento!");
 		}
-		String dados = "data: " + c.getUltimaDataVencimento() + ", parcela: " + c.getParcelaAtual(); 
+		String dados = "data: " + c.getUltimaDataVencimento() + ", parcela: "
+				+ c.getParcelaAtual();
 		return dados;
 	}
 
 	public void efetuaPagamento() throws Exception {
 		Contrato c = getContrato();
-		if(c == null){
+		if (c == null) {
 			throw new Exception("O Usuário não possui contrato em andamento!");
 		}
-		
+
 		c.efetuaPagamento();
 	}
-	
-	public void addContrato(Contrato contrato) throws Exception{
+
+	public void addContrato(Contrato contrato) throws Exception {
 		for (Contrato c : this.contrato) {
-			if(c.getStatus() == StatusContrato.EM_TRATAMENTO)
-				throw new Exception("O cliente já possui um contrato em andamento");
+			if (c.getStatus() == StatusContrato.EM_TRATAMENTO)
+				throw new Exception(
+						"O cliente já possui um contrato em andamento");
 		}
 		this.contrato.add(contrato);
 	}
