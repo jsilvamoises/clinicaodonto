@@ -263,7 +263,10 @@ public class FramePrincipal extends JFrame {
     }//GEN-LAST:event_menuEditarContratoActionPerformed
 
     private void menuBuscaContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBuscaContratoActionPerformed
-        
+        JScrollPane s = new JScrollPane();
+        buscaContratosPorData = new BuscaContratoPorData(tabbed, s);
+        s.setViewportView(buscaContratosPorData);
+        tabbed.addTab("Busca contratos por data", s);
     }//GEN-LAST:event_menuBuscaContratoActionPerformed
 
     private void MenuPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPagamentoActionPerformed
