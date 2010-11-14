@@ -14,7 +14,8 @@ public class Codigo {
 	public void setCodigo(String codigo) throws Exception {
 		if (codigo == null || codigo.trim().isEmpty() || !isNumber(codigo))
 			throw new Exception("O campo CÓDIGO deve ser preenchido");
-		this.codigo = codigo.trim();
+		int cod = Integer.parseInt(codigo.trim());
+		this.codigo = String.valueOf(cod);
 	}
 
 	private boolean isNumber(String codigo) throws Exception {
