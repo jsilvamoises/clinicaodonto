@@ -252,7 +252,7 @@ public class FramePrincipal extends JFrame {
         JScrollPane s = new JScrollPane();
         criaContratos = new CriaContratos(tabbed, s);
         s.setViewportView(criaContratos);
-        tabbed.addTab("Menu", s);
+        tabbed.addTab("Criar Contrato", s);
     }//GEN-LAST:event_menuOrtodontiaActionPerformed
 
     private void menuEditarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarContratoActionPerformed

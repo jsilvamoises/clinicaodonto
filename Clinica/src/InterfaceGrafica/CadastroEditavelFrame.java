@@ -21,15 +21,42 @@ import facades.SistemaFacade;
 import java.awt.Color;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  *
  * @author usuário
  */
-public class CadastroEditavelFrame extends javax.swing.JFrame {
+public class CadastroEditavelFrame extends javax.swing.JFrame implements KeyListener{
     private Cliente cliente;
     private SistemaFacade fachada = SistemaFacade.getInstance();
 
+
+      @SuppressWarnings("deprecation")
+    @Override
+    public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                botaoCadastrarActionPerformed(null);
+
+            } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                   botaoFecharActionPerformed(null);
+            }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent arg0) {
+            // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent arg0) {
+            // TODO Auto-generated method stub
+
+    }
+
+    
     /** Creates new form CadastroEditavelFrame */
     public CadastroEditavelFrame(Cliente cliente) {
         this.cliente = cliente;
@@ -39,6 +66,81 @@ public class CadastroEditavelFrame extends javax.swing.JFrame {
         if(cliente.getContrato() != null)
             fieldUltimoPagamento.setText(cliente.getContrato().getUltimaDataVencimento());
         //reiniciaCampos();
+        botaoCadastrar.addKeyListener(this);
+        botaoCadastrar.show();
+
+        botaoFechar.addKeyListener(this);
+        botaoFechar.show();
+        
+        fieldBairro.addKeyListener(this);
+        fieldBairro.show();
+        
+        comboAno.addKeyListener(this);
+        comboAno.show();
+        
+        comboDia.addKeyListener(this);
+        comboDia.show();
+        
+        comboEstado.addKeyListener(this);
+        comboEstado.show();
+
+        comboEstadoCivil.addKeyListener(this);
+        comboEstadoCivil.show();
+
+        comboFinanceiro.addKeyListener(this);
+        comboFinanceiro.show();
+
+        comboMes.addKeyListener(this);
+        comboMes.show();
+
+        comboSexo.addKeyListener(this);
+        comboSexo.show();
+
+        comboStatus.addKeyListener(this);
+        comboStatus.show();
+
+        fieldCEP.addKeyListener(this);
+        fieldCEP.show();
+
+        fieldCPF.addKeyListener(this);
+        fieldCPF.show();
+
+        fieldCidade.addKeyListener(this);
+        fieldCidade.show();
+
+        fieldCodigo.addKeyListener(this);
+        fieldCodigo.show();
+
+        fieldComplemento.addKeyListener(this);
+        fieldComplemento.show();
+
+        fieldEmail.addKeyListener(this);
+        fieldEmail.show();
+    
+        fieldNome.addKeyListener(this);
+        fieldNome.show();
+
+        fieldNumero.addKeyListener(this);
+        fieldNumero.show();
+
+        fieldProfissao.addKeyListener(this);
+        fieldProfissao.show();
+
+        fieldRG.addKeyListener(this);
+        fieldRG.show();
+
+        fieldRua.addKeyListener(this);
+        fieldRua.show();
+
+        fieldTelefone.addKeyListener(this);
+        fieldTelefone.show();
+
+        fieldUltimoPagamento.addKeyListener(this);
+        fieldUltimoPagamento.show();
+
+        this.addKeyListener(this);
+        this.show();
+
         carregaCombosEnums();
         inicializaCampos();
         setVisible(true);
