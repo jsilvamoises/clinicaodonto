@@ -183,6 +183,7 @@ public class ClientesDAO {
 							.startsWith(nome.toLowerCase())) {
 						lista.add((Cliente) xstream
 								.fromXML(new FileInputStream(f)));
+						break;
 					}
 				}
 			}
