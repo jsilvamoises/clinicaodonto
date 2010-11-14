@@ -259,7 +259,7 @@ public class FramePrincipal extends JFrame {
         JScrollPane s = new JScrollPane();
         editarContratos = new EditarContrato(tabbed, s);
         s.setViewportView(editarContratos);
-        tabbed.addTab("Cria contratos", s);
+        tabbed.addTab("Editar contratos", s);
     }//GEN-LAST:event_menuEditarContratoActionPerformed
 
     private void menuBuscaContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBuscaContratoActionPerformed
