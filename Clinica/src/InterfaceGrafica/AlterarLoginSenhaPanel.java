@@ -12,6 +12,7 @@
 package InterfaceGrafica;
 
 import interfaces.Logavel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
@@ -51,8 +52,13 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel {
         jLabel5.setVisible(visivel);
         checkLogin.setVisible(visivel);
         checkSenha.setVisible(visivel);
-        passConfirmaNovaSenha.setVisible(visivel);
-        passNovaSenha.setVisible(visivel);
+        fieldLogin.setVisible(visivel);
+        passConfirmaNovaSenha.setVisible(false);
+        passNovaSenha.setVisible(false);
+    }
+
+    private void campoComSenhaConfirmada() {
+        
     }
 
     /** This method is called from within the constructor to
@@ -111,6 +117,11 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel {
         jLabel5.setText("Confirme a nova senha");
 
         botaoFEcharAba.setText("Fechar aba");
+        botaoFEcharAba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoFEcharAbaActionPerformed(evt);
+            }
+        });
 
         botaoConfirma.setText("Confirmar Alterações");
 
@@ -197,8 +208,15 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel {
             if(logavel.getSenha().getSenha().equals(passSenha.getText())) {
                 camposSemSenhaConfirmada(true);
                 
-            }
-        }
+            } else 
+                JOptionPane.showMessageDialog(null, "Digite a senha corretamente",
+                "Senha Inválida",
+                JOptionPane.ERROR_MESSAGE);
+        } else
+            JOptionPane.showMessageDialog(null, "Digite a senha corretamente",
+                "Senha Inválida",
+                JOptionPane.ERROR_MESSAGE);
+
     }//GEN-LAST:event_botaoOkActionPerformed
 
     private void checkLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkLoginActionPerformed
@@ -225,6 +243,11 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel {
             jLabel5.setVisible(false);
         }
     }//GEN-LAST:event_checkSenhaActionPerformed
+
+    private void botaoFEcharAbaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFEcharAbaActionPerformed
+        tabbed.remove(scroll);
+        reiniciaCampos();
+    }//GEN-LAST:event_botaoFEcharAbaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
