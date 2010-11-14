@@ -209,21 +209,21 @@ public class ClientesDAO {
 		}
 	}
 	
-	public static void main(String[] args) {
-		ClientesDAO d = ClientesDAO.getInstance();
-		Cliente p;
-		try {
-			p = new Cliente("ademar", new Codigo("11"), "", "", new Data("15/06/1991"), "", "", "",
-					new Endereco("", "", "", "", "", ""), Estado.Acre,
-					Sexo.MASCULINO, EstadoCivil.Divorciado,
-					StatusCliente.ABANDONO, StatusFinanceiro.EM_DIA);
-			Cliente x = d.recuperaCliente(new Codigo("11"));
-			System.out.println(x.getCPF());
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+//	public static void main(String[] args) {
+//		ClientesDAO d = ClientesDAO.getInstance();
+//		Cliente p;
+//		try {
+//			p = new Cliente("ademar", new Codigo("11"), "", "", new Data("15/06/1991"), "", "", "",
+//					new Endereco("", "", "", "", "", ""), Estado.Acre,
+//					Sexo.MASCULINO, EstadoCivil.Divorciado,
+//					StatusCliente.ABANDONO, StatusFinanceiro.EM_DIA);
+//			Cliente x = d.recuperaCliente(new Codigo("11"));
+//			System.out.println(x.getCPF());
+//			
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//	}
 }
