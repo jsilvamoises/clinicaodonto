@@ -164,7 +164,7 @@ public class CadastroEditavelFrame extends javax.swing.JFrame implements KeyList
         Integer ano = cliente.getDataDeNascimento().getAno();
         Integer dia = cliente.getDataDeNascimento().getDia();
         EstadoCivil estadoCivil = cliente.getEstadoCivil();
-        Integer mes = cliente.getDataDeNascimento().getMes();
+        Integer mes = cliente.getDataDeNascimento().getMes() + 1;
         Sexo sexo = cliente.getSexo();
         StatusCliente status = cliente.getStatus();
         StatusFinanceiro financeiro = cliente.getFinanceiro();
@@ -189,7 +189,7 @@ public class CadastroEditavelFrame extends javax.swing.JFrame implements KeyList
             comboEstadoCivil.setSelectedIndex(-1);
 
         if(mes != null && mes > 0)
-            comboMes.setSelectedItem(String.valueOf(cliente.getDataDeNascimento().getMes()));
+            comboMes.setSelectedItem(String.valueOf(cliente.getDataDeNascimento().getMes() + 1));
         else
             comboMes.setSelectedIndex(-1);
         

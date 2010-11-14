@@ -14,6 +14,7 @@ import classes.Endereco;
 import classes.Senha;
 import enums.Estado;
 import enums.EstadoCivil;
+import enums.Privilegio;
 import enums.Sexo;
 import enums.StatusCliente;
 import enums.StatusContrato;
@@ -76,10 +77,26 @@ public class SistemaFacade {
 			throws IOException, Exception {
 
 		ClientesDAO dao = ClientesDAO.getInstance();
-		Cliente cliente = new Cliente(nome, new Codigo(codigo), cPF, rG, new Data(
+		/*Cliente cliente = new Cliente(nome, new Codigo(codigo), cPF, rG, new Data(
 				dataDeNascimento), telefone, profissao, email, new Endereco(
 				rua, numero, complemento, bairro, cidade, cep), estado, sexo,
-				estadoCivil, status, statusFinanceiro);
+				estadoCivil, status, statusFinanceiro);*/
+                Cliente cliente = dao.recuperaCliente(new Codigo(codigo));
+                cliente.setNome(nome);
+                cliente.setCodigo(new Codigo(codigo));
+                cliente.setCPF(cPF);
+                cliente.setRG(rG);
+                cliente.setDataDeNascimento( new Data(dataDeNascimento));
+                cliente.setTelefone(telefone);
+                cliente.setProfissao(profissao);
+                cliente.setEmail(email);
+                cliente.setEndereco(new Endereco(rua, numero, complemento, bairro, cidade, cep));
+                cliente.setEstado(estado);
+                cliente.setSexo(sexo);
+                cliente.setEstadoCivil(estadoCivil);
+                cliente.setStatus(status);
+                cliente.setFinanceiro(statusFinanceiro);
+
 		dao.atualizar(cliente);
 	}
 
