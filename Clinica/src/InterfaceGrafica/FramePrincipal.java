@@ -33,6 +33,7 @@ public class FramePrincipal extends JFrame {
     private TabelaMensal tabelaMensal;
     private Logavel logavel;
     private BuscaContratosPorStatus buscaStatus;
+    private AlterarLoginSenhaPanel alterarLoginSena;
 
     /** Creates new form FramePrincipal */
     public FramePrincipal(Logavel logavel) {
@@ -190,6 +191,11 @@ public class FramePrincipal extends JFrame {
         menuSistema.add(menuAddUsuario);
 
         menuAlterarLoginSenha.setText("Alterar Login/Senha");
+        menuAlterarLoginSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuAlterarLoginSenhaActionPerformed(evt);
+            }
+        });
         menuSistema.add(menuAlterarLoginSenha);
 
         menuLogout.setText("Logout");
@@ -296,6 +302,13 @@ public class FramePrincipal extends JFrame {
         s.setViewportView(buscaStatus);
         tabbed.addTab("Busca Contrato Por Status", s);
     }//GEN-LAST:event_MenuBucaStatusActionPerformed
+
+    private void menuAlterarLoginSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlterarLoginSenhaActionPerformed
+        JScrollPane s = new JScrollPane();
+        alterarLoginSena = new AlterarLoginSenhaPanel(logavel,tabbed, s);
+        s.setViewportView(alterarLoginSena);
+        tabbed.addTab("Alterar Login/Senha", s);
+    }//GEN-LAST:event_menuAlterarLoginSenhaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuBucaStatus;
