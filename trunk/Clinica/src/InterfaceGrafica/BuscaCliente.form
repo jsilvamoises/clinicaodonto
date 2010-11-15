@@ -66,7 +66,7 @@
                       <Component id="jLabel3" min="-2" max="-2" attributes="1"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -194,12 +194,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Clicando no bot&#xe3;o Visualizar com um Cliente selecionado, ser&#xe3;o"/>
+        <Property name="text" type="java.lang.String" value="Clicando no bot&#xe3;o Editar com um Cliente selecionado, ser&#xe3;o"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="exibidas informa&#xe7;&#xf5;es cadastrais deste mesmo que fora selecionado"/>
+        <Property name="text" type="java.lang.String" value="exibidas informa&#xe7;&#xf5;es edit&#xe1;veis deste mesmo que fora selecionado"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="botaoLimpar">

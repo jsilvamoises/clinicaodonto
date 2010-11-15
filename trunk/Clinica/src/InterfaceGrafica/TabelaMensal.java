@@ -471,12 +471,31 @@ public class TabelaMensal extends javax.swing.JPanel implements KeyListener{
 }//GEN-LAST:event_botaoCancelarActionPerformed
 
     private void botaoGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGravarActionPerformed
-        // GRAVAR NO DAO
+        TableModel tabelaEntrada = jTable1.getModel();
+        TableModel tabelaSaida = jTable2.getModel();
 
-        JOptionPane.showMessageDialog(null, "Tabela salva com sucesso!",
-                "Cadastro",
-                JOptionPane.CLOSED_OPTION);
-        reiniciaCampos();
+        Object[][] tab1 = new Object[tabelaEntrada.getRowCount()][tabelaEntrada.getColumnCount()];
+
+        for(int i = 0; i < tabelaEntrada.getRowCount(); i++){
+            for(int j = 0; j < tabelaEntrada.getColumnCount(); j++){
+               tab1[i][j] = tabelaEntrada.getValueAt(i, j);
+            }
+        }
+
+        Object[][] tab2 = new Object[tabelaSaida.getRowCount()][tabelaSaida.getColumnCount()];
+        for(int i = 0; i < tabelaSaida.getRowCount(); i++){
+            for(int j = 0; j < tabelaSaida.getColumnCount(); j++){
+               tab2[i][j] = tabelaSaida.getValueAt(i, j);
+            }
+        }
+
+        //SALVA DE FATO NO DAO!
+
+         JOptionPane.showMessageDialog(null, "Tabela salva com sucesso!",
+                    "Cadastro",
+                    JOptionPane.CLOSED_OPTION);
+            reiniciaCampos();
+
 }//GEN-LAST:event_botaoGravarActionPerformed
 
 
