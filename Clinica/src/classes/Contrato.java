@@ -112,7 +112,9 @@ public class Contrato {
 	 *            O preco a ser ajustado a pagar
 	 */
 	public void setPreco(double preco) {
-		this.preco = preco;
+		if(preco != 0)
+			this.preco = preco;
+		this.preco = 70.0;
 	}
 
 	public void setTipoDeContrato(TipoDeContrato tipoDoContrato) {
