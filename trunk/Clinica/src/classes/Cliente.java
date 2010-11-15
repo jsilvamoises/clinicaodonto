@@ -297,8 +297,8 @@ public class Cliente implements User {
 		if (c == null) {
 			throw new Exception("O Usuário não possui contrato em andamento!");
 		}
-		String dados = "data: " + c.getUltimaDataVencimento() + ", parcela: "
-				+ c.getParcelaAtual();
+		String dados = "Data: " + c.getUltimaDataVencimento() + ", Parcela: "
+				+ c.getParcelaAtual() + "Valor: " + c.getPreco();
 		return dados;
 	}
 
