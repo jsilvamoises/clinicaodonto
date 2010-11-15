@@ -52,8 +52,7 @@ public class Data {
 	 * @return True caso a data seja valida
 	 */
 	public boolean verificaData(String data) {
-		if (data == null || !data.matches("\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d")
-				|| numeroDiasDoMes(Integer.valueOf(data.substring(3, 5)), Integer.valueOf(data.substring(6, 10))) < Integer.valueOf(data.substring(0, 2))) {
+		if (!(data.equals("null/null/null")) && numeroDiasDoMes(Integer.valueOf(data.substring(3, 5)), Integer.valueOf(data.substring(6, 10))) < Integer.valueOf(data.substring(0, 2))) {
 			return false;
 		}
 		return true;
