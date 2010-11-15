@@ -35,10 +35,11 @@ public class Data {
 	 * 
 	 * @param data
 	 *            {@link String}
+	 * @throws Exception 
 	 * @throws Exception
 	 *             caso a cada seja invalida
 	 */
-	public Data(String data) {
+	public Data(String data) throws Exception {
 		ANO_ATUAL = new GregorianCalendar().get(Calendar.YEAR);
 		setData(data);
 	}
@@ -52,9 +53,7 @@ public class Data {
 	 */
 	public boolean verificaData(String data) {
 		if (data == null || !data.matches("\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d")
-				|| Integer.valueOf(data.substring(0, 2)) > DIAS_DO_MES
-				|| Integer.valueOf(data.substring(3, 5)) > MESES_DO_ANO
-				|| Integer.valueOf(data.substring(6, 10)) > ANO_ATUAL) {
+				|| numeroDiasDoMes(Integer.valueOf(data.substring(3, 5)), Integer.valueOf(data.substring(6, 10))) < Integer.valueOf(data.substring(0, 2))) {
 			return false;
 		}
 		return true;
@@ -109,13 +108,14 @@ public class Data {
 	 * 
 	 * @param data
 	 *            {@link String} nova
+	 * @throws Exception 
 	 * @throws ArgumentInvalidException
 	 *             caso a data seja invalida
 	 */
-	public void setData(String data) {
-		/*if (!verificaData(data)) {
+	public void setData(String data) throws Exception {
+		if (!verificaData(data)) {
 			throw new Exception("Data inválida!");
-		}*/
+		}
 
 		try {
 			Calendar date = conversorData(data);
@@ -231,8 +231,8 @@ public class Data {
 		datas.add(date);
 		for (int i = 0; i < periodoEmMeses; i++){
 			mes++;
-			if(getDia() > numeroDiasDoMes(mes)){
-				dia = numeroDiasDoMes(mes);
+			if(getDia() > numeroDiasDoMes(mes, ano)){
+				dia = numeroDiasDoMes(mes, ano);
 			}else{
 				dia = getDia();
 			}
@@ -246,16 +246,19 @@ public class Data {
 		return datas;
 	}
 	
-	public int numeroDiasDoMes(int mes) {
+	public int numeroDiasDoMes(int mes, int ano) {
 		switch (mes) {
 		case 1:
 			return 31;
 		case 2:
+			if (ano % 400 == 0 || (ano % 4 == 0 && ano % 100 != 0)){
+				return 29;
+			}
 			return 28;
 		case 3:
-			return 30;
-		case 4:
 			return 31;
+		case 4:
+			return 30;
 		case 5:
 			return 31;
 		case 6:

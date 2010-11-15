@@ -193,8 +193,8 @@ public class Contrato {
         for (int i = 0; i < periodoEmMeses; i++) {
                 mes++;
                 if (getInicioDoContrato().getDia() > getInicioDoContrato()
-                                .numeroDiasDoMes(mes)) {
-                        dia = getInicioDoContrato().numeroDiasDoMes(mes);
+                                .numeroDiasDoMes(mes, ano)) {
+                        dia = getInicioDoContrato().numeroDiasDoMes(mes, ano);
                 } else {
                         dia = getInicioDoContrato().getDia();
                 }
