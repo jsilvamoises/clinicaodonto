@@ -194,9 +194,9 @@ public class BuscaCliente extends javax.swing.JPanel implements KeyListener {
             }
         });
 
-        jLabel7.setText("Clicando no botão Visualizar com um Cliente selecionado, serão");
+        jLabel7.setText("Clicando no botão Editar com um Cliente selecionado, serão");
 
-        jLabel8.setText("exibidas informações cadastrais deste mesmo que fora selecionado");
+        jLabel8.setText("exibidas informações editáveis deste mesmo que fora selecionado");
 
         botaoLimpar.setText("Limpar Dados");
         botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -253,7 +253,7 @@ public class BuscaCliente extends javax.swing.JPanel implements KeyListener {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(246, 246, 246)
                         .addComponent(jLabel3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

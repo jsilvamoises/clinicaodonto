@@ -58,6 +58,7 @@
                                           <Component id="comboAno" min="-2" pref="93" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="comboStatus" alignment="0" max="32767" attributes="1"/>
+                                      <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="fieldNumero" min="-2" pref="258" max="-2" attributes="1"/>
                               </Group>
@@ -179,7 +180,9 @@
                   <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="comboFinanceiro" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="10" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="botaoCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="botaoCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -201,7 +204,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nome"/>
+        <Property name="text" type="java.lang.String" value="Nome*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -416,7 +419,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo*"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="fieldCodigo">
@@ -443,6 +446,11 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel22">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="* campos brigat&#xf3;rios."/>
       </Properties>
     </Component>
   </SubComponents>
