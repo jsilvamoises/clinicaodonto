@@ -11,6 +11,7 @@
 
 package InterfaceGrafica;
 
+import facades.SistemaFacade;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import interfaces.Logavel;
@@ -26,7 +27,7 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel implements KeyLis
     private JTabbedPane tabbed;
     private JScrollPane scroll;
     private Logavel logavel;
-
+    private SistemaFacade fachada = SistemaFacade.getInstance();
 
      @SuppressWarnings("deprecation")
     @Override
@@ -111,13 +112,13 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel implements KeyLis
 
     private void camposSemSenhaConfirmada(boolean visivel) {
         jLabel2.setVisible(visivel);
-        jLabel3.setVisible(visivel);
-        jLabel3.setVisible(visivel);
-        jLabel4.setVisible(visivel);
-        jLabel5.setVisible(visivel);
+        jLabel3.setVisible(false);
+        jLabel3.setVisible(false);
+        jLabel4.setVisible(false);
+        jLabel5.setVisible(false);
         checkLogin.setVisible(visivel);
         checkSenha.setVisible(visivel);
-        fieldLogin.setVisible(visivel);
+        fieldLogin.setVisible(false);
         passConfirmaNovaSenha.setVisible(false);
         passNovaSenha.setVisible(false);
     }
@@ -189,6 +190,11 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel implements KeyLis
         });
 
         botaoConfirma.setText("Confirmar Alterações");
+        botaoConfirma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoConfirmaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -292,6 +298,7 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel implements KeyLis
         } else {
             fieldLogin.setVisible(false);
             jLabel3.setVisible(false);
+            fieldLogin.setText(null);
         }
     }//GEN-LAST:event_checkLoginActionPerformed
 
@@ -304,6 +311,8 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel implements KeyLis
         } else {
             passNovaSenha.setVisible(false);
             passConfirmaNovaSenha.setVisible(false);
+            passNovaSenha.setText(null);
+            passConfirmaNovaSenha.setText(null);
             jLabel4.setVisible(false);
             jLabel5.setVisible(false);
         }
@@ -313,6 +322,18 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel implements KeyLis
         tabbed.remove(scroll);
         reiniciaCampos();
     }//GEN-LAST:event_botaoFEcharAbaActionPerformed
+
+    private void botaoConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmaActionPerformed
+        try {
+            fachada.atualizaLogin(logavel, fieldLogin.getText());
+            fachada.atualizarSenha(logavel, passNovaSenha.getText(),
+                    passConfirmaNovaSenha.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(),
+            "Erro",
+            JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_botaoConfirmaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

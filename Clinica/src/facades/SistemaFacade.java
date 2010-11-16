@@ -11,6 +11,7 @@ import classes.Codigo;
 import classes.Contrato;
 import classes.Data;
 import classes.Endereco;
+import classes.Login;
 import classes.Senha;
 import enums.Estado;
 import enums.EstadoCivil;
@@ -49,12 +50,11 @@ public class SistemaFacade {
 	}
 
 	public void cadastrarCliente(String nome, String codigo, String cPF,
-			String rG, String dataDeNascimento, String telefone,
-			String email, String profissao, String rua, String numero,
-			String complemento, String bairro, String cidade, String cep,
-			Sexo sexo, Estado estado, EstadoCivil estadoCivil,
-			StatusCliente status, StatusFinanceiro statusFinanceiro)
-			throws IOException, Exception {
+			String rG, String dataDeNascimento, String telefone, String email,
+			String profissao, String rua, String numero, String complemento,
+			String bairro, String cidade, String cep, Sexo sexo, Estado estado,
+			EstadoCivil estadoCivil, StatusCliente status,
+			StatusFinanceiro statusFinanceiro) throws IOException, Exception {
 
 		ClientesDAO dao = ClientesDAO.getInstance();
 		Codigo cod = new Codigo(codigo);
@@ -68,43 +68,46 @@ public class SistemaFacade {
 		dao.criar(cliente);
 	}
 
-        public void atualizarCliente(String nome, String codigo, String cPF,
-			String rG, String dataDeNascimento, String telefone,
-			String email, String profissao, String rua, String numero,
-			String complemento, String bairro, String cidade, String cep,
-			Sexo sexo, Estado estado, EstadoCivil estadoCivil,
-			StatusCliente status, StatusFinanceiro statusFinanceiro)
-			throws IOException, Exception {
+	public void atualizarCliente(String nome, String codigo, String cPF,
+			String rG, String dataDeNascimento, String telefone, String email,
+			String profissao, String rua, String numero, String complemento,
+			String bairro, String cidade, String cep, Sexo sexo, Estado estado,
+			EstadoCivil estadoCivil, StatusCliente status,
+			StatusFinanceiro statusFinanceiro) throws IOException, Exception {
 
 		ClientesDAO dao = ClientesDAO.getInstance();
-		/*Cliente cliente = new Cliente(nome, new Codigo(codigo), cPF, rG, new Data(
-				dataDeNascimento), telefone, profissao, email, new Endereco(
-				rua, numero, complemento, bairro, cidade, cep), estado, sexo,
-				estadoCivil, status, statusFinanceiro);*/
-                Cliente cliente = dao.recuperaCliente(new Codigo(codigo));
-                cliente.setNome(nome);
-                cliente.setCodigo(new Codigo(codigo));
-                cliente.setCPF(cPF);
-                cliente.setRG(rG);
-                cliente.setDataDeNascimento( new Data(dataDeNascimento));
-                cliente.setTelefone(telefone);
-                cliente.setProfissao(profissao);
-                cliente.setEmail(email);
-                cliente.setEndereco(new Endereco(rua, numero, complemento, bairro, cidade, cep));
-                cliente.setEstado(estado);
-                cliente.setSexo(sexo);
-                cliente.setEstadoCivil(estadoCivil);
-                cliente.setStatus(status);
-                cliente.setFinanceiro(statusFinanceiro);
+		/*
+		 * Cliente cliente = new Cliente(nome, new Codigo(codigo), cPF, rG, new
+		 * Data( dataDeNascimento), telefone, profissao, email, new Endereco(
+		 * rua, numero, complemento, bairro, cidade, cep), estado, sexo,
+		 * estadoCivil, status, statusFinanceiro);
+		 */
+		Cliente cliente = dao.recuperaCliente(new Codigo(codigo));
+		cliente.setNome(nome);
+		cliente.setCodigo(new Codigo(codigo));
+		cliente.setCPF(cPF);
+		cliente.setRG(rG);
+		cliente.setDataDeNascimento(new Data(dataDeNascimento));
+		cliente.setTelefone(telefone);
+		cliente.setProfissao(profissao);
+		cliente.setEmail(email);
+		cliente.setEndereco(new Endereco(rua, numero, complemento, bairro,
+				cidade, cep));
+		cliente.setEstado(estado);
+		cliente.setSexo(sexo);
+		cliente.setEstadoCivil(estadoCivil);
+		cliente.setStatus(status);
+		cliente.setFinanceiro(statusFinanceiro);
 
 		dao.atualizar(cliente);
 	}
 
 	public Logavel verificaLogin(String login, String senha) throws Exception {
 		LogaveisDAO logavelDao = LogaveisDAO.getInstance();
-		return logavelDao.recuperaLogavel(new classes.Login(login), new Senha(senha));
+		return logavelDao.recuperaLogavel(new classes.Login(login), new Senha(
+				senha));
 	}
-       
+
 	public Cliente[] recuperaClientePorNome(String nome) throws Exception {
 		return ClientesDAO.getInstance().recuperaCliente(nome);
 	}
@@ -121,9 +124,9 @@ public class SistemaFacade {
 	public Estado[] carregaEstados() {
 		return Estado.values();
 	}
-	
-	//ESSE NAO TEM EM_TRATAMENTO POIS É USADO NO SET
-	public StatusContrato[] carregaStatusContrato(){
+
+	// ESSE NAO TEM EM_TRATAMENTO POIS É USADO NO SET
+	public StatusContrato[] carregaStatusContrato() {
 		StatusContrato[] lista = new StatusContrato[2];
 		lista[0] = StatusContrato.CANCELADO;
 		lista[1] = StatusContrato.CONCLUIDO;
@@ -145,103 +148,131 @@ public class SistemaFacade {
 	public StatusFinanceiro[] carregaStatusFinanceiro() {
 		return StatusFinanceiro.values();
 	}
-	
-	//ESSE TEM TRATAMENTO PQ É USADO PRA VERIFICACAO
-	public StatusContrato[] carregaStatusContratoCompleto(){
+
+	// ESSE TEM TRATAMENTO PQ É USADO PRA VERIFICACAO
+	public StatusContrato[] carregaStatusContratoCompleto() {
 		return StatusContrato.values();
 	}
-	
-	public void efetuaPagamento(Cliente c) throws Exception{
+
+	public void efetuaPagamento(Cliente c) throws Exception {
 		c.efetuaPagamento();
 		ClientesDAO dao = ClientesDAO.getInstance();
 		dao.atualizar(c);
 	}
-	
-	public void criaContrato(String dataI, String dataF, String idCliente, double preco) throws Exception{
+
+	public void criaContrato(String dataI, String dataF, String idCliente,
+			double preco) throws Exception {
 		Cliente cliente = recuperaClientePorID(idCliente);
 		Data inicio = new Data(dataI);
 		Data termino = new Data(dataF);
-		
-		if(inicio.afterOrEquals(termino)){
-			throw new Exception("A data de inicio deve ser anterior a do termino!");
+
+		if (inicio.afterOrEquals(termino)) {
+			throw new Exception(
+					"A data de inicio deve ser anterior a do termino!");
 
 		}
 		for (Contrato c : cliente.getContratos()) {
-			if(c.getStatus() == StatusContrato.EM_TRATAMENTO)
-				throw new Exception("O cliente já possui um contrato em andamento!");
+			if (c.getStatus() == StatusContrato.EM_TRATAMENTO)
+				throw new Exception(
+						"O cliente já possui um contrato em andamento!");
 		}
-        Contrato contrato = new Contrato(cliente, preco, inicio, termino, TipoDeContrato.ORTODONTIA, StatusContrato.EM_TRATAMENTO);
-        
-        cliente.addContrato(contrato);
-        ClientesDAO dao = ClientesDAO.getInstance();
-        dao.atualizar(cliente);
+		Contrato contrato = new Contrato(cliente, preco, inicio, termino,
+				TipoDeContrato.ORTODONTIA, StatusContrato.EM_TRATAMENTO);
+
+		cliente.addContrato(contrato);
+		ClientesDAO dao = ClientesDAO.getInstance();
+		dao.atualizar(cliente);
 
 	}
-	
-	public void editarCadastro(String idCliente, String statusContrato) throws Exception{
+
+	public void editarCadastro(String idCliente, String statusContrato)
+			throws Exception {
 		Cliente cliente = recuperaClientePorID(idCliente);
 		Contrato contrato = cliente.getContrato();
-		if(contrato == null){
+		if (contrato == null) {
 			throw new Exception("O Usuário não possui contrato em andamento!");
 		}
 		contrato.setStatus(StatusContrato.getStatusContrato(statusContrato));
 		ClientesDAO dao = ClientesDAO.getInstance();
-	    dao.atualizar(cliente);
+		dao.atualizar(cliente);
 	}
-	
-	public List<Cliente> listaContratosPorData(String dataI, String dataF) throws Exception{
+
+	public List<Cliente> listaContratosPorData(String dataI, String dataF)
+			throws Exception {
 		ClientesDAO dao = ClientesDAO.getInstance();
 		List<Cliente> listaClientes = dao.recuperaClientes();
-		
+
 		Data inicio = new Data(dataI);
 		Data termino = new Data(dataF);
-		
-		if(inicio.afterOrEquals(termino)){
-			throw new Exception("A data de inicio deve ser anterior a do termino!");
+
+		if (inicio.afterOrEquals(termino)) {
+			throw new Exception(
+					"A data de inicio deve ser anterior a do termino!");
 		}
-		if(listaClientes == null){
-			throw new Exception("Ainda não existe nenhum cliente cadastrado!");			
+		if (listaClientes == null) {
+			throw new Exception("Ainda não existe nenhum cliente cadastrado!");
 		}
-		
+
 		List<Cliente> listaClientesPorData = new ArrayList<Cliente>();
-		
+
 		for (Cliente cliente : listaClientes) {
-			if(cliente.getContrato() != null)
-				if(cliente.getContrato().getTerminoDoContrato().beforeOrEquals(termino) && cliente.getContrato().getInicioDoContrato().afterOrEquals(inicio)){
+			if (cliente.getContrato() != null)
+				if (cliente.getContrato().getTerminoDoContrato()
+						.beforeOrEquals(termino)
+						&& cliente.getContrato().getInicioDoContrato()
+								.afterOrEquals(inicio)) {
 					listaClientesPorData.add(cliente);
 				}
 		}
-		
-		if(listaClientesPorData.isEmpty()){
-			throw new Exception("Não existe nenhum contrato nesse período!");		
+
+		if (listaClientesPorData.isEmpty()) {
+			throw new Exception("Não existe nenhum contrato nesse período!");
 		}
 		return listaClientesPorData;
-			
-		
+
 	}
-	
-	public Cliente[] listaContratosPorStatus(String status) throws Exception{
+
+	public Cliente[] listaContratosPorStatus(String status) throws Exception {
 		ClientesDAO dao = ClientesDAO.getInstance();
 		List<Cliente> listaClientes = dao.recuperaClientes();
 		List<Cliente> listaClientesPorStatus = new ArrayList<Cliente>();
-		StatusContrato statusDoContrato = StatusContrato.getStatusContrato(status);
+		StatusContrato statusDoContrato = StatusContrato
+				.getStatusContrato(status);
 
 		for (Cliente cliente : listaClientes) {
-			if(cliente.getContratoComStatus(statusDoContrato) != null)
+			if (cliente.getContratoComStatus(statusDoContrato) != null)
 				listaClientesPorStatus.add(cliente);
 		}
-		
-		if(listaClientesPorStatus.isEmpty()){
+
+		if (listaClientesPorStatus.isEmpty()) {
 			throw new Exception("Não existe nenhum contrato com esse Status");
 		}
-                
-                Cliente[] listaClientesComStatus = new Cliente[listaClientesPorStatus.size()];
-                
-                for (int i = 0; i < listaClientesPorStatus.size(); i++) {
-                    listaClientesComStatus[i] = listaClientesPorStatus.get(i);
-                }
-                return listaClientesComStatus;
-            }
 
+		Cliente[] listaClientesComStatus = new Cliente[listaClientesPorStatus
+				.size()];
+
+		for (int i = 0; i < listaClientesPorStatus.size(); i++) {
+			listaClientesComStatus[i] = listaClientesPorStatus.get(i);
+		}
+		return listaClientesComStatus;
+	}
+
+	public void atualizaLogin(Logavel logavel, String login) throws Exception {
+		LogaveisDAO dao = LogaveisDAO.getInstance();
+		Login log = new Login(login);
+		logavel.setLogin(log);
+		dao.atualizar(logavel);
+	}
+
+	public void atualizarSenha(Logavel logavel, String senha, String confirmacao)
+			throws Exception {
+		LogaveisDAO dao = LogaveisDAO.getInstance();
+		Senha novaSenha = new Senha(senha);
+		Senha confirmada = new Senha(confirmacao);
+		if (!novaSenha.equals(confirmada))
+			throw new Exception("A senha deve ser confirmada corretamente");
+		logavel.setSenha(novaSenha);
+		dao.atualizar(logavel);
+	}
 
 }

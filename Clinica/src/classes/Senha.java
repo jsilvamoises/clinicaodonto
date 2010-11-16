@@ -16,5 +16,12 @@ public class Senha {
 	public String getSenha() {
 		return senha;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Senha)) return false;
+		Senha outra = (Senha) obj;
+		return getSenha().equals(outra);
+	}
 
 }
