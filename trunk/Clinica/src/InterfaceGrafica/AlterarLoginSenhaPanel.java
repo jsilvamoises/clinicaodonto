@@ -322,25 +322,28 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel implements KeyLis
     private void botaoConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmaActionPerformed
         try {
             if(checkLogin.isSelected() && checkSenha.isSelected()) {
-                fachada.atualizaLogavel(logavel, fieldLogin.getText(),
+                logavel = fachada.atualizaLogavel(logavel, fieldLogin.getText(),
                         passNovaSenha.getText(), passConfirmaNovaSenha.getText());
                 JOptionPane.showMessageDialog(null, "Login e senha alterados",
                 "Confirmado", JOptionPane.CLOSED_OPTION);
                 reiniciaCampos();
+                camposSemSenhaConfirmada(false);
 
             } else if(checkLogin.isSelected() && !checkSenha.isSelected()) {
-                fachada.atualizaLogavel(logavel, fieldLogin.getText(),
+                logavel = fachada.atualizaLogavel(logavel, fieldLogin.getText(),
                         logavel.getSenha().getSenha(), logavel.getSenha().getSenha());
                 JOptionPane.showMessageDialog(null, "Login alterado",
                 "Confirmado", JOptionPane.CLOSED_OPTION);
                 reiniciaCampos();
+                camposSemSenhaConfirmada(false);
 
             } else if(!checkLogin.isSelected() && checkSenha.isSelected()) {
-                fachada.atualizaLogavel(logavel, logavel.getLogin().getLogin(),
+                logavel = fachada.atualizaLogavel(logavel, logavel.getLogin().getLogin(),
                         passNovaSenha.getText(), passConfirmaNovaSenha.getText());
                 JOptionPane.showMessageDialog(null, "Senha alterada",
                 "Confirmado", JOptionPane.CLOSED_OPTION);
                 reiniciaCampos();
+                camposSemSenhaConfirmada(false);
 
             } else
                 JOptionPane.showMessageDialog(null, "Selecione pelo menos uma opção",
