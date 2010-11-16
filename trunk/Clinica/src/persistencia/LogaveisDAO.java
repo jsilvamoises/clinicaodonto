@@ -52,9 +52,9 @@ public class LogaveisDAO {
 	 */
 	public void criar(Logavel logavel) throws Exception, IOException {
 		if (logavel == null
-				|| (new File(CAMINHO + logavel + TIPO_DE_ARQUIVO).exists()))
+				|| (new File(CAMINHO + logavel.getLogin() + TIPO_DE_ARQUIVO).exists()))
 			throw new Exception("Logavel inválido");
-		File file = new File(CAMINHO + logavel + TIPO_DE_ARQUIVO);
+		File file = new File(CAMINHO + logavel.getLogin() + TIPO_DE_ARQUIVO);
 		file.getParentFile().mkdirs();
 		xstream.toXML(logavel, new FileOutputStream(file));
 	}
@@ -70,9 +70,9 @@ public class LogaveisDAO {
 	 */
 	public void deletar(Logavel logavel) throws Exception {
 		if (logavel == null
-				|| !(new File(CAMINHO + logavel + TIPO_DE_ARQUIVO).exists()))
+				|| !(new File(CAMINHO + logavel.getLogin() + TIPO_DE_ARQUIVO).exists()))
 			throw new Exception("Logavel não pôde ser removido");
-		File file = new File(CAMINHO + logavel + TIPO_DE_ARQUIVO);
+		File file = new File(CAMINHO + logavel.getLogin() + TIPO_DE_ARQUIVO);
 		file.getParentFile().mkdirs();
 		System.gc();
 		file.delete();
@@ -117,7 +117,7 @@ public class LogaveisDAO {
 	 */
 	public void atualizar(Logavel logavel) throws Exception, IOException {
 		if (logavel == null
-				|| !(new File(CAMINHO + logavel + TIPO_DE_ARQUIVO).exists()))
+				|| !(new File(CAMINHO + logavel.getLogin() + TIPO_DE_ARQUIVO).exists()))
 			throw new Exception("Logavel não pode ser atualizado");
 		System.gc();
 		this.deletar(logavel);
