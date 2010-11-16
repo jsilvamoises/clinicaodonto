@@ -16,7 +16,6 @@ import classes.Senha;
 import classes.UserImpl;
 import enums.Estado;
 import enums.EstadoCivil;
-import enums.Privilegio;
 import enums.Sexo;
 import enums.StatusCliente;
 import enums.StatusContrato;
