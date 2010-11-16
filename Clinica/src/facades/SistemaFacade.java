@@ -257,7 +257,7 @@ public class SistemaFacade {
 		return listaClientesComStatus;
 	}
 
-	public void atualizaLogavel(Logavel logavel, String login,
+	public Logavel atualizaLogavel(Logavel logavel, String login,
 			String novaSenha, String senhaConfirmada) throws Exception {
 		LogaveisDAO dao = LogaveisDAO.getInstance();
 		
@@ -271,6 +271,7 @@ public class SistemaFacade {
 		Logavel novoLogavel = new UserImpl(novoLogin, nSenha);
 		dao.atualizar(logavel, novoLogavel);
 		logavel = novoLogavel;
+		return logavel;
 	}
 
 }
