@@ -4,14 +4,6 @@
  */
 
 package InterfaceGrafica;
-
-import java.io.IOException;
-
-import classes.Login;
-import classes.Senha;
-import classes.UserImpl;
-import persistencia.LogaveisDAO;
-
 /**
  *
  * @author usuário
