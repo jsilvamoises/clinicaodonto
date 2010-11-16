@@ -74,6 +74,26 @@ public class Data {
 		}
 		return strdate;
 	}
+	
+	public String dataInPersistenceDiary() {
+		String strdate = "";
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
+		if (data != null) {
+			strdate = sdf.format(data.getTime());
+		}
+		return strdate;
+	}
+	
+	public String dataInPersistenceMonth() {
+		String strdate = "";
+		SimpleDateFormat sdf = new SimpleDateFormat("MM-yyyy");
+
+		if (data != null) {
+			strdate = sdf.format(data.getTime());
+		}
+		return strdate;
+	}
 
 	/**
 	 * Metodo usado para converter uma String num Calendar.
