@@ -13,6 +13,7 @@ import classes.Data;
 import classes.Endereco;
 import classes.Login;
 import classes.Senha;
+import classes.UserImpl;
 import enums.Estado;
 import enums.EstadoCivil;
 import enums.Privilegio;
@@ -257,22 +258,20 @@ public class SistemaFacade {
 		return listaClientesComStatus;
 	}
 
-	public void atualizaLogin(Logavel logavel, String login) throws Exception {
+	public void atualizaLogavel(Logavel logavel, String login,
+			String novaSenha, String senhaConfirmada) throws Exception {
 		LogaveisDAO dao = LogaveisDAO.getInstance();
-		Login log = new Login(login);
-		logavel.setLogin(log);
-		dao.atualizar(logavel);
-	}
-
-	public void atualizarSenha(Logavel logavel, String senha, String confirmacao)
-			throws Exception {
-		LogaveisDAO dao = LogaveisDAO.getInstance();
-		Senha novaSenha = new Senha(senha);
-		Senha confirmada = new Senha(confirmacao);
-		if (!novaSenha.equals(confirmada))
-			throw new Exception("A senha deve ser confirmada corretamente");
-		logavel.setSenha(novaSenha);
-		dao.atualizar(logavel);
+		
+		Login novoLogin = new Login(login);
+		Senha nSenha = new Senha(novaSenha);
+		Senha confirmada = new Senha(senhaConfirmada);
+		
+		if(!nSenha.getSenha().equals(confirmada.getSenha()))
+			throw new Exception("Senha não confirmada");
+		
+		Logavel novoLogavel = new UserImpl(novoLogin, nSenha);
+		dao.atualizar(logavel, novoLogavel);
+		logavel = novoLogavel;
 	}
 
 }

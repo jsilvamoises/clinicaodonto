@@ -25,9 +25,9 @@ public class Main {
 			LogaveisDAO.getInstance().criar(new UserImpl(new Login("aluana"), new Senha("123456")));
 			LogaveisDAO.getInstance().criar(new UserImpl(new Login("raquel"), new Senha("123456")));
 		} catch (IOException e) {
-			
+			System.out.println(e.getMessage());
 		} catch (Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
     }
 }

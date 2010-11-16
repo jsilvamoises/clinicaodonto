@@ -123,10 +123,6 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel implements KeyLis
         passNovaSenha.setVisible(false);
     }
 
-    private void campoComSenhaConfirmada() {
-        
-    }
-
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -325,9 +321,30 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel implements KeyLis
 
     private void botaoConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoConfirmaActionPerformed
         try {
-            fachada.atualizaLogin(logavel, fieldLogin.getText());
-            fachada.atualizarSenha(logavel, passNovaSenha.getText(),
-                    passConfirmaNovaSenha.getText());
+            if(checkLogin.isSelected() && checkSenha.isSelected()) {
+                fachada.atualizaLogavel(logavel, fieldLogin.getText(),
+                        passNovaSenha.getText(), passConfirmaNovaSenha.getText());
+                JOptionPane.showMessageDialog(null, "Login e senha alterados",
+                "Confirmado", JOptionPane.CLOSED_OPTION);
+                reiniciaCampos();
+
+            } else if(checkLogin.isSelected() && !checkSenha.isSelected()) {
+                fachada.atualizaLogavel(logavel, fieldLogin.getText(),
+                        logavel.getSenha().getSenha(), logavel.getSenha().getSenha());
+                JOptionPane.showMessageDialog(null, "Login alterado",
+                "Confirmado", JOptionPane.CLOSED_OPTION);
+                reiniciaCampos();
+
+            } else if(!checkLogin.isSelected() && checkSenha.isSelected()) {
+                fachada.atualizaLogavel(logavel, logavel.getLogin().getLogin(),
+                        passNovaSenha.getText(), passConfirmaNovaSenha.getText());
+                JOptionPane.showMessageDialog(null, "Senha alterada",
+                "Confirmado", JOptionPane.CLOSED_OPTION);
+                reiniciaCampos();
+
+            } else
+                JOptionPane.showMessageDialog(null, "Selecione pelo menos uma opção",
+                "Erro", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),
             "Erro",
