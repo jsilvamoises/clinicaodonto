@@ -11,6 +11,8 @@
 
 package InterfaceGrafica;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import interfaces.Logavel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -20,17 +22,80 @@ import javax.swing.JTabbedPane;
  *
  * @author usuário
  */
-public class AlterarLoginSenhaPanel extends javax.swing.JPanel {
+public class AlterarLoginSenhaPanel extends javax.swing.JPanel implements KeyListener{
     private JTabbedPane tabbed;
     private JScrollPane scroll;
     private Logavel logavel;
 
+
+     @SuppressWarnings("deprecation")
+    @Override
+    public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                botaoOkActionPerformed(null);
+
+            } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                botaoFEcharAbaActionPerformed(null);
+            }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent arg0) {
+            // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent arg0) {
+            // TODO Auto-generated method stub
+
+    }
+
+    
     /** Creates new form AlterarLoginSenhaPanel */
     public AlterarLoginSenhaPanel(Logavel logavel, JTabbedPane tabbed, JScrollPane scroll) {
         this.tabbed = tabbed;
         this.scroll = scroll;
         this.logavel = logavel;
         initComponents();
+
+        scroll.addKeyListener(this);
+        scroll.show();
+
+        tabbed.addKeyListener(this);
+        tabbed.show();
+
+        this.addKeyListener(this);
+        this.show();
+
+        fieldLogin.addKeyListener(this);
+        fieldLogin.show();
+
+        botaoConfirma.addKeyListener(this);
+        botaoConfirma.show();
+
+        botaoFEcharAba.addKeyListener(this);
+        botaoFEcharAba.show();
+
+        botaoOk.addKeyListener(this);
+        botaoOk.show();
+
+        checkLogin.addKeyListener(this);
+        checkLogin.show();
+
+        checkSenha.addKeyListener(this);
+        checkSenha.show();
+
+        passConfirmaNovaSenha.addKeyListener(this);
+        passConfirmaNovaSenha.show();
+
+        passNovaSenha.addKeyListener(this);
+        passNovaSenha.show();
+
+        passSenha.addKeyListener(this);
+        passSenha.show();
+
+
         camposSemSenhaConfirmada(false);
         reiniciaCampos();
     }
