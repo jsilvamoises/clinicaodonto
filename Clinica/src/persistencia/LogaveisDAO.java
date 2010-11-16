@@ -51,10 +51,10 @@ public class LogaveisDAO {
 	 *             Caso haja um problema ao gerar o arquivo xml
 	 */
 	public void criar(Logavel logavel) throws Exception, IOException {
-		if (logavel == null
-				|| (new File(CAMINHO + logavel.getLogin() + TIPO_DE_ARQUIVO).exists()))
+		if (logavel == null)
 			throw new Exception("Logavel inválido");
-		File file = new File(CAMINHO + logavel.getLogin() + TIPO_DE_ARQUIVO);
+		File file = new File(CAMINHO + logavel.getLogin().getLogin()
+				+ TIPO_DE_ARQUIVO);
 		file.getParentFile().mkdirs();
 		xstream.toXML(logavel, new FileOutputStream(file));
 	}
@@ -69,10 +69,10 @@ public class LogaveisDAO {
 	 *             como dado persistente
 	 */
 	public void deletar(Logavel logavel) throws Exception {
-		if (logavel == null
-				|| !(new File(CAMINHO + logavel.getLogin() + TIPO_DE_ARQUIVO).exists()))
+		if (logavel == null)
 			throw new Exception("Logavel não pôde ser removido");
-		File file = new File(CAMINHO + logavel.getLogin() + TIPO_DE_ARQUIVO);
+		File file = new File(CAMINHO + logavel.getLogin().getLogin()
+				+ TIPO_DE_ARQUIVO);
 		file.getParentFile().mkdirs();
 		System.gc();
 		file.delete();
@@ -89,7 +89,7 @@ public class LogaveisDAO {
 	public List<Logavel> recuperaLogaveis() throws FileNotFoundException {
 		List<Logavel> logavels = new ArrayList<Logavel>();
 		for (File arquivo : arrayDosArquivos()) {
-			
+
 			if (arquivo.getName().endsWith(TIPO_DE_ARQUIVO)) {
 				arquivo.getParentFile().mkdirs();
 				Logavel logavel = (Logavel) xstream
@@ -115,13 +115,15 @@ public class LogaveisDAO {
 	 * @throws IOException
 	 *             Caso haja algum problema com arquivos ({@link File})
 	 */
-	public void atualizar(Logavel logavel) throws Exception, IOException {
+	public void atualizar(Logavel logavel, Logavel novo) throws Exception,
+			IOException {
 		if (logavel == null
-				|| !(new File(CAMINHO + logavel.getLogin() + TIPO_DE_ARQUIVO).exists()))
+				|| !(new File(CAMINHO + logavel.getLogin().getLogin()
+						+ TIPO_DE_ARQUIVO).exists()))
 			throw new Exception("Logavel não pode ser atualizado");
 		System.gc();
 		this.deletar(logavel);
-		this.criar(logavel);
+		this.criar(novo);
 	}
 
 	/**
