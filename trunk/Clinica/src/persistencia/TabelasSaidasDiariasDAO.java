@@ -56,7 +56,7 @@ public class TabelasSaidasDiariasDAO {
 		if (tabelas.isEmpty())
 			throw new Exception("Nome do Cliente não identificado");
 
-		Object[] tabs = new Cliente[tabelas.size()];
+		Object[] tabs = new Object[tabelas.size()];
 		for (int i = 0; i < tabelas.size(); i++)
 			tabs[i] = tabelas.get(i);
 		return tabs;
