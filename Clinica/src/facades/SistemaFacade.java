@@ -7,8 +7,8 @@ import java.util.List;
 
 import persistencia.ClientesDAO;
 import persistencia.LogaveisDAO;
-import persistencia.TabelasEntradasDiariasDAO;
-import persistencia.TabelasEntradasMensaisDAO;
+//import persistencia.TabelasEntradasDiariasDAO;
+//import persistencia.TabelasEntradasMensaisDAO;
 import persistencia.TabelasSaidasDiariasDAO;
 import persistencia.TabelasSaidasMensaisDAO;
 import classes.Cliente;
@@ -279,7 +279,7 @@ public class SistemaFacade {
 		return logavel;
 	}
 	
-	public void gravaTabelaEntradaDiaria(Object[][] tabela) throws IOException, Exception{
+	/*public void gravaTabelaEntradaDiaria(Object[][] tabela) throws IOException, Exception{
 		TabelasEntradasDiariasDAO dao = TabelasEntradasDiariasDAO.getInstance();
 		
 		dao.criar(tabela);
@@ -289,7 +289,7 @@ public class SistemaFacade {
 		TabelasEntradasMensaisDAO dao = TabelasEntradasMensaisDAO.getInstance();
 		
 		dao.criar(tabela);
-	}
+	}*/
 	
 	public void gravaTabelaSaidaMensal(Object[][] tabela) throws IOException, Exception{
 		TabelasSaidasMensaisDAO dao = TabelasSaidasMensaisDAO.getInstance();
@@ -315,7 +315,7 @@ public class SistemaFacade {
 		
 	}
 	
-	public Object[] recuperaTabelaDiariaEntrada() throws Exception{
+	/*public Object[] recuperaTabelaDiariaEntrada() throws Exception{
 		TabelasEntradasDiariasDAO dao = TabelasEntradasDiariasDAO.getInstance();
 		return dao.recuperaTabelas();
 		
@@ -325,6 +325,6 @@ public class SistemaFacade {
 		TabelasEntradasMensaisDAO dao = TabelasEntradasMensaisDAO.getInstance();
 		return dao.recuperaTabelas();
 		
-	}
+	}*/
 
 }
