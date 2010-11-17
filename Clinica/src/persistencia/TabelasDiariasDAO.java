@@ -59,8 +59,25 @@ public class TabelasDiariasDAO {
 		return tabelas;
 	}
 	
-	public String[] recuperarTabelasPorData() {
+	public String[] recuperarTabelasPorData() throws Exception {
+		List<String> datas = new ArrayList<String>();
+		for (File file : arrayDosArquivos()) {
+			
+			if (file.getName().endsWith(TIPO_DE_ARQUIVO)) {
+				file.getParentFile().mkdirs();
+				String nomeData = file.getName().replace(TIPO_DE_ARQUIVO, "");
+				datas.add(nomeData);
+			}
+			
+		}
 		
+		if(datas.isEmpty())
+			throw new Exception("Nenhuma tabela foi criada");
+		String[] retorno = new String[datas.size()];
+		for (int i = 0; i < retorno.length; i++) {
+			retorno[i] = datas.get(i);
+		}
+		return retorno;
 	}
 
 	public void limparTabelas() {

@@ -74,14 +74,4 @@ public class TabelasMensaisDAO {
 		file.mkdirs();
 		return file.listFiles();
 	}
-
-	public static void main(String[] args) {
-		TabelasMensaisDAO dao = TabelasMensaisDAO.getInstance();
-		Object[][] tab = new Object[2][2];
-		try {
-			dao.criar(tab);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}
 }
