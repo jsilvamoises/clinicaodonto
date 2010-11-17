@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import classes.Cliente;
 import classes.Data;
 
 import com.thoughtworks.xstream.XStream;
@@ -41,7 +42,7 @@ public class TabelasSaidasDiariasDAO {
 		xstream.toXML(tabela, new FileOutputStream(file));
 	}
 
-	public List<Object[][]> recuperaTabelas() throws FileNotFoundException {
+	public Object[] recuperaTabelas() throws Exception {
 		List<Object[][]> tabelas = new ArrayList<Object[][]>();
 		for (File arquivo : arrayDosArquivos()) {
 
@@ -52,7 +53,13 @@ public class TabelasSaidasDiariasDAO {
 				tabelas.add(tabela);
 			}
 		}
-		return tabelas;
+		if (tabelas.isEmpty())
+			throw new Exception("Nome do Cliente não identificado");
+
+		Object[] tabs = new Cliente[tabelas.size()];
+		for (int i = 0; i < tabelas.size(); i++)
+			tabs[i] = tabelas.get(i);
+		return tabs;
 	}
 
 	public void limparTabelas() {
