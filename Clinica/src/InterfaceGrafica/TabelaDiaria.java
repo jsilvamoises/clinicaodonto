@@ -12,6 +12,8 @@
 package InterfaceGrafica;
 
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import facades.SistemaFacade;
@@ -482,8 +484,14 @@ public class TabelaDiaria extends javax.swing.JPanel implements KeyListener{
                tab2[i][j] = tabelaSaida.getValueAt(i, j);
             }
         }
-
-        //SALVA DE FATO NO DAO!
+        try {
+            fachada.gravaTabelaEntradaDiaria(tab1);
+            fachada.gravaTabelaSaidaDiaria(tab2);
+        } catch (Exception ex) {
+           JOptionPane.showMessageDialog(null, ex.getMessage(),
+                    "Problemas com o cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+        }
 
          JOptionPane.showMessageDialog(null, "Tabela salva com sucesso!",
                     "Cadastro",
