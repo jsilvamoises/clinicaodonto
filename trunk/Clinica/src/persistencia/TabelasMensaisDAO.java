@@ -14,53 +14,50 @@ import classes.Data;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-public class TabelasEntradasMensaisDAO {
+public class TabelasMensaisDAO {
 	private final static String SEPARADOR = System
 			.getProperty("file.separator");
 	private final static String CAMINHO = "arquivos" + SEPARADOR
 			+ "entradasMensais" + SEPARADOR;
 	private final static String TIPO_DE_ARQUIVO = ".xml";
-	private static TabelasEntradasMensaisDAO instancia;
+	private static TabelasMensaisDAO instancia;
 	private static XStream xstream = new XStream(new DomDriver());
 
-	private TabelasEntradasMensaisDAO() {
+	private TabelasMensaisDAO() {
 	}
 
-	public static synchronized TabelasEntradasMensaisDAO getInstance() {
+	public static synchronized TabelasMensaisDAO getInstance() {
 		if (instancia == null)
-			instancia = new TabelasEntradasMensaisDAO();
+			instancia = new TabelasMensaisDAO();
 		return instancia;
 
 	}
 
-	public void criar(Object[][] tabela) throws Exception, IOException {
-		if (tabela == null)
+	public void criar(Object[][] entradas, Object[][] saidas) throws Exception, IOException {
+		if (entradas == null || saidas == null)
 			throw new Exception("Tabela não pôde ser salva");
 		File file = new File(CAMINHO + new Data().dataInPersistenceMonth()
 				+ TIPO_DE_ARQUIVO);
 		file.getParentFile().mkdirs();
-		xstream.toXML(tabela, new FileOutputStream(file));
+		Object[][][] tupla = {entradas, saidas};
+		xstream.toXML(tupla, new FileOutputStream(file));
 	}
 
-	public Object[] recuperaTabelas() throws Exception {
-		List<Object[][]> tabelas = new ArrayList<Object[][]>();
+	public List<Object[][][]> recuperaTabelas() throws Exception {
+		List<Object[][][]> tabelas = new ArrayList<Object[][][]>();
 		for (File arquivo : arrayDosArquivos()) {
 
 			if (arquivo.getName().endsWith(TIPO_DE_ARQUIVO)) {
 				arquivo.getParentFile().mkdirs();
-				Object[][] tabela = (Object[][]) xstream
+				Object[][][] tabela = (Object[][][]) xstream
 						.fromXML(new FileInputStream(arquivo));
 				tabelas.add(tabela);
 			}
 		}
 		
 		if (tabelas.isEmpty())
-			throw new Exception("Nome do Cliente não identificado");
-
-		Object[] tabs = new Object[tabelas.size()];
-		for (int i = 0; i < tabelas.size(); i++)
-			tabs[i] = tabelas.get(i);
-		return tabs;
+			throw new Exception("Nenhuma tabela mensal foi criada");
+		return tabelas;
 	}
 
 	public void limparTabelas() {
@@ -78,13 +75,13 @@ public class TabelasEntradasMensaisDAO {
 		return file.listFiles();
 	}
 
-	/*public static void main(String[] args) {
-		TabelasEntradasMensaisDAO dao = TabelasEntradasMensaisDAO.getInstance();
+	public static void main(String[] args) {
+		TabelasMensaisDAO dao = TabelasMensaisDAO.getInstance();
 		Object[][] tab = new Object[2][2];
 		try {
 			dao.criar(tab);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-	}*/
+	}
 }
