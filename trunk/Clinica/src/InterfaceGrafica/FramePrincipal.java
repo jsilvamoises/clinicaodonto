@@ -34,6 +34,7 @@ public class FramePrincipal extends JFrame {
     private Logavel logavel;
     private BuscaContratosPorStatus buscaStatus;
     private AlterarLoginSenhaPanel alterarLoginSena;
+    private BuscaTabelaDiaria buscaTabelaDiaria;
 
     /** Creates new form FramePrincipal */
     public FramePrincipal(Logavel logavel) {
@@ -75,6 +76,8 @@ public class FramePrincipal extends JFrame {
         menuBoleto = new javax.swing.JMenuItem();
         MenuTabelaDiaria = new javax.swing.JMenuItem();
         MenuTabelaMensal = new javax.swing.JMenuItem();
+        MostraTabDiaria = new javax.swing.JMenuItem();
+        MostraTabMensal = new javax.swing.JMenuItem();
         menuSistema = new javax.swing.JMenu();
         menuAddUsuario = new javax.swing.JMenuItem();
         menuAlterarLoginSenha = new javax.swing.JMenuItem();
@@ -182,6 +185,17 @@ public class FramePrincipal extends JFrame {
             }
         });
         menuRelatorios.add(MenuTabelaMensal);
+
+        MostraTabDiaria.setText("Mostrar Tabela Diaria");
+        MostraTabDiaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostraTabDiariaActionPerformed(evt);
+            }
+        });
+        menuRelatorios.add(MostraTabDiaria);
+
+        MostraTabMensal.setText("Mostrar Tabela Mensal");
+        menuRelatorios.add(MostraTabMensal);
 
         barraDeMenu.add(menuRelatorios);
 
@@ -310,11 +324,20 @@ public class FramePrincipal extends JFrame {
         tabbed.addTab("Alterar Login/Senha", s);
     }//GEN-LAST:event_menuAlterarLoginSenhaActionPerformed
 
+    private void MostraTabDiariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostraTabDiariaActionPerformed
+        JScrollPane s = new JScrollPane();
+        buscaTabelaDiaria = new BuscaTabelaDiaria(tabbed, s);
+        s.setViewportView(buscaTabelaDiaria);
+        tabbed.addTab("Mostra Tabela Diaria", s);
+    }//GEN-LAST:event_MostraTabDiariaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuBucaStatus;
     private javax.swing.JMenuItem MenuPagamento;
     private javax.swing.JMenuItem MenuTabelaDiaria;
     private javax.swing.JMenuItem MenuTabelaMensal;
+    private javax.swing.JMenuItem MostraTabDiaria;
+    private javax.swing.JMenuItem MostraTabMensal;
     private javax.swing.JMenuBar barraDeMenu;
     private javax.swing.JMenuItem menuAddUsuario;
     private javax.swing.JMenuItem menuAlterarLoginSenha;
