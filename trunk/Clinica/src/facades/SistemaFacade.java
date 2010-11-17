@@ -1,11 +1,16 @@
 package facades;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import persistencia.ClientesDAO;
 import persistencia.LogaveisDAO;
+import persistencia.TabelasEntradasDiariasDAO;
+import persistencia.TabelasEntradasMensaisDAO;
+import persistencia.TabelasSaidasDiariasDAO;
+import persistencia.TabelasSaidasMensaisDAO;
 import classes.Cliente;
 import classes.Codigo;
 import classes.Contrato;
@@ -272,6 +277,54 @@ public class SistemaFacade {
 		dao.atualizar(logavel, novoLogavel);
 		logavel = novoLogavel;
 		return logavel;
+	}
+	
+	public void gravaTabelaEntradaDiaria(Object[][] tabela) throws IOException, Exception{
+		TabelasEntradasDiariasDAO dao = TabelasEntradasDiariasDAO.getInstance();
+		
+		dao.criar(tabela);
+	}
+	
+	public void gravaTabelaEntradaMensal(Object[][] tabela) throws IOException, Exception{
+		TabelasEntradasMensaisDAO dao = TabelasEntradasMensaisDAO.getInstance();
+		
+		dao.criar(tabela);
+	}
+	
+	public void gravaTabelaSaidaMensal(Object[][] tabela) throws IOException, Exception{
+		TabelasSaidasMensaisDAO dao = TabelasSaidasMensaisDAO.getInstance();
+		
+		dao.criar(tabela);
+	}
+	
+	public void gravaTabelaSaidaDiaria(Object[][] tabela) throws IOException, Exception{
+		TabelasSaidasDiariasDAO dao = TabelasSaidasDiariasDAO.getInstance();
+		
+		dao.criar(tabela);
+	}
+	
+	public Object[] recuperaTabelaDiariaSaida() throws Exception{
+		TabelasSaidasDiariasDAO dao = TabelasSaidasDiariasDAO.getInstance();
+		return dao.recuperaTabelas();
+		
+	}
+	
+	public Object[] recuperaTabelaMensalSaida() throws Exception{
+		TabelasSaidasMensaisDAO dao = TabelasSaidasMensaisDAO.getInstance();
+		return dao.recuperaTabelas();
+		
+	}
+	
+	public Object[] recuperaTabelaDiariaEntrada() throws Exception{
+		TabelasEntradasDiariasDAO dao = TabelasEntradasDiariasDAO.getInstance();
+		return dao.recuperaTabelas();
+		
+	}
+	
+	public Object[] recuperaTabelaMensalEntrada() throws Exception{
+		TabelasEntradasMensaisDAO dao = TabelasEntradasMensaisDAO.getInstance();
+		return dao.recuperaTabelas();
+		
 	}
 
 }

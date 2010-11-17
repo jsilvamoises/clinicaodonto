@@ -489,7 +489,14 @@ public class TabelaMensal extends javax.swing.JPanel implements KeyListener{
             }
         }
 
-        //SALVA DE FATO NO DAO!
+        try {
+            fachada.gravaTabelaEntradaMensal(tab1);
+            fachada.gravaTabelaSaidaMensal(tab2);
+        } catch (Exception ex) {
+           JOptionPane.showMessageDialog(null, ex.getMessage(),
+                    "Problemas com o cadastro",
+                    JOptionPane.ERROR_MESSAGE);
+        }
 
          JOptionPane.showMessageDialog(null, "Tabela salva com sucesso!",
                     "Cadastro",
