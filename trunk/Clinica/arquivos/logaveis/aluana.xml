@@ -1,9 +1,0 @@
-<classes.UserImpl>
-  <nome>aluana</nome>
-  <login>
-    <login>aluana</login>
-  </login>
-  <senha>
-    <senha>123456</senha>
-  </senha>
-</classes.UserImpl>
