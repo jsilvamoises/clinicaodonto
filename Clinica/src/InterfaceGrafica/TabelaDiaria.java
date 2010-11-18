@@ -12,7 +12,6 @@
 package InterfaceGrafica;
 
 import classes.Data;
-import java.io.FileNotFoundException;
 import javax.swing.table.TableModel;
 import facades.SistemaFacade;
 import java.awt.event.KeyEvent;

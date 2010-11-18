@@ -71,7 +71,7 @@ public class Login extends JFrame implements KeyListener, ActionListener {
         
         @SuppressWarnings("deprecation")
         public Login() {
-                frame = new JFrame("Ortodontia e EstÃ©tica");
+                frame = new JFrame("Ortodontia e Estética");
                 
                 frame.addKeyListener(this);
                 
@@ -130,7 +130,7 @@ public class Login extends JFrame implements KeyListener, ActionListener {
                 jBEntrar.setForeground(cor1);
                 jBEntrar.addActionListener(this);
                 jBEntrar.setActionCommand("entrar");
-                jBEntrar.setToolTipText("Acessar o sistema Ortodontia e EstÃ©tica");
+                jBEntrar.setToolTipText("Acessar o sistema Ortodontia e Estética");
 
                 jBSair = new JButton("Sair");
                 jBSair.setFont(fonte1);
@@ -138,7 +138,7 @@ public class Login extends JFrame implements KeyListener, ActionListener {
                 jBSair.setForeground(cor1);
                 jBSair.addActionListener(this);
                 jBSair.setActionCommand("sair");
-                jBSair.setToolTipText("Sair do sistema Ortodontia e EstÃ©tica");
+                jBSair.setToolTipText("Sair do sistema Ortodontia e Estética");
 
                 painel0 = Box.createHorizontalBox();
                 painel1 = Box.createHorizontalBox();

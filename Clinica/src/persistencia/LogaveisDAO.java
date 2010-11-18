@@ -52,7 +52,7 @@ public class LogaveisDAO {
 	 */
 	public void criar(Logavel logavel) throws Exception, IOException {
 		if (logavel == null)
-			throw new Exception("Logavel inv√°lido");
+			throw new Exception("Logavel inv·lido");
 		File file = new File(CAMINHO + logavel.getLogin().getLogin()
 				+ TIPO_DE_ARQUIVO);
 		file.getParentFile().mkdirs();
@@ -70,7 +70,7 @@ public class LogaveisDAO {
 	 */
 	public void deletar(Logavel logavel) throws Exception {
 		if (logavel == null)
-			throw new Exception("Logavel n√£o p√¥de ser removido");
+			throw new Exception("Logavel n„o pÙde ser removido");
 		File file = new File(CAMINHO + logavel.getLogin().getLogin()
 				+ TIPO_DE_ARQUIVO);
 		file.getParentFile().mkdirs();
@@ -120,7 +120,7 @@ public class LogaveisDAO {
 		if (logavel == null
 				|| !(new File(CAMINHO + logavel.getLogin().getLogin()
 						+ TIPO_DE_ARQUIVO).exists()))
-			throw new Exception("Logavel n√£o pode ser atualizado");
+			throw new Exception("Logavel n„o pÙde ser atualizado");
 		System.gc();
 		this.deletar(logavel);
 		this.criar(novo);
@@ -143,12 +143,12 @@ public class LogaveisDAO {
 				|| senha == null
 				|| !(new File(CAMINHO + login.getLogin() + TIPO_DE_ARQUIVO)
 						.exists()))
-			throw new Exception("Login inv√°lido");
+			throw new Exception("Login inv·lido");
 		File file = new File(CAMINHO + login.getLogin() + TIPO_DE_ARQUIVO);
 		file.getParentFile().mkdirs();
 		Logavel logavel = (Logavel) xstream.fromXML(new FileInputStream(file));
 		if (!logavel.getSenha().getSenha().equals(senha.getSenha()))
-			throw new Exception("Senha inv√°lida");
+			throw new Exception("Senha inv·lida");
 		return logavel;
 	}
 

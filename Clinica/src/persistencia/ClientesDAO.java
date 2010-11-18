@@ -76,7 +76,7 @@ public class ClientesDAO {
 	public void deletar(Cliente cliente) throws Exception {
 		if (cliente == null
 				|| !(new File(CAMINHO + cliente + TIPO_DE_ARQUIVO).exists()))
-			throw new Exception("Cliente_nao pode ser removido");
+			throw new Exception("Cliente n„o pode ser removido");
 		File file = new File(CAMINHO + cliente + TIPO_DE_ARQUIVO);
 		file.getParentFile().mkdirs();
 		System.gc();
@@ -122,7 +122,7 @@ public class ClientesDAO {
 	public void atualizar(Cliente cliente, Cliente novoCliente) throws Exception, IOException {
 		if (cliente == null
 				|| !(new File(CAMINHO + cliente + TIPO_DE_ARQUIVO).exists()))
-			throw new Exception("Cliente n√£o pode ser atualizado");
+			throw new Exception("Cliente n„o pode ser atualizado");
 		System.gc();
 		deletar(cliente);
 		criar(novoCliente);
@@ -162,18 +162,18 @@ public class ClientesDAO {
 
 	public Cliente recuperaCliente(Codigo codigo) throws Exception {
 		if (codigo == null)
-			throw new Exception("C√≥digo inv√°lido");
+			throw new Exception("CÛdigo inv·lido");
 		for (File f : arrayDosArquivos()) {
 			String idF = f.getName().split(" ")[0];
 			if (idF.equals(codigo.getCodigo().trim()))
 				return (Cliente) xstream.fromXML(new FileInputStream(f));
 		}
-		throw new Exception("Cliente n√£o identificado");
+		throw new Exception("Cliente n„o identificado");
 	}
 
 	public Cliente[] recuperaCliente(String nome) throws Exception {
 		if (nome == null)
-			throw new Exception("Nome inv√°lido");
+			throw new Exception("Nome inv·lido");
 		List<Cliente> lista = new ArrayList<Cliente>();
 
 		for (File f : arrayDosArquivos()) {
@@ -191,7 +191,7 @@ public class ClientesDAO {
 		}
 
 		if (lista.isEmpty())
-			throw new Exception("Nome do Cliente n√£o identificado");
+			throw new Exception("Nome do Cliente n„o identificado");
 
 		Cliente[] clientes = new Cliente[lista.size()];
 		for (int i = 0; i < lista.size(); i++)
@@ -204,27 +204,9 @@ public class ClientesDAO {
 			String codigoF = f.getName().split(" ")[0];
 			if (codigoF.equals(codigo.getCodigo())) {
 				Cliente c = (Cliente) xstream.fromXML(new FileInputStream(f));
-				throw new Exception("Este C√ìDIGO j√° existe para o cliente: "
+				throw new Exception("Este C”DIGO j· existe para o cliente: "
 						+ c.getNome());
 			}
 		}
 	}
-	
-//	public static void main(String[] args) {
-//		ClientesDAO d = ClientesDAO.getInstance();
-//		Cliente p;
-//		try {
-//			p = new Cliente("ademar", new Codigo("11"), "", "", new Data("15/06/1991"), "", "", "",
-//					new Endereco("", "", "", "", "", ""), Estado.Acre,
-//					Sexo.MASCULINO, EstadoCivil.Divorciado,
-//					StatusCliente.ABANDONO, StatusFinanceiro.EM_DIA);
-//			Cliente x = d.recuperaCliente(new Codigo("11"));
-//			System.out.println(x.getCPF());
-//			
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//	}
 }

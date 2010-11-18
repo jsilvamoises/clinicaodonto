@@ -610,7 +610,7 @@ public class CadastroEditavelFrame extends javax.swing.JFrame implements KeyList
                 JOptionPane.CLOSED_OPTION);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),
-                "Problemas com a atualizaÃ§Ã£o",
+                "Problemas com a atualização",
                 JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_botaoCadastrarActionPerformed

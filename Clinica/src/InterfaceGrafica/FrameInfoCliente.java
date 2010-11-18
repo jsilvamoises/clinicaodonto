@@ -27,7 +27,7 @@ public class FrameInfoCliente extends javax.swing.JFrame {
     public FrameInfoCliente(Cliente cliente) {
         this.cliente = cliente;
         initComponents();
-        setTitle("InformaÃ§Ãµes de " + cliente.getNome());
+        setTitle("Informações de " + cliente.getNome());
         jTextArea1.setFont(new Font("Calibri", 1, 16));
         jTextArea1.setText(cliente.exibirInformacoes());
         jTextArea1.setEditable(false);

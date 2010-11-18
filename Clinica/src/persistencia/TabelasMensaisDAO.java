@@ -34,7 +34,7 @@ public class TabelasMensaisDAO {
 
 	public void criar(Object[][] entradas, Object[][] saidas) throws Exception, IOException {
 		if (entradas == null || saidas == null)
-			throw new Exception("Tabela n√£o p√¥de ser salva");
+			throw new Exception("Tabela n„o pÙde ser salva");
 		File file = new File(CAMINHO + new Data().dataInPersistenceMonth()
 				+ TIPO_DE_ARQUIVO);
 		file.getParentFile().mkdirs();
@@ -112,7 +112,7 @@ public class TabelasMensaisDAO {
 	public void atualizar(Object[][] entradas, Object[][] saidas, String data)
 			throws Exception {
 		if(entradas == null || saidas == null || data == null)
-			throw new Exception("N√£o p√¥de atualizar a tabela");
+			throw new Exception("N„oo pÙde atualizar a tabela");
 		File file = new File(CAMINHO + data
 				+ TIPO_DE_ARQUIVO);
 		file.getParentFile().mkdirs();
