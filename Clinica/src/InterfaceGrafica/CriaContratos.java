@@ -322,7 +322,7 @@ public class CriaContratos extends javax.swing.JPanel implements KeyListener{
            String dataI = String.valueOf(comboDia.getSelectedItem()) + "/" + String.valueOf(comboMes.getSelectedItem()) + "/" + String.valueOf(comboAno.getSelectedItem()) ;
            String  dataF =  String.valueOf(comboDia2.getSelectedItem()) + "/" + String.valueOf(comboMes2.getSelectedItem()) + "/" + String.valueOf(comboAno2.getSelectedItem()) ;
            String idCliente = (String) fieldCodigoCliente.getText();
-           double preco;
+           double preco = 0;
 
            try{
                 preco = Double.parseDouble((String) fieldCodigoCliente.getText());
