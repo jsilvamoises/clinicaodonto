@@ -268,11 +268,11 @@ public class FormularioCliente extends javax.swing.JPanel implements KeyListener
 
         jLabel8.setText("E-mail");
 
-        jLabel9.setText("ProfissÃ£o");
+        jLabel9.setText("Profissão");
 
         jLabel10.setText("Rua");
 
-        jLabel11.setText("NÃºmero");
+        jLabel11.setText("Número");
 
         jLabel12.setText("Compl.");
 
@@ -313,13 +313,13 @@ public class FormularioCliente extends javax.swing.JPanel implements KeyListener
             }
         });
 
-        jLabel7.setText("CÃ³digo*");
+        jLabel7.setText("Código*");
 
         jLabel19.setText("Status do Cliente");
 
         jLabel20.setText("Financeiro");
 
-        jLabel22.setText("* campos brigatÃ³rios.");
+        jLabel22.setText("* campos brigatórios.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

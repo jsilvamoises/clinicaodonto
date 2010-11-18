@@ -156,7 +156,7 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel implements KeyLis
             }
         });
 
-        jLabel2.setText("Selecione uma ou as duas opÃ§Ãµes que vocÃª deseja alterar");
+        jLabel2.setText("Selecione uma ou as duas opções que você deseja alterar");
 
         checkLogin.setText("Login");
         checkLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +185,7 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel implements KeyLis
             }
         });
 
-        botaoConfirma.setText("Confirmar AlteraÃ§Ãµes");
+        botaoConfirma.setText("Confirmar Alterações");
         botaoConfirma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoConfirmaActionPerformed(evt);

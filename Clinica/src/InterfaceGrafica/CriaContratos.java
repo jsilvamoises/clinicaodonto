@@ -167,9 +167,9 @@ public class CriaContratos extends javax.swing.JPanel implements KeyListener{
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 18));
         jLabel1.setText("Cadastros");
 
-        jLabel2.setText("CÃ³digo do Cliente");
+        jLabel2.setText("Código do Cliente");
 
-        jLabel5.setText("InÃ­cio do Contrato");
+        jLabel5.setText("Início do Contrato");
 
         comboDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
@@ -202,7 +202,7 @@ public class CriaContratos extends javax.swing.JPanel implements KeyListener{
 
         comboMes2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
 
-        jLabel6.setText("TÃ©rmino do Contrato");
+        jLabel6.setText("Término do Contrato");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
