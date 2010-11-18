@@ -67,7 +67,8 @@ public class TabelaMensal extends javax.swing.JPanel implements KeyListener{
         botaoLimpar.addKeyListener(this);
         botaoLimpar.show();
 
-
+        carregaTabelaEntradas();
+        carregaTabelaSaidas();
         reiniciaCampos();
     }
 

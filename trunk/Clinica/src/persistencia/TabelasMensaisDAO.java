@@ -18,7 +18,7 @@ public class TabelasMensaisDAO {
 	private final static String SEPARADOR = System
 			.getProperty("file.separator");
 	private final static String CAMINHO = "arquivos" + SEPARADOR
-			+ "entradasMensais" + SEPARADOR;
+			+ "tabelasMensais" + SEPARADOR;
 	private final static String TIPO_DE_ARQUIVO = ".xml";
 	private static TabelasMensaisDAO instancia;
 	private static XStream xstream = new XStream(new DomDriver());
