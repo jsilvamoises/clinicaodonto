@@ -105,7 +105,7 @@ public class SistemaFacade {
 		try {
 			Integer.parseInt(id);
 		} catch (NumberFormatException e) {
-			throw new Exception("Dever√° ser passado um n√∫mero");
+			throw new Exception("Dever· ser passado um n˙mero");
 		}
 		return ClientesDAO.getInstance().recuperaCliente(new Codigo(id));
 	}
@@ -163,14 +163,14 @@ public class SistemaFacade {
 		for (Contrato c : cliente.getContratos()) {
 			if (c.getStatus() == StatusContrato.EM_TRATAMENTO)
 				throw new Exception(
-						"O cliente j√° possui um contrato em andamento!");
+						"O cliente j· possui um contrato em andamento!");
 		}
 		Contrato contrato = new Contrato(cliente, preco, inicio, termino,
 				TipoDeContrato.ORTODONTIA, StatusContrato.EM_TRATAMENTO);
 		if (contrato.getDuracaoDoContrato() % 12 != 0
 				|| contrato.getDuracaoDoContrato() > 36)
 			throw new Exception(
-					"Os Contratos s√£o anuais e tem a dura√ß√£o m√°xima de 3 anos!");
+					"Os Contratos s„o anuais e tem a duraÁ„o m·xima de 3 anos!");
 		cliente.addContrato(contrato);
 		ClientesDAO dao = ClientesDAO.getInstance();
 		dao.atualizar(cliente);
@@ -182,7 +182,7 @@ public class SistemaFacade {
 		Cliente cliente = recuperaClientePorID(idCliente);
 		Contrato contrato = cliente.getContrato();
 		if (contrato == null) {
-			throw new Exception("O Usu√°rio n√£o possui contrato em andamento!");
+			throw new Exception("O Cliente n„o possui contrato em andamento!");
 		}
 		contrato.setStatus(StatusContrato.getStatusContrato(statusContrato));
 		ClientesDAO dao = ClientesDAO.getInstance();
@@ -202,7 +202,7 @@ public class SistemaFacade {
 					"A data de inicio deve ser anterior a do termino!");
 		}
 		if (listaClientes == null) {
-			throw new Exception("Ainda n√£o existe nenhum cliente cadastrado!");
+			throw new Exception("Ainda n„o existe nenhum cliente cadastrado!");
 		}
 
 		List<Cliente> listaClientesPorData = new ArrayList<Cliente>();
@@ -218,7 +218,7 @@ public class SistemaFacade {
 		}
 
 		if (listaClientesPorData.isEmpty()) {
-			throw new Exception("N√£o existe nenhum contrato nesse per√≠odo!");
+			throw new Exception("N„o existe nenhum contrato nesse perÌodo!");
 		}
 		return listaClientesPorData;
 
@@ -237,7 +237,7 @@ public class SistemaFacade {
 		}
 
 		if (listaClientesPorStatus.isEmpty()) {
-			throw new Exception("N√£o existe nenhum contrato com esse Status");
+			throw new Exception("N„o existe nenhum contrato com esse Status");
 		}
 
 		Cliente[] listaClientesComStatus = new Cliente[listaClientesPorStatus
@@ -258,7 +258,7 @@ public class SistemaFacade {
 		Senha confirmada = new Senha(senhaConfirmada);
 
 		if (!nSenha.getSenha().equals(confirmada.getSenha()))
-			throw new Exception("Senha n√£o confirmada");
+			throw new Exception("Senha n„o confirmada");
 
 		Logavel novoLogavel = new UserImpl(novoLogin, nSenha);
 		dao.atualizar(logavel, novoLogavel);

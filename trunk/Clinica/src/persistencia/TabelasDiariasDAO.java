@@ -35,7 +35,7 @@ public class TabelasDiariasDAO {
 	public void criar(Object[][] entradas, Object[][] saidas) throws Exception,
 			IOException {
 		if (entradas == null || saidas == null)
-			throw new Exception("Tabela n√£o p√¥de ser salva");
+			throw new Exception("Tabela n„oo pÙde ser salva");
 		File file = new File(CAMINHO + new Data().dataInPersistenceDiary()
 				+ TIPO_DE_ARQUIVO);
 		file.getParentFile().mkdirs();
@@ -106,7 +106,7 @@ public class TabelasDiariasDAO {
 	public void atualizar(Object[][] entradas, Object[][] saidas, String data)
 			throws Exception {
 		if (entradas == null || saidas == null || data == null)
-			throw new Exception("N√£o p√¥de atualizar a tabela");
+			throw new Exception("N„o pÙde atualizar a tabela");
 		File file = new File(CAMINHO + data + TIPO_DE_ARQUIVO);
 		file.getParentFile().mkdirs();
 		Object[][][] tupla = new Object[2][][];

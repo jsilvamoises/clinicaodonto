@@ -277,11 +277,11 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel implements KeyLis
                 
             } else 
                 JOptionPane.showMessageDialog(null, "Digite a senha corretamente",
-                "Senha Inv√°lida",
+                "Senha Inv·lida",
                 JOptionPane.ERROR_MESSAGE);
         } else
             JOptionPane.showMessageDialog(null, "Digite a senha corretamente",
-                "Senha Inv√°lida",
+                "Senha Inv·lida",
                 JOptionPane.ERROR_MESSAGE);
 
     }//GEN-LAST:event_botaoOkActionPerformed
@@ -346,7 +346,7 @@ public class AlterarLoginSenhaPanel extends javax.swing.JPanel implements KeyLis
                 camposSemSenhaConfirmada(false);
 
             } else
-                JOptionPane.showMessageDialog(null, "Selecione pelo menos uma op√ß√£o",
+                JOptionPane.showMessageDialog(null, "Selecione pelo menos uma opÁ„o",
                 "Erro", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),

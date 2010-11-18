@@ -316,7 +316,7 @@ public class CriaContratos extends javax.swing.JPanel implements KeyListener{
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
         try {
            if(((String) fieldCodigoCliente.getText()).isEmpty()){
-               throw new Exception("Digite um valor para o preÃ§o.");
+               throw new Exception("Digite um valor para o preço.");
            }            
             
            String dataI = String.valueOf(comboDia.getSelectedItem()) + "/" + String.valueOf(comboMes.getSelectedItem()) + "/" + String.valueOf(comboAno.getSelectedItem()) ;

@@ -11,16 +11,9 @@
 
 package InterfaceGrafica;
 
-
-import classes.Cliente;
-import javax.swing.JTable;
-import javax.swing.table.TableModel;
 import facades.SistemaFacade;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
-import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 /**

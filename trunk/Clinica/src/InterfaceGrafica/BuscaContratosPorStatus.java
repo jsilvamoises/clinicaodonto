@@ -248,7 +248,7 @@ public class BuscaContratosPorStatus extends javax.swing.JPanel implements KeyLi
         try{
             String status = String.valueOf(comboEstado.getSelectedItem());
             if(status == null){
-                throw new Exception("Selecione uma opÃ§Ã£o de status!");
+                throw new Exception("Selecione uma opção de status!");
             }
             buscaPorStatus(status);
             fieldTotalDeContratos.setText(String.valueOf(fachada.listaContratosPorStatus(status).length));

@@ -49,7 +49,7 @@ public class FramePrincipal extends JFrame {
         SwingUtilities.updateComponentTreeUI(this);
         setVisible(true);
         setExtendedState(MAXIMIZED_BOTH);
-        setTitle("Ortodontia e EstÃ©tica");
+        setTitle("Ortodontia e Estética");
     }
 
     /** This method is called from within the constructor to
@@ -263,7 +263,7 @@ public class FramePrincipal extends JFrame {
     }//GEN-LAST:event_menuBuscarActionPerformed
 
     private void menuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoutActionPerformed
-        JOptionPane.showMessageDialog(null, "VocÃª saiu do sistema",
+        JOptionPane.showMessageDialog(null, "Você saiu do sistema",
                 "Logout",
                 JOptionPane.CLOSED_OPTION);
         dispose();
@@ -306,7 +306,7 @@ public class FramePrincipal extends JFrame {
         JScrollPane s = new JScrollPane();
         tabelaDiaria = new TabelaDiaria(tabbed, s);
         s.setViewportView(tabelaDiaria);
-        tabbed.addTab("Tabela DiÃ¡ria", s);
+        tabbed.addTab("Tabela Diária", s);
     }//GEN-LAST:event_MenuTabelaDiariaActionPerformed
 
     private void MenuTabelaMensalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTabelaMensalActionPerformed
