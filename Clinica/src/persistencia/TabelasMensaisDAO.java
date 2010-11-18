@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import classes.Data;
@@ -72,12 +73,11 @@ public class TabelasMensaisDAO {
 		}
 		if (datas.isEmpty())
 			throw new Exception("Nenhuma tabela foi criada");
-		return (String[]) listToArray(datas);
+		return listToArray(datas);
 	}
 	
-	@SuppressWarnings("unchecked")
-	private Object[] listToArray(List lista) {
-		Object[] retorno = new Object[lista.size()];
+	private String[] listToArray(List<String> lista) {
+		String[] retorno = new String[lista.size()];
 		for (int i = 0; i < retorno.length; i++) {
 			retorno[i] = lista.get(i);
 		}
@@ -108,5 +108,32 @@ public class TabelasMensaisDAO {
 		File file = new File(CAMINHO);
 		file.mkdirs();
 		return file.listFiles();
+	}
+	
+	public void atualizar(Object[][] entradas, Object[][] saidas, String data)
+			throws Exception {
+		if(entradas == null || saidas == null || data == null)
+			throw new Exception("Não pôde atualizar a tabela");
+		File file = new File(CAMINHO + data
+				+ TIPO_DE_ARQUIVO);
+		file.getParentFile().mkdirs();
+		Object[][][] tupla = new Object[2][][];
+		tupla[0] = entradas;
+		tupla[1] = saidas;
+		xstream.toXML(tupla, new FileOutputStream(file));
+	}
+	
+	public static void main(String[] args) {
+		TabelasMensaisDAO dao = TabelasMensaisDAO.getInstance();
+		Object[][] entradas = {{2}, {3}};
+		Object[][] saidas = {{4}, {8}};
+		
+		try {
+//			dao.criar(entradas, saidas);
+			System.out.println(Arrays.toString(dao.recuperarTabelasPorData()));
+			dao.atualizar(entradas, saidas, "11-2010");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

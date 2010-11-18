@@ -94,14 +94,26 @@ public class TabelasDiariasDAO {
 	}
 
 	public Object[][][] recuperaTupla(String data) throws FileNotFoundException {
-		for (File file : arrayDosArquivos()) {			
-			if (file.getName().endsWith(TIPO_DE_ARQUIVO) && 
-					file.getName().startsWith(data)) {
+		for (File file : arrayDosArquivos()) {
+			if (file.getName().endsWith(TIPO_DE_ARQUIVO)
+					&& file.getName().startsWith(data)) {
 				return (Object[][][]) xstream
-				.fromXML(new FileInputStream(file));
+						.fromXML(new FileInputStream(file));
 			}
 		}
 		return null;
+	}
+
+	public void atualizar(Object[][] entradas, Object[][] saidas, String data)
+			throws Exception {
+		if (entradas == null || saidas == null || data == null)
+			throw new Exception("Não pôde atualizar a tabela");
+		File file = new File(CAMINHO + data + TIPO_DE_ARQUIVO);
+		file.getParentFile().mkdirs();
+		Object[][][] tupla = new Object[2][][];
+		tupla[0] = entradas;
+		tupla[1] = saidas;
+		xstream.toXML(tupla, new FileOutputStream(file));
 	}
 
 	private File[] arrayDosArquivos() {
