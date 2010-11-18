@@ -258,7 +258,7 @@ public class SistemaFacade {
 		Senha confirmada = new Senha(senhaConfirmada);
 
 		if (!nSenha.getSenha().equals(confirmada.getSenha()))
-			throw new Exception("Senha não confirmada");
+			throw new Exception("As senhas não estão compatíveis");
 
 		Logavel novoLogavel = new UserImpl(novoLogin, nSenha);
 		dao.atualizar(logavel, novoLogavel);
