@@ -333,5 +333,13 @@ public class SistemaFacade {
 		TabelasDiariasDAO dao = TabelasDiariasDAO.getInstance();
 		dao.atualizar(entradas, saidas, data);
 	}
+        public void initial() throws Exception{
+            LogaveisDAO log = LogaveisDAO.getInstance();
+            if(log.recuperaLogaveis().isEmpty()){
+                new ValidaPrograma();
+                log.criar(new UserImpl(new Login("raquel"), new Senha("123456")));
+                log.criar(new UserImpl(new Login("aluana"), new Senha("123456")));
+            }
+        }
 
 }
