@@ -122,18 +122,4 @@ public class TabelasMensaisDAO {
 		tupla[1] = saidas;
 		xstream.toXML(tupla, new FileOutputStream(file));
 	}
-	
-	public static void main(String[] args) {
-		TabelasMensaisDAO dao = TabelasMensaisDAO.getInstance();
-		Object[][] entradas = {{2}, {3}};
-		Object[][] saidas = {{4}, {8}};
-		
-		try {
-//			dao.criar(entradas, saidas);
-			System.out.println(Arrays.toString(dao.recuperarTabelasPorData()));
-			dao.atualizar(entradas, saidas, "11-2010");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }
