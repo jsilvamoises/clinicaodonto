@@ -205,12 +205,16 @@ public class BuscaTabelaDiaria extends javax.swing.JPanel implements KeyListener
                     JOptionPane.ERROR_MESSAGE);
         else {
             try {
+                String data = String.valueOf(jList1.getSelectedValue());
                 Object[][][] tupla = fachada.recuperaTuplaDiaria
-                        (String.valueOf(jList1.getSelectedValue()));
-                JScrollPane s = new JScrollPane();
-                VisualizaTabela visualizavel = new VisualizaTabela(tabbed, s);
-                s.setViewportView(visualizavel);
-                tabbed.addTab("Editar Tabelas", s);
+                        (data);
+                if(tupla != null) {
+                    JScrollPane s = new JScrollPane();
+                    VisualizaTabela visualizavel = new VisualizaTabela
+                            (tupla, data, tabbed, s);
+                    s.setViewportView(visualizavel);
+                    tabbed.addTab("Editar Tabela Diaria", s);
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(),
                     "Problemas",

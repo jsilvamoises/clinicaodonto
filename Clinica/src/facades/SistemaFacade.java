@@ -316,5 +316,22 @@ public class SistemaFacade {
 		TabelasDiariasDAO dao = TabelasDiariasDAO.getInstance();
 		return dao.recuperaTupla(data);
 	}
+	
+	public Object[][][] recuperaTuplaMensal(String data) throws Exception {
+		TabelasMensaisDAO dao = TabelasMensaisDAO.getInstance();
+		return dao.recuperaTupla(data);
+	}
+	
+	public void atualizaTabelaMensal(String data, Object[][] entradas,
+			Object[][] saidas) throws Exception {
+		TabelasMensaisDAO dao = TabelasMensaisDAO.getInstance();
+		dao.atualizar(entradas, saidas, data);
+	}
+	
+	public void atualizaTabelaDiaria(String data, Object[][] entradas,
+			Object[][] saidas) throws Exception {
+		TabelasDiariasDAO dao = TabelasDiariasDAO.getInstance();
+		dao.atualizar(entradas, saidas, data);
+	}
 
 }
