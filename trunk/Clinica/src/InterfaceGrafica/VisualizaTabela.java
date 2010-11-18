@@ -11,6 +11,7 @@
 
 package InterfaceGrafica;
 
+import classes.Data;
 import javax.swing.table.TableModel;
 import facades.SistemaFacade;
 import java.awt.event.KeyEvent;
@@ -27,12 +28,16 @@ public class VisualizaTabela extends javax.swing.JPanel implements KeyListener{
 
     private JTabbedPane tabbed;
     private JScrollPane scroll;
+    private Object[][][] tupla;
+    private String data;
     private SistemaFacade fachada = SistemaFacade.getInstance();
 
     /** Creates new form TabelaDiaria */
-    public VisualizaTabela(JTabbedPane tabbed, JScrollPane scroll) {
+    public VisualizaTabela(Object[][][] tupla, String data, JTabbedPane tabbed, JScrollPane scroll) {
         this.tabbed = tabbed;
         this.scroll = scroll;
+        this.tupla = tupla;
+        this.data = data;
         initComponents();
 
         scroll.addKeyListener(this);
@@ -63,7 +68,8 @@ public class VisualizaTabela extends javax.swing.JPanel implements KeyListener{
         botaoLimpar.addKeyListener(this);
         botaoLimpar.show();
 
-
+        carregaTabelaEntrada();
+        carregaTabelaSaida();
         reiniciaCampos();
     }
 
@@ -96,6 +102,46 @@ public class VisualizaTabela extends javax.swing.JPanel implements KeyListener{
         fieldSubTotalEntrada.setText(null);
         fieldSubTotalSaida.setText(null);
         fieldTotal.setText(null);
+    }
+
+    private void carregaTabelaEntrada() {
+        try {
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(tupla[0],
+                new String [] {"Nome", "Valor"})
+            {
+                Class[] types = new Class [] {
+                    java.lang.String.class, java.lang.Double.class
+                };
+
+                public Class getColumnClass(int columnIndex) {
+                    return types [columnIndex];
+                }
+            });
+            jTable1.getTableHeader().setReorderingAllowed(false);
+            jScrollPane1.setViewportView(jTable1);
+        } catch (Exception e) {
+
+        }
+    }
+
+    private void carregaTabelaSaida() {
+        try {
+                jTable2.setModel(new javax.swing.table.DefaultTableModel(tupla[1],
+                new String [] {"Nome", "Valor"})
+            {
+                Class[] types = new Class [] {
+                    java.lang.String.class, java.lang.Double.class
+                };
+
+                public Class getColumnClass(int columnIndex) {
+                    return types [columnIndex];
+                }
+            });
+            jTable2.getTableHeader().setReorderingAllowed(false);
+            jScrollPane2.setViewportView(jTable2);
+        } catch (Exception e) {
+
+        }
     }
 
     /** This method is called from within the constructor to
@@ -445,7 +491,7 @@ public class VisualizaTabela extends javax.swing.JPanel implements KeyListener{
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(),
-                    "Problemas com o cadastro",
+                    "Problemas",
                     JOptionPane.ERROR_MESSAGE);
         }
 }//GEN-LAST:event_botaoCadastrarActionPerformed
@@ -478,19 +524,21 @@ public class VisualizaTabela extends javax.swing.JPanel implements KeyListener{
             }
         }
         try {
-            //SERA USADO O UPDATE NÃO O CRIAR
-            //fachada.gravaTabelaEntradaDiaria(tab1);
-            //fachada.gravaTabelaSaidaDiaria(tab2);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(),
-                    "Problemas com o cadastro",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-
-        JOptionPane.showMessageDialog(null, "Tabela salva com sucesso!",
+            final int TAMANHO_DATA_MENSAL = 7;
+            if(data.length() <= TAMANHO_DATA_MENSAL) {
+                fachada.atualizaTabelaMensal(data, tab1, tab2);
+            } else {
+                fachada.atualizaTabelaDiaria(data, tab1, tab2);
+            }
+            JOptionPane.showMessageDialog(null, "Tabela salva com sucesso!",
                 "Cadastro",
                 JOptionPane.CLOSED_OPTION);
-        reiniciaCampos();
+            reiniciaCampos();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(),
+                    "Problemas com as tabelas",
+                    JOptionPane.ERROR_MESSAGE);
+        }        
 }//GEN-LAST:event_botaoGravarActionPerformed
 
 

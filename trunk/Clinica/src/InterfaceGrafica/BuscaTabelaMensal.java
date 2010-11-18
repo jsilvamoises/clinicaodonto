@@ -14,6 +14,7 @@ package InterfaceGrafica;
 import facades.SistemaFacade;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 /**
@@ -52,16 +53,6 @@ public class BuscaTabelaMensal extends javax.swing.JPanel implements KeyListener
 
         reiniciaCampos();
 
-    }
-
-
-    private void buscaTabela() throws Exception {
-    	/*jList1.setModel(new javax.swing.AbstractListModel() {
-        Object[] tabelas = fachada.recuperaTabelaDiariaEntrada();
-        public int getSize() {return tabelas.length;}
-        public String getElementAt(int i){return (String) tabelas[i].toString();}
-        });
-        jScrollPane1.setViewportView(jList1);*/
     }
 
 
@@ -212,7 +203,28 @@ public class BuscaTabelaMensal extends javax.swing.JPanel implements KeyListener
 }//GEN-LAST:event_botaoFecharActionPerformed
 
     private void VisualizaTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisualizaTabelaActionPerformed
-        // TODO add your handling code here:
+        if(jList1.isSelectionEmpty())
+            JOptionPane.showMessageDialog(null, "Selecione uma data",
+                    "Selecione",
+                    JOptionPane.ERROR_MESSAGE);
+        else {
+            try {
+                String data = String.valueOf(jList1.getSelectedValue());
+                Object[][][] tupla = fachada.recuperaTuplaMensal
+                        (data);
+                if(tupla != null) {
+                    JScrollPane s = new JScrollPane();
+                    VisualizaTabela visualizavel = new VisualizaTabela
+                            (tupla, data, tabbed, s);
+                    s.setViewportView(visualizavel);
+                    tabbed.addTab("Editar Tabela Mensal", s);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(),
+                    "Problemas",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
 }//GEN-LAST:event_VisualizaTabelaActionPerformed
 
 

@@ -35,6 +35,7 @@ public class FramePrincipal extends JFrame {
     private BuscaContratosPorStatus buscaStatus;
     private AlterarLoginSenhaPanel alterarLoginSena;
     private BuscaTabelaDiaria buscaTabelaDiaria;
+    private BuscaTabelaMensal buscaTabelaMensal;
     private GeradorDeBoleto geradorDeBoleto;
 
     /** Creates new form FramePrincipal */
@@ -200,6 +201,11 @@ public class FramePrincipal extends JFrame {
         menuRelatorios.add(MostraTabDiaria);
 
         MostraTabMensal.setText("Mostrar Tabela Mensal");
+        MostraTabMensal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostraTabMensalActionPerformed(evt);
+            }
+        });
         menuRelatorios.add(MostraTabMensal);
 
         barraDeMenu.add(menuRelatorios);
@@ -339,6 +345,13 @@ public class FramePrincipal extends JFrame {
         s.setViewportView(geradorDeBoleto);
         tabbed.addTab("Gerador De Boletos", s);
     }//GEN-LAST:event_menuBoletoActionPerformed
+
+    private void MostraTabMensalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostraTabMensalActionPerformed
+        JScrollPane s = new JScrollPane();
+        buscaTabelaMensal = new BuscaTabelaMensal(tabbed, s);
+        s.setViewportView(buscaTabelaMensal);
+        tabbed.addTab("Buscar Tabelas Mensais", s);
+    }//GEN-LAST:event_MostraTabMensalActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuBucaStatus;
