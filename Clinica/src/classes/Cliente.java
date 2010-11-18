@@ -235,13 +235,13 @@ public class Cliente implements User {
 		Iterator<Contrato> it = contrato.iterator();
 		while (it.hasNext()) {
 			Contrato c = it.next();
-			if (c.getStatus() != StatusContrato.CANCELADO
-					|| c.getStatus() != StatusContrato.CONCLUIDO) {
+			if (c.getStatus() == StatusContrato.EM_TRATAMENTO) {
 				if (pagamentoAtrasado(c.getUltimaDataVencimento()))
-					setFinanceiro(StatusFinanceiro.EM_ABERTO);
-				setFinanceiro(StatusFinanceiro.EM_DIA);
-			}
-
+					setFinanceiro(StatusFinanceiro.ATRASADO);
+				else
+					setFinanceiro(StatusFinanceiro.EM_DIA);
+			} else
+				setFinanceiro(StatusFinanceiro.EM_ABERTO);
 		}
 		return financeiro;
 	}
