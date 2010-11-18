@@ -23,9 +23,9 @@ public class GeradorDeBoletos {
 
 	public void GerarBoleto() throws Exception {
 		if (cliente == null)
-			throw new Exception("Cliente inv√°lido");
+			throw new Exception("Cliente inv·lido");
 		if (contrato == null)
-			throw new Exception("Cliente n√£o possui contrato v√°lido");
+			throw new Exception("Cliente n„o possui contrato v·lido");
 		if (contrato.getDuracaoDoContrato() == 12) {
 			inputStream = new BufferedReader(new FileReader(
 
