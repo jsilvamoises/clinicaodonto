@@ -72,12 +72,11 @@ public class TabelasDiariasDAO {
 		}
 		if (datas.isEmpty())
 			throw new Exception("Nenhuma tabela foi criada");
-		return (String[]) listToArray(datas);
+		return listToArray(datas);
 	}
 
-	@SuppressWarnings("unchecked")
-	private Object[] listToArray(List lista) {
-		Object[] retorno = new Object[lista.size()];
+	private String[] listToArray(List<String> lista) {
+		String[] retorno = new String[lista.size()];
 		for (int i = 0; i < retorno.length; i++) {
 			retorno[i] = lista.get(i);
 		}

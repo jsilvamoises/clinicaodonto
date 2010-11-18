@@ -45,9 +45,6 @@ public class BuscaTabelaDiaria extends javax.swing.JPanel implements KeyListener
         this.addKeyListener(this);
         this.show();
 
-        botaoBuscar.addKeyListener(this);
-        botaoBuscar.show();
-
         botaoFechar.addKeyListener(this);
         botaoFechar.show();
 
@@ -57,6 +54,7 @@ public class BuscaTabelaDiaria extends javax.swing.JPanel implements KeyListener
         botaoLimpar.addKeyListener(this);
         botaoLimpar.show();
 
+        reiniciaCampos();
     }
 
 
@@ -75,7 +73,7 @@ public class BuscaTabelaDiaria extends javax.swing.JPanel implements KeyListener
     @Override
     public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    botaoBuscarActionPerformed(null);
+                    VisualisaTabelaActionPerformed(null);
 
             } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     botaoFecharActionPerformed(null);
@@ -97,15 +95,16 @@ public class BuscaTabelaDiaria extends javax.swing.JPanel implements KeyListener
 
 
     private void reiniciaCampos() {
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            Object[] tabelas = {};
+        try {
+            jList1.setModel(new javax.swing.AbstractListModel() {
+            String[] tabelas = fachada.recuperaStringsTabelasDiarias();
             public int getSize() {return tabelas.length;}
-            public Object getElementAt(int i){return tabelas[i];}
-        });
-        jScrollPane1.setViewportView(jList1);
-
-        fieldTotalDeContratos.setText(null);
-
+            public String getElementAt(int i){return tabelas[i];}
+            });
+            jScrollPane1.setViewportView(jList1);
+        } catch (Exception e) {
+            
+        }
     }
 
     /** This method is called from within the constructor to
@@ -121,24 +120,14 @@ public class BuscaTabelaDiaria extends javax.swing.JPanel implements KeyListener
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
-        botaoBuscar = new javax.swing.JButton();
         botaoLimpar = new javax.swing.JButton();
         botaoFechar = new javax.swing.JButton();
-        fieldTotalDeContratos = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         VisualisaTabela = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18));
         jLabel1.setText("Busca de Tabelas Diárias");
 
         jScrollPane1.setViewportView(jList1);
-
-        botaoBuscar.setText("Buscar");
-        botaoBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoBuscarActionPerformed(evt);
-            }
-        });
 
         botaoLimpar.setText("Limpar Dados");
         botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -153,10 +142,6 @@ public class BuscaTabelaDiaria extends javax.swing.JPanel implements KeyListener
                 botaoFecharActionPerformed(evt);
             }
         });
-
-        fieldTotalDeContratos.setEditable(false);
-
-        jLabel7.setText("Total de Contratos");
 
         VisualisaTabela.setText("Visualizar");
         VisualisaTabela.addActionListener(new java.awt.event.ActionListener() {
@@ -174,48 +159,34 @@ public class BuscaTabelaDiaria extends javax.swing.JPanel implements KeyListener
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(578, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fieldTotalDeContratos, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(122, 122, 122))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(botaoLimpar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botaoFechar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botaoBuscar)
-                    .addComponent(VisualisaTabela))
-                .addGap(340, 340, 340))
+                        .addComponent(botaoLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                        .addComponent(botaoFechar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(VisualisaTabela)
+                .addGap(446, 446, 446))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(botaoBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(VisualisaTabela))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botaoFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botaoLimpar))
-                .addGap(138, 138, 138)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(fieldTotalDeContratos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46))
+                        .addComponent(VisualisaTabela)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botaoLimpar)
+                            .addComponent(botaoFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(137, 137, 137))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -228,22 +199,9 @@ public class BuscaTabelaDiaria extends javax.swing.JPanel implements KeyListener
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
-
-        try{
-            buscaTabela();
-        }catch (Exception ex){
-            JOptionPane.showMessageDialog(null, ex.getMessage(),
-                    "Contratos",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-}//GEN-LAST:event_botaoBuscarActionPerformed
 
     private void botaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLimparActionPerformed
         reiniciaCampos();
@@ -261,12 +219,9 @@ public class BuscaTabelaDiaria extends javax.swing.JPanel implements KeyListener
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton VisualisaTabela;
-    private javax.swing.JButton botaoBuscar;
     private javax.swing.JButton botaoFechar;
     private javax.swing.JButton botaoLimpar;
-    private javax.swing.JTextField fieldTotalDeContratos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
