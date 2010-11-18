@@ -167,8 +167,10 @@ public class SistemaFacade {
 		}
 		Contrato contrato = new Contrato(cliente, preco, inicio, termino,
 				TipoDeContrato.ORTODONTIA, StatusContrato.EM_TRATAMENTO);
-		if(contrato.getDuracaoDoContrato() % 12 != 0 || contrato.getDuracaoDoContrato() > 36)
-			throw new Exception("Os Contratos são anuais e tem a duração máxima de 3 anos!");
+		if (contrato.getDuracaoDoContrato() % 12 != 0
+				|| contrato.getDuracaoDoContrato() > 36)
+			throw new Exception(
+					"Os Contratos são anuais e tem a duração máxima de 3 anos!");
 		cliente.addContrato(contrato);
 		ClientesDAO dao = ClientesDAO.getInstance();
 		dao.atualizar(cliente);
@@ -274,6 +276,30 @@ public class SistemaFacade {
 			throws IOException, Exception {
 		TabelasMensaisDAO dao = TabelasMensaisDAO.getInstance();
 		dao.criar(entradas, saidas);
+	}
+
+	public Object[][] recuperaTabelaDiariaEntrada(String data)
+			throws FileNotFoundException {
+		TabelasDiariasDAO dao = TabelasDiariasDAO.getInstance();
+		return dao.recuperaTupla(data)[0];
+	}
+
+	public Object[][] recuperaTabelaDiariaSaida(String data)
+			throws FileNotFoundException {
+		TabelasDiariasDAO dao = TabelasDiariasDAO.getInstance();
+		return dao.recuperaTupla(data)[1];
+	}
+
+	public Object[][] recuperaTabelaMensalEntrada(String data)
+			throws FileNotFoundException {
+		TabelasMensaisDAO dao = TabelasMensaisDAO.getInstance();
+		return dao.recuperaTupla(data)[0];
+	}
+
+	public Object[][] recuperaTabelaMensalSaida(String data)
+			throws FileNotFoundException {
+		TabelasMensaisDAO dao = TabelasMensaisDAO.getInstance();
+		return dao.recuperaTupla(data)[1];
 	}
 
 	/*

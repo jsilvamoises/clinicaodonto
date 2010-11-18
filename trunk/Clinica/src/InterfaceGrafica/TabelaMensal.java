@@ -14,6 +14,7 @@ package InterfaceGrafica;
 
 
 
+import classes.Data;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import facades.SistemaFacade;
@@ -104,6 +105,46 @@ public class TabelaMensal extends javax.swing.JPanel implements KeyListener{
         fieldSubTotalEntrada.setText(null);
         fieldSubTotalSaida.setText(null);
         fieldTotal.setText(null);
+    }
+
+    private void carregaTabelaEntradas()  {
+        try {
+                jTable1.setModel(new javax.swing.table.DefaultTableModel(fachada.recuperaTabelaMensalEntrada(new Data().dataInPersistenceMonth()),
+                new String [] {"Nome", "Valor"})
+            {
+                Class[] types = new Class [] {
+                    java.lang.String.class, java.lang.Double.class
+                };
+
+                public Class getColumnClass(int columnIndex) {
+                    return types [columnIndex];
+                }
+            });
+            jTable1.getTableHeader().setReorderingAllowed(false);
+            jScrollPane1.setViewportView(jTable1);
+        } catch (Exception e) {
+
+        }
+    }
+
+    private void carregaTabelaSaidas()  {
+        try {
+                jTable2.setModel(new javax.swing.table.DefaultTableModel(fachada.recuperaTabelaMensalSaida(new Data().dataInPersistenceMonth()),
+                new String [] {"Nome", "Valor"})
+            {
+                Class[] types = new Class [] {
+                    java.lang.String.class, java.lang.Double.class
+                };
+
+                public Class getColumnClass(int columnIndex) {
+                    return types [columnIndex];
+                }
+            });
+            jTable2.getTableHeader().setReorderingAllowed(false);
+            jScrollPane2.setViewportView(jTable2);
+        } catch (Exception e) {
+
+        }
     }
 
     /** This method is called from within the constructor to
