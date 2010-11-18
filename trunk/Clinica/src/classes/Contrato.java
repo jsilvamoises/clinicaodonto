@@ -19,7 +19,6 @@ public class Contrato {
 	private Cliente contratante;
 	private double preco;
 	private TipoDeContrato tipoDoContrato;
-	private final static int NUMERO_DE_MESES = 12;
 	private int mesAPagar;
 	private int numeroParcelas;
 	private StatusContrato status;

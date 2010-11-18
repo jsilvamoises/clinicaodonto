@@ -365,7 +365,7 @@ public class PagamentoClientePanel extends javax.swing.JPanel implements KeyList
                 Cliente cliente = (Cliente)jList1.getSelectedValue();
                 fachada.efetuaPagamento((Cliente)jList1.getSelectedValue());
 
-                JOptionPane.showMessageDialog(null, "Pagamento " + cliente.getDadosDoContrato() + "efetuado com sucesso!",
+                JOptionPane.showMessageDialog(null, "Pagamento " + cliente.getDadosDoContrato() + " efetuado com sucesso!",
                             "Pagamento",
                             JOptionPane.CLOSED_OPTION);
             }catch (Exception ex){
