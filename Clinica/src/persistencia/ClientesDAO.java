@@ -10,17 +10,9 @@ import java.util.List;
 
 import classes.Cliente;
 import classes.Codigo;
-import classes.Data;
-import classes.Endereco;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
-
-import enums.Estado;
-import enums.EstadoCivil;
-import enums.Sexo;
-import enums.StatusCliente;
-import enums.StatusFinanceiro;
 
 /**
  * Classe DAO que cria, deleta, atualiza e recupera clientes ({@link Cliente})
