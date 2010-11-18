@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.util.ArrayList;
 
 import classes.Cliente;
@@ -23,23 +24,20 @@ public class GeradorDeBoletos {
 	}
 
 	public void GerarBoleto() throws Exception {
+		URL path;
 		if (cliente == null)
 			throw new Exception("Cliente inválido");
 		if (contrato == null)
 			throw new Exception("Cliente não possui contrato válido");
 		if (contrato.getDuracaoDoContrato() == 12) {
-			inputStream = new BufferedReader(new FileReader(
-
-			"boleto.rtf"));
+			path = getClass().getResource("/boletoVirgem/boleto.rtf");
 		} else if (contrato.getDuracaoDoContrato() == 24) {
-			inputStream = new BufferedReader(new FileReader(
-
-			"boleto2.rtf"));
+			path = getClass().getResource("/boletoVirgem/boleto2.rtf");
 		} else {
-			inputStream = new BufferedReader(new FileReader(
-
-			"boleto3.rtf"));
+			path = getClass().getResource("/boletoVirgem/boleto3.rtf");
 		}
+		if (path != null)
+			inputStream = new BufferedReader(new FileReader(path.getFile()));
 		
 		new File("Boletos" + SEPARATOR).mkdirs();
         FileWriter writer = new FileWriter("Boletos" + SEPARATOR + cliente.getCodigo() + ".rtf");
