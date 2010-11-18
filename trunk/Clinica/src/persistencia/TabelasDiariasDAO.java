@@ -2,6 +2,7 @@ package persistencia;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,7 +32,8 @@ public class TabelasDiariasDAO {
 
 	}
 
-	public void criar(Object[][] entradas, Object[][] saidas) throws Exception, IOException {
+	public void criar(Object[][] entradas, Object[][] saidas) throws Exception,
+			IOException {
 		if (entradas == null || saidas == null)
 			throw new Exception("Tabela não pôde ser salva");
 		File file = new File(CAMINHO + new Data().dataInPersistenceDiary()
@@ -58,24 +60,26 @@ public class TabelasDiariasDAO {
 			throw new Exception("Nenhuma tabela foi salva");
 		return tabelas;
 	}
-	
+
 	public String[] recuperarTabelasPorData() throws Exception {
 		List<String> datas = new ArrayList<String>();
 		for (File file : arrayDosArquivos()) {
-			
 			if (file.getName().endsWith(TIPO_DE_ARQUIVO)) {
 				file.getParentFile().mkdirs();
 				String nomeData = file.getName().replace(TIPO_DE_ARQUIVO, "");
 				datas.add(nomeData);
 			}
-			
 		}
-		
-		if(datas.isEmpty())
+		if (datas.isEmpty())
 			throw new Exception("Nenhuma tabela foi criada");
-		String[] retorno = new String[datas.size()];
+		return (String[]) listToArray(datas);
+	}
+
+	@SuppressWarnings("unchecked")
+	private Object[] listToArray(List lista) {
+		Object[] retorno = new Object[lista.size()];
 		for (int i = 0; i < retorno.length; i++) {
-			retorno[i] = datas.get(i);
+			retorno[i] = lista.get(i);
 		}
 		return retorno;
 	}
@@ -89,21 +93,20 @@ public class TabelasDiariasDAO {
 		}
 	}
 
+	public Object[][][] recuperaTupla(String data) throws FileNotFoundException {
+		for (File file : arrayDosArquivos()) {			
+			if (file.getName().endsWith(TIPO_DE_ARQUIVO) && 
+					file.getName().startsWith(data)) {
+				return (Object[][][]) xstream
+				.fromXML(new FileInputStream(file));
+			}
+		}
+		return null;
+	}
+
 	private File[] arrayDosArquivos() {
 		File file = new File(CAMINHO);
 		file.mkdirs();
 		return file.listFiles();
-	}
-	
-	public static void main(String[] args) {
-		TabelasDiariasDAO dao = TabelasDiariasDAO.getInstance();
-		Object[][] entradas = {{3}, {4}};
-		Object[][] saidas = {{5}, {6}};
-		try {
-			dao.criar(entradas, saidas);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		
 	}
 }
