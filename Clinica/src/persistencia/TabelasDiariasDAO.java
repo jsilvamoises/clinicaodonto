@@ -61,7 +61,7 @@ public class TabelasDiariasDAO {
 		return tabelas;
 	}
 
-	public String[] recuperarTabelasPorData() throws Exception {
+	public String[] recuperarDatas() throws Exception {
 		List<String> datas = new ArrayList<String>();
 		for (File file : arrayDosArquivos()) {
 			if (file.getName().endsWith(TIPO_DE_ARQUIVO)) {
