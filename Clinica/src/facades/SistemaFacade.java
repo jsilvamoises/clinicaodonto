@@ -9,8 +9,6 @@ import persistencia.ClientesDAO;
 import persistencia.LogaveisDAO;
 //import persistencia.TabelasEntradasDiariasDAO;
 //import persistencia.TabelasEntradasMensaisDAO;
-import persistencia.TabelasSaidasDiariasDAO;
-import persistencia.TabelasSaidasMensaisDAO;
 import classes.Cliente;
 import classes.Codigo;
 import classes.Contrato;
