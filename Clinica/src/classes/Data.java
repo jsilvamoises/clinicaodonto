@@ -134,7 +134,7 @@ public class Data {
 	 */
 	public void setData(String data) throws Exception {
 		if (!verificaData(data)) {
-			throw new Exception("Data invÃ¡lida!");
+			throw new Exception("Data inválida!");
 		}
 
 		try {
@@ -239,7 +239,7 @@ public class Data {
 			else
 				setData(getDia() + "/" + mes + "/" + getAno());
 		else
-			throw new Exception("NÃ£o foi possÃ­vel modificar o mÃªs.");
+			throw new Exception("Não foi possível modificar o mês.");
 	}
 	
 	public ArrayList<String> datasEmPeriodo(int periodoEmMeses){
@@ -307,17 +307,5 @@ public class Data {
         return getData() != null ? getDia() + "/" + getMes() + "/" + getAno() : "";
     }
 
-
-
-	/*public static void main(String[] args) {
-		Data x = null;
-		try {
-			x = new Data("29/12/2010");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(x.datasEmPeriodo(12));
-	}*/
 
 }

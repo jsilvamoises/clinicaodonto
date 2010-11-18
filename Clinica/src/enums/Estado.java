@@ -9,13 +9,13 @@ package enums;
  */
 public enum Estado {
 	Acre("Acre"), Alagoas("Alagoas"), Amapa("Amapa"), 
-	Amazonas("Amazonas"), Bahia("Bahia"), Ceara("Cear√°"), Distrito_Federal("Distrito Federal"), 
-	Espirito_Santo("Espirito Santo"), Goias("Goi√°s"), Maranhao("Maranh√£o"), Mato_Grosso("Mato Grosso"), 
-	Mato_Grosso_do_Sul("Mato Grosso do Sum"), Minas_Gerais("Minas Gerais"), 
-	Para("Par√°"), Paraiba("Para√≠ba"), Parana("Paran√°"), Pernambuco("Pernambuco"), Piaui("Piau√≠"), 
+	Amazonas("Amazonas"), Bahia("Bahia"), Ceara("Cear·"), Distrito_Federal("Distrito Federal"), 
+	Espirito_Santo("Espirito Santo"), Goias("Goi·s"), Maranhao("Maranh„o"), Mato_Grosso("Mato Grosso"), 
+	Mato_Grosso_do_Sul("Mato Grosso do Sul"), Minas_Gerais("Minas Gerais"), 
+	Para("Par·"), Paraiba("ParaÌba"), Parana("Paran·"), Pernambuco("Pernambuco"), Piaui("PiauÌ"), 
 	Rio_de_Janeiro("Rio de Janeiro"), Rio_Grande_do_Norte("Rio Grande do Norte"), 
 	Rio_Grande_do_Sul("Rio Grande do Sul"), Rondonia("Rondonia"), Roraima("Roraima"), 
-	Santa_Catarina("Santa Catarina"), Sao_Paulo("S√£o Paulo"), Sergipe("Sergipe"), Tocantins("Tocantins");
+	Santa_Catarina("Santa Catarina"), Sao_Paulo("S„o Paulo"), Sergipe("Sergipe"), Tocantins("Tocantins");
 		
 	Estado(String nome) {
 		

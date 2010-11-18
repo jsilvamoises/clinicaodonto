@@ -9,7 +9,7 @@ public class Senha {
 
 	public void setSenha(String senha) throws Exception {
 		if (senha == null || senha.trim().isEmpty())
-			throw new Exception("Senha inv√°lida");
+			throw new Exception("Senha inv·lida");
 		this.senha = senha;
 	}
 
