@@ -35,6 +35,7 @@ public class FramePrincipal extends JFrame {
     private BuscaContratosPorStatus buscaStatus;
     private AlterarLoginSenhaPanel alterarLoginSena;
     private BuscaTabelaDiaria buscaTabelaDiaria;
+    private GeradorDeBoleto geradorDeBoleto;
 
     /** Creates new form FramePrincipal */
     public FramePrincipal(Logavel logavel) {
@@ -168,6 +169,11 @@ public class FramePrincipal extends JFrame {
         menuRelatorios.setText("Relatórios");
 
         menuBoleto.setText("Gerar Boleto");
+        menuBoleto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBoletoActionPerformed(evt);
+            }
+        });
         menuRelatorios.add(menuBoleto);
 
         MenuTabelaDiaria.setText("Tabela Diária");
@@ -330,6 +336,13 @@ public class FramePrincipal extends JFrame {
         s.setViewportView(buscaTabelaDiaria);
         tabbed.addTab("Mostra Tabela Diaria", s);
     }//GEN-LAST:event_MostraTabDiariaActionPerformed
+
+    private void menuBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBoletoActionPerformed
+        JScrollPane s = new JScrollPane();
+        geradorDeBoleto = new GeradorDeBoleto(tabbed, s);
+        s.setViewportView(geradorDeBoleto);
+        tabbed.addTab("Mostra Tabela Diaria", s);
+    }//GEN-LAST:event_menuBoletoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuBucaStatus;
