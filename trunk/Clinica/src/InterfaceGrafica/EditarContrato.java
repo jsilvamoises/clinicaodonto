@@ -135,7 +135,7 @@ public class EditarContrato extends javax.swing.JPanel implements KeyListener {
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 18));
         jLabel1.setText("Editor de Contratos");
 
-        jLabel2.setText("CÃ³digo do Cliente");
+        jLabel2.setText("Código do Cliente");
 
         botaoCadastrar.setText("Modificar");
         botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -210,7 +210,6 @@ public class EditarContrato extends javax.swing.JPanel implements KeyListener {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 800, Short.MAX_VALUE)
-            .addGap(0, 800, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -219,7 +218,6 @@ public class EditarContrato extends javax.swing.JPanel implements KeyListener {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 507, Short.MAX_VALUE)
             .addGap(0, 507, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()

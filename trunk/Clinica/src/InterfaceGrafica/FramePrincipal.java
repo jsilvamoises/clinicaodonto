@@ -166,7 +166,7 @@ public class FramePrincipal extends JFrame {
 
         barraDeMenu.add(menuContratos);
 
-        menuRelatorios.setText("Relat√≥rios");
+        menuRelatorios.setText("RelatÛrio");
 
         menuBoleto.setText("Gerar Boleto");
         menuBoleto.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +176,7 @@ public class FramePrincipal extends JFrame {
         });
         menuRelatorios.add(menuBoleto);
 
-        MenuTabelaDiaria.setText("Tabela Di√°ria");
+        MenuTabelaDiaria.setText("Tabela Di·ria");
         MenuTabelaDiaria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuTabelaDiariaActionPerformed(evt);
@@ -207,7 +207,7 @@ public class FramePrincipal extends JFrame {
 
         menuSistema.setText("Sistema");
 
-        menuAddUsuario.setText("Adicionar Usu√°rio");
+        menuAddUsuario.setText("Adicionar Usu·rio");
         menuSistema.add(menuAddUsuario);
 
         menuAlterarLoginSenha.setText("Alterar Login/Senha");
@@ -242,7 +242,7 @@ public class FramePrincipal extends JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tabbed, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE))
+                .addComponent(tabbed, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE))
         );
 
         pack();
@@ -341,7 +341,7 @@ public class FramePrincipal extends JFrame {
         JScrollPane s = new JScrollPane();
         geradorDeBoleto = new GeradorDeBoleto(tabbed, s);
         s.setViewportView(geradorDeBoleto);
-        tabbed.addTab("Mostra Tabela Diaria", s);
+        tabbed.addTab("Gerador De Boletos", s);
     }//GEN-LAST:event_menuBoletoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

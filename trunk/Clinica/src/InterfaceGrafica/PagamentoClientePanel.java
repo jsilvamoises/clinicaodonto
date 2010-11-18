@@ -173,7 +173,7 @@ public class PagamentoClientePanel extends javax.swing.JPanel implements KeyList
 
         jLabel2.setText("Buscar pelo nome cadastrado");
 
-        jLabel3.setText("A busca Ã© feita procurando pelo primeiro nome do Cliente");
+        jLabel3.setText("A busca é feita procurando pelo primeiro nome do Cliente");
 
         botaoPorID.setText("Buscar");
         botaoPorID.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +182,7 @@ public class PagamentoClientePanel extends javax.swing.JPanel implements KeyList
             }
         });
 
-        jLabel4.setText("Buscar pelo nÃºmero de identificaÃ§Ã£o");
+        jLabel4.setText("Buscar pelo número de identificação");
 
         botaoPorNome.setText("Buscar");
         botaoPorNome.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +191,7 @@ public class PagamentoClientePanel extends javax.swing.JPanel implements KeyList
             }
         });
 
-        jLabel5.setText("A busca Ã© feita procurando pelo identificador Ãºnico para");
+        jLabel5.setText("A busca é feita procurando pelo identificador único para");
 
         jLabel6.setText("cada Cliente cadastrado no sistema");
 
@@ -204,9 +204,9 @@ public class PagamentoClientePanel extends javax.swing.JPanel implements KeyList
             }
         });
 
-        jLabel7.setText("Clicando no botÃ£o Visualizar com um Cliente selecionado, serÃ£o");
+        jLabel7.setText("Clicando no botão Visualizar com um Cliente selecionado, serão");
 
-        jLabel8.setText("exibidas informaÃ§Ãµes cadastrais deste mesmo que fora selecionado");
+        jLabel8.setText("exibidas informações cadastrais deste mesmo que fora selecionado");
 
         botaoLimpar.setText("Limpar Dados");
         botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
@@ -315,12 +315,12 @@ public class PagamentoClientePanel extends javax.swing.JPanel implements KeyList
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 487, Short.MAX_VALUE)
+            .addGap(0, 505, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 9, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 9, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 

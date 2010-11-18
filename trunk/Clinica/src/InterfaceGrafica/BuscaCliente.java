@@ -172,7 +172,7 @@ public class BuscaCliente extends javax.swing.JPanel implements KeyListener {
             }
         });
 
-        jLabel4.setText("Buscar pelo nÃºmero de identificaÃ§Ã£o");
+        jLabel4.setText("Buscar pelo número de identificação");
 
         botaoPorNome.setText("Buscar");
         botaoPorNome.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +181,7 @@ public class BuscaCliente extends javax.swing.JPanel implements KeyListener {
             }
         });
 
-        jLabel5.setText("A busca Ã© feita procurando pelo identificador Ãºnico para");
+        jLabel5.setText("A busca é feita procurando pelo identificador único para");
 
         jLabel6.setText("cada Cliente cadastrado no sistema");
 
@@ -194,9 +194,9 @@ public class BuscaCliente extends javax.swing.JPanel implements KeyListener {
             }
         });
 
-        jLabel7.setText("Clicando no botÃ£o Editar com um Cliente selecionado, serÃ£o");
+        jLabel7.setText("Clicando no botão Editar com um Cliente selecionado, serão");
 
-        jLabel8.setText("exibidas informaÃ§Ãµes editÃ¡veis deste mesmo que fora selecionado");
+        jLabel8.setText("exibidas informações editáveis deste mesmo que fora selecionado");
 
         botaoLimpar.setText("Limpar Dados");
         botaoLimpar.addActionListener(new java.awt.event.ActionListener() {

@@ -79,7 +79,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuRelatorios">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
+            <Property name="text" type="java.lang.String" value="Relat&#xf3;rio"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuBoleto">
@@ -183,7 +183,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="panelBotoes" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="tabbed" pref="568" max="32767" attributes="0"/>
+              <Component id="tabbed" pref="570" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
