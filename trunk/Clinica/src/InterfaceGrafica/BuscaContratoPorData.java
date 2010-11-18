@@ -138,12 +138,15 @@ public class BuscaContratoPorData extends javax.swing.JPanel implements KeyListe
     }
 
     private void buscaPorData(final String dataI, final String dataF) throws Exception {
-    	jList1.setModel(new javax.swing.AbstractListModel() {
-        List<Cliente> clientes = fachada.listaContratosPorData(dataI, dataF);
-        public int getSize() {return clientes.size();}
-        public Cliente getElementAt(int i){return clientes.get(i);}
-        });
-        jScrollPane1.setViewportView(jList1);
+    	if((!dataI.contains("null")) && (!dataF.contains("null"))) {
+            jList1.setModel(new javax.swing.AbstractListModel() {
+            List<Cliente> clientes = fachada.listaContratosPorData(dataI, dataF);
+            public int getSize() {return clientes.size();}
+            public Cliente getElementAt(int i){return clientes.get(i);}
+            });
+            jScrollPane1.setViewportView(jList1);
+        } else
+            throw new Exception("Data inválida");
     }
 
     /** This method is called from within the constructor to
