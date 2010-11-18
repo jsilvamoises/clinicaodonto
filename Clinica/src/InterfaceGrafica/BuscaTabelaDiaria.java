@@ -14,6 +14,7 @@ package InterfaceGrafica;
 import facades.SistemaFacade;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 /**
@@ -50,16 +51,6 @@ public class BuscaTabelaDiaria extends javax.swing.JPanel implements KeyListener
         botaoLimpar.show();
 
         reiniciaCampos();
-    }
-
-
-    private void buscaTabela() throws Exception {
-    	//jList1.setModel(new javax.swing.AbstractListModel() {
-        //TODO Object[] tabelas = fachada.recuperaTabelaDiariaEntrada();
-        //public int getSize() {return tabelas.length;}
-        //public String getElementAt(int i){return (String) tabelas[i].toString();}
-        //});
-        //jScrollPane1.setViewportView(jList1);
     }
 
 
@@ -208,7 +199,24 @@ public class BuscaTabelaDiaria extends javax.swing.JPanel implements KeyListener
 }//GEN-LAST:event_botaoFecharActionPerformed
 
     private void VisualisaTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VisualisaTabelaActionPerformed
-        // TODO add your handling code here:
+        if(jList1.isSelectionEmpty())
+            JOptionPane.showMessageDialog(null, "Selecione uma data",
+                    "Selecione",
+                    JOptionPane.ERROR_MESSAGE);
+        else {
+            try {
+                Object[][][] tupla = fachada.recuperaTuplaDiaria
+                        (String.valueOf(jList1.getSelectedValue()));
+                JScrollPane s = new JScrollPane();
+                VisualizaTabela visualizavel = new VisualizaTabela(tabbed, s);
+                s.setViewportView(visualizavel);
+                tabbed.addTab("Editar Tabelas", s);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(),
+                    "Problemas",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_VisualisaTabelaActionPerformed
 
 
