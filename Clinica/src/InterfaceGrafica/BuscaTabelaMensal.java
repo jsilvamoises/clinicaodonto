@@ -64,12 +64,12 @@ public class BuscaTabelaMensal extends javax.swing.JPanel implements KeyListener
 
 
     private void buscaTabela() throws Exception {
-    	jList1.setModel(new javax.swing.AbstractListModel() {
+    	/*jList1.setModel(new javax.swing.AbstractListModel() {
         Object[] tabelas = fachada.recuperaTabelaDiariaEntrada();
         public int getSize() {return tabelas.length;}
         public String getElementAt(int i){return (String) tabelas[i].toString();}
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(jList1);*/
     }
 
 

@@ -71,7 +71,7 @@ public class SistemaFacade {
 		dao.criar(cliente);
 	}
 
-	public void atualizarCliente(String nome, String codigo, String cPF,
+	public Cliente atualizarCliente(Cliente cliente, String nome, String codigo, String cPF,
 			String rG, String dataDeNascimento, String telefone, String email,
 			String profissao, String rua, String numero, String complemento,
 			String bairro, String cidade, String cep, Sexo sexo, Estado estado,
@@ -79,30 +79,32 @@ public class SistemaFacade {
 			StatusFinanceiro statusFinanceiro) throws IOException, Exception {
 
 		ClientesDAO dao = ClientesDAO.getInstance();
-		/*
-		 * Cliente cliente = new Cliente(nome, new Codigo(codigo), cPF, rG, new
-		 * Data( dataDeNascimento), telefone, profissao, email, new Endereco(
-		 * rua, numero, complemento, bairro, cidade, cep), estado, sexo,
-		 * estadoCivil, status, statusFinanceiro);
-		 */
-		Cliente cliente = dao.recuperaCliente(new Codigo(codigo));
-		cliente.setNome(nome);
-		cliente.setCodigo(new Codigo(codigo));
-		cliente.setCPF(cPF);
-		cliente.setRG(rG);
-		cliente.setDataDeNascimento(new Data(dataDeNascimento));
-		cliente.setTelefone(telefone);
-		cliente.setProfissao(profissao);
-		cliente.setEmail(email);
-		cliente.setEndereco(new Endereco(rua, numero, complemento, bairro,
-				cidade, cep));
-		cliente.setEstado(estado);
-		cliente.setSexo(sexo);
-		cliente.setEstadoCivil(estadoCivil);
-		cliente.setStatus(status);
-		cliente.setFinanceiro(statusFinanceiro);
+		
+		 Cliente novoCliente = new Cliente(nome, new Codigo(codigo), cPF, rG, new
+		 Data( dataDeNascimento), telefone, profissao, email, new Endereco(
+		 rua, numero, complemento, bairro, cidade, cep), estado, sexo,
+		 estadoCivil, status, statusFinanceiro);
+		 
+//		Cliente cliente = dao.recuperaCliente(new Codigo(codigo));
+//		novoCliente.setNome(nome);
+//		novoCliente.setCodigo(new Codigo(codigo));
+//		novoCliente.setCPF(cPF);
+//		cliente.setRG(rG);
+//		cliente.setDataDeNascimento(new Data(dataDeNascimento));
+//		cliente.setTelefone(telefone);
+//		cliente.setProfissao(profissao);
+//		cliente.setEmail(email);
+//		cliente.setEndereco(new Endereco(rua, numero, complemento, bairro,
+//				cidade, cep));
+//		cliente.setEstado(estado);
+//		cliente.setSexo(sexo);
+//		cliente.setEstadoCivil(estadoCivil);
+//		cliente.setStatus(status);
+//		cliente.setFinanceiro(statusFinanceiro);
 
-		dao.atualizar(cliente);
+		dao.atualizar(cliente, novoCliente);
+		cliente = novoCliente;
+		return cliente;
 	}
 
 	public Logavel verificaLogin(String login, String senha) throws Exception {
@@ -289,29 +291,29 @@ public class SistemaFacade {
 		dao.criar(tabela);
 	}*/
 	
-	public void gravaTabelaSaidaMensal(Object[][] tabela) throws IOException, Exception{
-		TabelasSaidasMensaisDAO dao = TabelasSaidasMensaisDAO.getInstance();
-		
-		dao.criar(tabela);
-	}
-	
-	public void gravaTabelaSaidaDiaria(Object[][] tabela) throws IOException, Exception{
-		TabelasSaidasDiariasDAO dao = TabelasSaidasDiariasDAO.getInstance();
-		
-		dao.criar(tabela);
-	}
-	
-	public Object[] recuperaTabelaDiariaSaida() throws Exception{
-		TabelasSaidasDiariasDAO dao = TabelasSaidasDiariasDAO.getInstance();
-		return dao.recuperaTabelas();
-		
-	}
-	
-	public Object[] recuperaTabelaMensalSaida() throws Exception{
-		TabelasSaidasMensaisDAO dao = TabelasSaidasMensaisDAO.getInstance();
-		return dao.recuperaTabelas();
-		
-	}
+//	public void gravaTabelaSaidaMensal(Object[][] tabela) throws IOException, Exception{
+//		TabelasSaidasMensaisDAO dao = TabelasSaidasMensaisDAO.getInstance();
+//		
+//		dao.criar(tabela);
+//	}
+//	
+//	public void gravaTabelaSaidaDiaria(Object[][] tabela) throws IOException, Exception{
+//		TabelasSaidasDiariasDAO dao = TabelasSaidasDiariasDAO.getInstance();
+//		
+//		dao.criar(tabela);
+//	}
+//	
+//	public Object[] recuperaTabelaDiariaSaida() throws Exception{
+//		TabelasSaidasDiariasDAO dao = TabelasSaidasDiariasDAO.getInstance();
+//		return dao.recuperaTabelas();
+//		
+//	}
+//	
+//	public Object[] recuperaTabelaMensalSaida() throws Exception{
+//		TabelasSaidasMensaisDAO dao = TabelasSaidasMensaisDAO.getInstance();
+//		return dao.recuperaTabelas();
+//		
+//	}
 	
 	/*public Object[] recuperaTabelaDiariaEntrada() throws Exception{
 		TabelasEntradasDiariasDAO dao = TabelasEntradasDiariasDAO.getInstance();

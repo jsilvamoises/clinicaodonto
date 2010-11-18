@@ -485,8 +485,8 @@ public class TabelaDiaria extends javax.swing.JPanel implements KeyListener{
             }
         }
         try {
-            fachada.gravaTabelaEntradaDiaria(tab1);
-            fachada.gravaTabelaSaidaDiaria(tab2);
+            //fachada.gravaTabelaEntradaDiaria(tab1);
+            //fachada.gravaTabelaSaidaDiaria(tab2);
         } catch (Exception ex) {
            JOptionPane.showMessageDialog(null, ex.getMessage(),
                     "Problemas com o cadastro",

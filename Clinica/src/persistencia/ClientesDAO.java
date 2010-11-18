@@ -119,14 +119,23 @@ public class ClientesDAO {
 	 * @throws IOException
 	 *             Caso haja algum problema com arquivos ({@link File})
 	 */
-	public void atualizar(Cliente cliente) throws Exception, IOException {
+	public void atualizar(Cliente cliente, Cliente novoCliente) throws Exception, IOException {
 		if (cliente == null
 				|| !(new File(CAMINHO + cliente + TIPO_DE_ARQUIVO).exists()))
-			throw new Exception("Cliente não pode ser atializado");
+			throw new Exception("Cliente não pode ser atualizado");
 		System.gc();
-		this.deletar(cliente);
-		this.criar(cliente);
+		deletar(cliente);
+		criar(novoCliente);
 	}
+
+        public void atualizar(Cliente cliente) throws Exception {
+            if (cliente == null
+				|| !(new File(CAMINHO + cliente + TIPO_DE_ARQUIVO).exists()))
+			throw new Exception("Cliente não pode ser atualizado");
+		System.gc();
+		deletar(cliente);
+		criar(cliente);
+        }
 
 	/**
 	 * Limpa todos os arquivos contendo os clientes {@link Cliente}
