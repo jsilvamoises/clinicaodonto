@@ -311,5 +311,10 @@ public class SistemaFacade {
 		TabelasMensaisDAO dao = TabelasMensaisDAO.getInstance();
 		return dao.recuperarTabelasPorData();
 	}
+	
+	public Object[][][] recuperaTuplaDiaria(String data) throws Exception {
+		TabelasDiariasDAO dao = TabelasDiariasDAO.getInstance();
+		return dao.recuperaTupla(data);
+	}
 
 }
