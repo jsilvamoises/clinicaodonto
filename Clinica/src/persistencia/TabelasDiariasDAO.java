@@ -20,7 +20,7 @@ public class TabelasDiariasDAO {
 			+ "tabelasDiarias" + SEPARADOR;
 	private final static String TIPO_DE_ARQUIVO = ".xml";
 	private static TabelasDiariasDAO instancia;
-	private static XStream xstream = new XStream(new DomDriver());
+	private static XStream xstream = new XStream(new DomDriver("ISO-8859-1"));
 
 	private TabelasDiariasDAO() {
 	}
