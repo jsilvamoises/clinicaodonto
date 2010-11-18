@@ -99,6 +99,7 @@ public class LogaveisDAO {
 		}
 		return logavels;
 	}
+	
 
 	/**
 	 * Atualiza as informacoes do {@link Logavel} passado como parametro a
