@@ -13,14 +13,14 @@ public class Codigo {
 
 	public void setCodigo(String codigo) throws Exception {
 		if (codigo == null || codigo.trim().isEmpty() || !isNumber(codigo))
-			throw new Exception("O campo CÓDIGO deve ser preenchido");
+			throw new Exception("O campo CӓDIGO deve ser preenchido");
 		int cod = Integer.parseInt(codigo.trim());
 		this.codigo = String.valueOf(cod);
 	}
 
 	private boolean isNumber(String codigo) throws Exception {
 		if (!codigo.trim().matches("[0-9]+"))
-			throw new Exception("O codigo deve ser um número");
+			throw new Exception("O codigo deve ser um n�mero");
 		return true;
 	}
 

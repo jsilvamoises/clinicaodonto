@@ -37,7 +37,7 @@ public class UserImpl implements User {
 	@Override
 	public void setNome(String nome) throws Exception {
 		if (nome == null || nome.trim().isEmpty())
-			throw new Exception("Nome inv√°lido");
+			throw new Exception("Nome inv·lido");
 		this.nome = nome;
 	}
 

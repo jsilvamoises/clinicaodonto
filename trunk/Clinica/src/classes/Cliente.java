@@ -71,7 +71,7 @@ public class Cliente implements User {
 
 	public void setEndereco(Endereco endereco) throws Exception {
 		if (endereco == null)
-			throw new Exception("Endere√ßo inv√°lido");
+			throw new Exception("EndereÁo inv·lido");
 		this.endereco = endereco;
 	}
 
@@ -179,7 +179,7 @@ public class Cliente implements User {
 		this.estadoCivil = estadoCivil;
 	}
 
-	// Atibuindo que um cliente poder√° ser tamb√©m um Logavel, tipo...
+	// Atibuindo que um cliente poder· ser tambÈm um Logavel, tipo...
 	// a funcionaria X pode ser atendida como cliente do sistema tambem
 
 	@Override
@@ -218,12 +218,12 @@ public class Cliente implements User {
 	}
 
 	public String exibirInformacoes() {
-		return "C√≥digo: " + getCodigo() + " | Nome: " + getNome() + " | Sexo: "
+		return "CÛdigo: " + getCodigo() + " | Nome: " + getNome() + " | Sexo: "
 				+ getSexo() + "\n\nCPF: " + getCPF() + " | RG: " + getRG()
 				+ " | Data de Nascimento: " + getDataDeNascimento()
 				+ "\n\nTelefone: " + getTelefone() + "\n\nE-mail: "
-				+ getEmail() + " | Profiss√£o: " + getProfissao()
-				+ "\n\nEndere√ßo " + getEndereco() + "\n\nEstado: "
+				+ getEmail() + " | Profiss„o: " + getProfissao()
+				+ "\n\nEndereÁo " + getEndereco() + "\n\nEstado: "
 				+ getEstado() + " | Estado Civil: " + getEstadoCivil();
 	}
 
@@ -295,7 +295,7 @@ public class Cliente implements User {
 	public String getDadosDoContrato() throws Exception {
 		Contrato c = getContrato();
 		if (c == null) {
-			throw new Exception("O Usu√°rio n√£o possui contrato em andamento!");
+			throw new Exception("O Usu·rio n„o possui contrato em andamento!");
 		}
 		String dados = "Data: " + c.getUltimaDataVencimento() + ", Parcela: "
 				+ c.getParcelaAtual() + "Valor: " + c.getPreco();
@@ -305,7 +305,7 @@ public class Cliente implements User {
 	public void efetuaPagamento() throws Exception {
 		Contrato c = getContrato();
 		if (c == null) {
-			throw new Exception("O Cliente n√£o possui contrato em andamento!");
+			throw new Exception("O Cliente n„o possui contrato em andamento!");
 		}
 		boolean pagou = c.efetuaPagamento();
 		if(!pagou)
@@ -316,7 +316,7 @@ public class Cliente implements User {
 		for (Contrato c : this.contrato) {
 			if (c.getStatus() == StatusContrato.EM_TRATAMENTO)
 				throw new Exception(
-						"O cliente j√° possui um contrato em andamento");
+						"O cliente j· possui um contrato em andamento");
 		}
 		this.contrato.add(contrato);
 	}

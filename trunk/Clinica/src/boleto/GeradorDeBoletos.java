@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -25,9 +24,9 @@ public class GeradorDeBoletos {
 
 	public void GerarBoleto() throws Exception {
 		if (cliente == null)
-			throw new Exception("Cliente invï¿½lido");
+			throw new Exception("Cliente inválido");
 		if (contrato == null)
-			throw new Exception("Cliente nï¿½o possui contrato vï¿½lido");
+			throw new Exception("Cliente não possui contrato válido");
 		if (contrato.getDuracaoDoContrato() == 12) {
 			inputStream = new BufferedReader(new FileReader(
 

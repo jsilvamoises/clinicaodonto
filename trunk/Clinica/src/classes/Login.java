@@ -29,7 +29,7 @@ public class Login {
 	 */
 	public void setLogin(String login) throws Exception {
 		if (login == null || login.trim().isEmpty())
-			throw new Exception("Login inv√°lido");
+			throw new Exception("Login inv·lido");
 		this.login = login;
 	}
 

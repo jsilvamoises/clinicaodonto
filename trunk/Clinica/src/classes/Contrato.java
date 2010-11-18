@@ -209,31 +209,6 @@ public class Contrato {
         return datas;
 }
 
-	/*public static void main(String[] args) {
-		Cliente p;
-		try {
-			Data e = new Data("29/12/2010");
-			Data f = new Data("29/12/2011");
-			p = new Cliente("xico", "", "", "15/06/1991", "", "", "", "",
-					new Endereco("", "", "", "", "", ""), Sexo.MASCULINO,
-					Estado.Acre, EstadoCivil.Divorciado,
-					StatusCliente.ABANDONO, StatusFinanceiro.EM_DIA);
-			Contrato x = new Contrato(p, 100, e, f, TipoDeContrato.ORTODONTIA,
-					StatusContrato.EM_TRATAMENTO);
-			int j = x.getNumeroDeParcelasNaoPagas();
-			for (int i = 0; i < j; i++) {
-				System.out.println("mes:" + x.getMesAPagar());
-				System.out
-						.println("parcela:" + x.getNumeroDeParcelasNaoPagas());
-				System.out.println("data:" + x.getUltimaDataVencimento());
-				x.efetuaPagamento();
 
-			}
-
-		} catch (Exception e) { // TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}*/
 
 }
