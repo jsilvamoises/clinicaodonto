@@ -10,14 +10,13 @@ import java.util.ArrayList;
 import classes.Cliente;
 import classes.Contrato;
 
-public class GeradorDeBoleto {
+public class GeradorDeBoletos {
 	private Cliente cliente;
 	private Contrato contrato;
 	private BufferedReader inputStream = null;
 	private PrintWriter outputStream = null;
-	
 
-	public GeradorDeBoleto(Cliente cliente) {
+	public GeradorDeBoletos(Cliente cliente) {
 		this.cliente = cliente;
 		contrato = cliente.getContrato();
 	}
@@ -27,12 +26,22 @@ public class GeradorDeBoleto {
 			throw new Exception("Cliente inválido");
 		if (contrato == null)
 			throw new Exception("Cliente não possui contrato válido");
+		if (contrato.getDuracaoDoContrato() == 12) {
+			inputStream = new BufferedReader(new FileReader(
 
-		inputStream = new BufferedReader(new FileReader(
+			"boleto.rtf"));
+		} else if (contrato.getDuracaoDoContrato() == 24) {
+			inputStream = new BufferedReader(new FileReader(
 
-		"boleto.rtf"));
+			"boleto2.rtf"));
+		} else {
+			inputStream = new BufferedReader(new FileReader(
 
-		outputStream = new PrintWriter(new FileWriter(cliente.getCodigo() + ".rtf"));
+			"boleto3.rtf"));
+		}
+
+		outputStream = new PrintWriter(new FileWriter(cliente.getCodigo()
+				+ ".rtf"));
 
 		String line;
 		int contador = 1;
@@ -40,8 +49,7 @@ public class GeradorDeBoleto {
 		int aux = 0;
 		int aux2 = 0;
 		ArrayList<String> listaDeVencimentos = contrato.datasEmPeriodo(12);
-			
-			
+
 		while ((line = inputStream.readLine()) != null) {
 			if (line.contains("N_CLIENTE")) {
 				line = line.replace("N_CLIENTE", String.valueOf(cliente
@@ -49,13 +57,11 @@ public class GeradorDeBoleto {
 			}
 			if (line.contains("N_PARCELA")) {
 				if (aux == 0) {
-					line = line
-							.replace("N_PARCELA", String.valueOf(contador));
+					line = line.replace("N_PARCELA", String.valueOf(contador));
 					aux++;
-				}else{
+				} else {
 					aux = 0;
-					line = line
-					.replace("N_PARCELA", String.valueOf(contador));
+					line = line.replace("N_PARCELA", String.valueOf(contador));
 					contador++;
 				}
 			}
@@ -69,18 +75,19 @@ public class GeradorDeBoleto {
 			}
 			if (line.contains("DATA_VENCIMENTO")) {
 				if (aux2 == 0) {
-					line = line
-							.replace("DATA_VENCIMENTO", String.valueOf(listaDeVencimentos.get(index)));
+					line = line.replace("DATA_VENCIMENTO", String
+							.valueOf(listaDeVencimentos.get(index)));
 					aux2++;
-				}else{
+				} else {
 					aux2 = 0;
-					line = line
-					.replace("DATA_VENCIMENTO", String.valueOf(listaDeVencimentos.get(index)));
+					line = line.replace("DATA_VENCIMENTO", String
+							.valueOf(listaDeVencimentos.get(index)));
 					index++;
 				}
 			}
 			if (line.contains("VALOR_CONTRATO")) {
-				line = line.replace("VALOR_CONTRATO", String.valueOf(contrato.getPreco()));
+				line = line.replace("VALOR_CONTRATO", String.valueOf(contrato
+						.getPreco()));
 			}
 			outputStream.println(line);
 
