@@ -329,9 +329,9 @@ public class BuscaCliente extends javax.swing.JPanel implements KeyListener {
             JOptionPane.showMessageDialog(null, "Nenhum cliente foi selecionado",
                 "Selecione um cliente",
                 JOptionPane.ERROR_MESSAGE);
-        else {
-            reiniciaCampos();
+        else {            
             new CadastroEditavelFrame((Cliente)jList1.getSelectedValue());
+            reiniciaCampos();
         }
     }//GEN-LAST:event_botaoEditarActionPerformed
 

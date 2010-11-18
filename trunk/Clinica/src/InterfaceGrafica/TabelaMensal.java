@@ -490,8 +490,8 @@ public class TabelaMensal extends javax.swing.JPanel implements KeyListener{
         }
 
         try {
-            fachada.gravaTabelaEntradaMensal(tab1);
-            fachada.gravaTabelaSaidaMensal(tab2);
+            //fachada.gravaTabelaEntradaMensal(tab1);
+            //fachada.gravaTabelaSaidaMensal(tab2);
         } catch (Exception ex) {
            JOptionPane.showMessageDialog(null, ex.getMessage(),
                     "Problemas com o cadastro",

@@ -588,7 +588,7 @@ public class CadastroEditavelFrame extends javax.swing.JFrame implements KeyList
 
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
         try {
-            fachada.atualizarCliente(fieldNome.getText(),
+            cliente = fachada.atualizarCliente(cliente, fieldNome.getText(),
                     fieldCodigo.getText(), fieldCPF.getText(), fieldRG.getText(),
                     String.valueOf(comboDia.getSelectedItem()) + "/"
                     + String.valueOf(comboMes.getSelectedItem())
@@ -606,11 +606,11 @@ public class CadastroEditavelFrame extends javax.swing.JFrame implements KeyList
                     StatusFinanceiro.getStatusFinanceiro(
                     String.valueOf(comboFinanceiro.getSelectedItem())));
             JOptionPane.showMessageDialog(null, "Dados do Cliente atualizados",
-                "Cadastrado",
+                "Atualizado",
                 JOptionPane.CLOSED_OPTION);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(),
-                "Problemas com o cadastro",
+                "Problemas com a atualização",
                 JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_botaoCadastrarActionPerformed
