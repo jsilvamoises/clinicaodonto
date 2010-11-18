@@ -12,6 +12,7 @@ public enum StatusCliente {
 		if(status != null) {
 			for(StatusCliente t : values()) {
 				if(status.equalsIgnoreCase(t.name())) {
+                                     System.out.println(t.name());
 					return t;
                             }
 			}

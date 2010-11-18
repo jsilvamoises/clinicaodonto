@@ -305,10 +305,11 @@ public class Cliente implements User {
 	public void efetuaPagamento() throws Exception {
 		Contrato c = getContrato();
 		if (c == null) {
-			throw new Exception("O Usuário não possui contrato em andamento!");
+			throw new Exception("O Cliente não possui contrato em andamento!");
 		}
-
-		c.efetuaPagamento();
+		boolean pagou = c.efetuaPagamento();
+		if(!pagou)
+			throw new Exception("Todos os pagamentos ja foram efetuados");
 	}
 
 	public void addContrato(Contrato contrato) throws Exception {

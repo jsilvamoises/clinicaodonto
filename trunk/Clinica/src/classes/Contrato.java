@@ -148,7 +148,7 @@ public class Contrato {
 
 	}
 
-	public void efetuaPagamento() throws Exception {
+	public boolean efetuaPagamento() {
 		if (numeroParcelas < getDuracaoDoContrato()) {
 			if (mesAPagar + 1 < 12) {
 				mesAPagar++;
@@ -156,9 +156,9 @@ public class Contrato {
 				mesAPagar = 1;
 			}
 			numeroParcelas++;
-		} else {
-			throw new Exception("Todos os pagamentos foram efetuados.");
+                        return true;
 		}
+                return false;
 
 	}
 
