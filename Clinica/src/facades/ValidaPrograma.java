@@ -11,14 +11,18 @@
 
 package facades;
 
+import InterfaceGrafica.Login;
+import classes.Senha;
+import classes.UserImpl;
 import javax.swing.JOptionPane;
+import persistencia.LogaveisDAO;
 
 /**
  *
  * @author Tiago Brasileiro
  */
 public class ValidaPrograma extends javax.swing.JFrame {
-
+    private boolean flag;
     /** Creates new form ValidaPrograma */
     public ValidaPrograma() {
         initComponents();
@@ -84,15 +88,30 @@ public class ValidaPrograma extends javax.swing.JFrame {
 
     private void botaoOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoOkActionPerformed
         if(!((String)jPasswordField1.getText()).equals("ogaitinavoig")){
-            JOptionPane.showMessageDialog(null, "Key incorreta",
+            JOptionPane.showMessageDialog(null, "Key incorreta!",
                 "Contratos",
                 JOptionPane.ERROR_MESSAGE);
         }else{
+            LogaveisDAO log = LogaveisDAO.getInstance();
+            try {
+                log.criar(new UserImpl(new classes.Login("raquel"), new Senha("123456")));
+                log.criar(new UserImpl(new classes.Login("aluana"), new Senha("123456")));
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(),
+                "Contratos",
+                JOptionPane.ERROR_MESSAGE);
+            }
+
             this.dispose();
         }
 
 
     }//GEN-LAST:event_botaoOkActionPerformed
+
+    public boolean getFlag(){
+        return flag;
+    }
+
 
     /**
     * @param args the command line arguments

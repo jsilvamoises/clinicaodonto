@@ -336,9 +336,8 @@ public class SistemaFacade {
         public void initial() throws Exception{
             LogaveisDAO log = LogaveisDAO.getInstance();
             if(log.recuperaLogaveis().isEmpty()){
-                new ValidaPrograma();
-                log.criar(new UserImpl(new Login("raquel"), new Senha("123456")));
-                log.criar(new UserImpl(new Login("aluana"), new Senha("123456")));
+                ValidaPrograma x = new ValidaPrograma();
+                
             }
         }
 
