@@ -121,7 +121,7 @@ public class BuscaTabelaMensal extends javax.swing.JPanel implements KeyListener
         botaoFechar = new javax.swing.JButton();
         VisualizaTabela = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18));
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel1.setText("Busca de Tabelas Mensais");
 
         jScrollPane1.setViewportView(jList1);

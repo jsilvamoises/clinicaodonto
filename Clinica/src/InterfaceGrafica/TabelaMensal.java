@@ -15,12 +15,10 @@ package InterfaceGrafica;
 
 
 import classes.Data;
-import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import facades.SistemaFacade;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -178,8 +176,8 @@ public class TabelaMensal extends javax.swing.JPanel implements KeyListener{
 
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 507));
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18));
-        jLabel1.setText("Tabela de FinanÃ§as");
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel1.setText("Tabela de Finanças");
 
         botaoCadastrar.setText("Atualizar");
         botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -285,7 +283,7 @@ public class TabelaMensal extends javax.swing.JPanel implements KeyListener{
         jLabel8.setText("Entrada");
         jLabel8.setPreferredSize(new java.awt.Dimension(42, 18));
 
-        jLabel9.setText("SaÃ­da");
+        jLabel9.setText("Saída");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -417,13 +415,12 @@ public class TabelaMensal extends javax.swing.JPanel implements KeyListener{
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addComponent(jLabel9))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -450,7 +447,6 @@ public class TabelaMensal extends javax.swing.JPanel implements KeyListener{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 800, Short.MAX_VALUE)
-            .addGap(0, 800, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -459,7 +455,6 @@ public class TabelaMensal extends javax.swing.JPanel implements KeyListener{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 507, Short.MAX_VALUE)
             .addGap(0, 507, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
