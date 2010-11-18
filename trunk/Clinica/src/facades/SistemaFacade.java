@@ -7,6 +7,8 @@ import java.util.List;
 
 import persistencia.ClientesDAO;
 import persistencia.LogaveisDAO;
+import persistencia.TabelasDiariasDAO;
+import persistencia.TabelasMensaisDAO;
 //import persistencia.TabelasEntradasDiariasDAO;
 //import persistencia.TabelasEntradasMensaisDAO;
 import classes.Cliente;
@@ -277,6 +279,18 @@ public class SistemaFacade {
 		dao.atualizar(logavel, novoLogavel);
 		logavel = novoLogavel;
 		return logavel;
+	}
+	
+	public void gravaTabelaDiaria(Object[][] entradas, Object[][] saidas)
+			throws IOException, Exception {
+		TabelasDiariasDAO dao = TabelasDiariasDAO.getInstance();
+		dao.criar(entradas, saidas);
+	}
+	
+	public void gravaTabelaMensal(Object[][] entradas, Object[][] saidas)
+			throws IOException, Exception {
+		TabelasMensaisDAO dao = TabelasMensaisDAO.getInstance();
+		dao.criar(entradas, saidas);
 	}
 	
 	/*public void gravaTabelaEntradaDiaria(Object[][] tabela) throws IOException, Exception{

@@ -215,17 +215,4 @@ public class Login extends JFrame implements KeyListener, ActionListener {
                 // TODO Auto-generated method stub
 
         }
-
-        public static void main(String[] args) {
-
-                Login log = new Login();
-
-                log.addWindowListener(new WindowAdapter() {
-                        public void windowClosing(WindowEvent e) {
-                                System.exit(0);
-                        }
-                });
-
-        }
-
 }

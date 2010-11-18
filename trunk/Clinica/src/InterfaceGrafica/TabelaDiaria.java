@@ -485,16 +485,15 @@ public class TabelaDiaria extends javax.swing.JPanel implements KeyListener{
             }
         }
         try {
-            //fachada.gravaTabelaEntradaDiaria(tab1);
-            //fachada.gravaTabelaSaidaDiaria(tab2);
+            fachada.gravaTabelaDiaria(tab1, tab2);
         } catch (Exception ex) {
            JOptionPane.showMessageDialog(null, ex.getMessage(),
-                    "Problemas com o cadastro",
+                    "Problemas para salvar as tabelas",
                     JOptionPane.ERROR_MESSAGE);
         }
 
          JOptionPane.showMessageDialog(null, "Tabela salva com sucesso!",
-                    "Cadastro",
+                    "Tabelas",
                     JOptionPane.CLOSED_OPTION);
             reiniciaCampos();
     }//GEN-LAST:event_botaoGravarActionPerformed
