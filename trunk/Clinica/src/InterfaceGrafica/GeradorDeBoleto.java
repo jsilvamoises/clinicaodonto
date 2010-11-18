@@ -12,15 +12,10 @@
 package InterfaceGrafica;
 
 import boleto.GeradorDeBoletos;
-import classes.Data;
-import classes.Contrato;
 import classes.Cliente;
-import enums.StatusContrato;
-import enums.TipoDeContrato;
 import facades.SistemaFacade;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;

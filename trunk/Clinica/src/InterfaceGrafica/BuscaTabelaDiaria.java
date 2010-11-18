@@ -10,15 +10,10 @@
  */
 
 package InterfaceGrafica;
-import classes.Cliente;
-import javax.swing.JTable;
-import javax.swing.table.TableModel;
+
 import facades.SistemaFacade;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
-import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 /**
@@ -124,8 +119,8 @@ public class BuscaTabelaDiaria extends javax.swing.JPanel implements KeyListener
         botaoFechar = new javax.swing.JButton();
         VisualisaTabela = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18));
-        jLabel1.setText("Busca de Tabelas Di√°rias");
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel1.setText("Busca de Tabelas Di·rias");
 
         jScrollPane1.setViewportView(jList1);
 

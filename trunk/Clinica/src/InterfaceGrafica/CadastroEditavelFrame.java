@@ -18,8 +18,6 @@ import enums.Sexo;
 import enums.StatusCliente;
 import enums.StatusFinanceiro;
 import facades.SistemaFacade;
-import java.awt.Color;
-import java.io.IOException;
 import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -338,8 +336,8 @@ public class CadastroEditavelFrame extends javax.swing.JFrame implements KeyList
 
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 507));
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18));
-        jLabel1.setText("EdiÃ§Ã£o do Cliente");
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel1.setText("Edição do Cliente");
 
         jLabel2.setText("Nome*");
 
@@ -353,11 +351,11 @@ public class CadastroEditavelFrame extends javax.swing.JFrame implements KeyList
 
         jLabel8.setText("E-mail");
 
-        jLabel9.setText("ProfissÃ£o");
+        jLabel9.setText("Profissão");
 
         jLabel10.setText("Rua");
 
-        jLabel11.setText("NÃºmero");
+        jLabel11.setText("Número");
 
         jLabel12.setText("Compl.");
 
@@ -387,7 +385,7 @@ public class CadastroEditavelFrame extends javax.swing.JFrame implements KeyList
             }
         });
 
-        jLabel7.setText("CÃ³digo*");
+        jLabel7.setText("Código*");
 
         fieldCodigo.setEditable(false);
 
@@ -397,11 +395,11 @@ public class CadastroEditavelFrame extends javax.swing.JFrame implements KeyList
 
         comboFinanceiro.setEnabled(false);
 
-        jLabel21.setText("Ãšltimo Pagamento");
+        jLabel21.setText("Último Pagamento");
 
         fieldUltimoPagamento.setEditable(false);
 
-        jLabel22.setText("* campos brigatÃ³rios.");
+        jLabel22.setText("* campos brigatórios.");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

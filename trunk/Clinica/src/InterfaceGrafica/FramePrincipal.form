@@ -126,11 +126,6 @@
             <Property name="text" type="java.lang.String" value="Sistema"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="menuAddUsuario">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Adicionar Usu&#xe1;rio"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuAlterarLoginSenha">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alterar Login/Senha"/>

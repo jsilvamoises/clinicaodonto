@@ -80,7 +80,6 @@ public class FramePrincipal extends JFrame {
         MostraTabDiaria = new javax.swing.JMenuItem();
         MostraTabMensal = new javax.swing.JMenuItem();
         menuSistema = new javax.swing.JMenu();
-        menuAddUsuario = new javax.swing.JMenuItem();
         menuAlterarLoginSenha = new javax.swing.JMenuItem();
         menuLogout = new javax.swing.JMenuItem();
 
@@ -206,9 +205,6 @@ public class FramePrincipal extends JFrame {
         barraDeMenu.add(menuRelatorios);
 
         menuSistema.setText("Sistema");
-
-        menuAddUsuario.setText("Adicionar Usuário");
-        menuSistema.add(menuAddUsuario);
 
         menuAlterarLoginSenha.setText("Alterar Login/Senha");
         menuAlterarLoginSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -352,7 +348,6 @@ public class FramePrincipal extends JFrame {
     private javax.swing.JMenuItem MostraTabDiaria;
     private javax.swing.JMenuItem MostraTabMensal;
     private javax.swing.JMenuBar barraDeMenu;
-    private javax.swing.JMenuItem menuAddUsuario;
     private javax.swing.JMenuItem menuAlterarLoginSenha;
     private javax.swing.JMenuItem menuBoleto;
     private javax.swing.JMenuItem menuBuscaContrato;
