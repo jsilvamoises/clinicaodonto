@@ -167,8 +167,9 @@ public class SistemaFacade {
 		}
 		Contrato contrato = new Contrato(cliente, preco, inicio, termino,
 				TipoDeContrato.ORTODONTIA, StatusContrato.EM_TRATAMENTO);
-		if (contrato.getDuracaoDoContrato() % 12 != 0
-				|| contrato.getDuracaoDoContrato() > 36)
+		int duracao = contrato.getDuracaoDoContrato();
+                if (duracao % 12 != 0
+				|| duracao > 36)
 			throw new Exception(
 					"Os Contratos são anuais e tem a duração máxima de 3 anos!");
 		cliente.addContrato(contrato);

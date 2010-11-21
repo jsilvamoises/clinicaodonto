@@ -42,11 +42,11 @@ public class FramePrincipal extends JFrame {
     public FramePrincipal(Logavel logavel) {
         this.logavel = logavel;
         initComponents();
-        try {
+        /*try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Exception ex) {
             setDefaultLookAndFeelDecorated(true);
-        }
+        }*/
         SwingUtilities.updateComponentTreeUI(this);
         setVisible(true);
         setExtendedState(MAXIMIZED_BOTH);
@@ -251,25 +251,31 @@ public class FramePrincipal extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastrarActionPerformed
+        System.gc();
         JScrollPane s = new JScrollPane();
         formularioCliente = new FormularioCliente(tabbed, s);
         s.setViewportView(formularioCliente);
         tabbed.addTab("Cadastrar Cliente", s);
+        System.gc();
 }//GEN-LAST:event_menuCadastrarActionPerformed
 
     private void menuBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBuscarActionPerformed
+        System.gc();
         JScrollPane s = new JScrollPane();
         buscaCliente = new BuscaCliente(tabbed, s);
         s.setViewportView(buscaCliente);
         tabbed.addTab("Buscar Clientes", s);
+        System.gc();
     }//GEN-LAST:event_menuBuscarActionPerformed
 
     private void menuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoutActionPerformed
+        System.gc();
         JOptionPane.showMessageDialog(null, "Você saiu do sistema",
                 "Logout",
                 JOptionPane.CLOSED_OPTION);
         dispose();
         new Login();
+        System.gc();
     }//GEN-LAST:event_menuLogoutActionPerformed
 
     private void menuContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuContratosActionPerformed
@@ -277,80 +283,102 @@ public class FramePrincipal extends JFrame {
     }//GEN-LAST:event_menuContratosActionPerformed
 
     private void menuOrtodontiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOrtodontiaActionPerformed
+        System.gc();
         JScrollPane s = new JScrollPane();
         criaContratos = new CriaContratos(tabbed, s);
         s.setViewportView(criaContratos);
         tabbed.addTab("Criar Contrato", s);
+        System.gc();
     }//GEN-LAST:event_menuOrtodontiaActionPerformed
 
     private void menuEditarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarContratoActionPerformed
+        System.gc();
         JScrollPane s = new JScrollPane();
         editarContratos = new EditarContrato(tabbed, s);
         s.setViewportView(editarContratos);
         tabbed.addTab("Editar contratos", s);
+        System.gc();
     }//GEN-LAST:event_menuEditarContratoActionPerformed
 
     private void menuBuscaContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBuscaContratoActionPerformed
+        System.gc();
         JScrollPane s = new JScrollPane();
         buscaContratosPorData = new BuscaContratoPorData(tabbed, s);
         s.setViewportView(buscaContratosPorData);
         tabbed.addTab("Busca contratos por data", s);
+        System.gc();
     }//GEN-LAST:event_menuBuscaContratoActionPerformed
 
     private void MenuPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPagamentoActionPerformed
+        System.gc();
         JScrollPane s = new JScrollPane();
         pagamentoClientePanel = new PagamentoClientePanel(tabbed, s);
         s.setViewportView(pagamentoClientePanel);
         tabbed.addTab("Pagamento", s);
+        System.gc();
     }//GEN-LAST:event_MenuPagamentoActionPerformed
 
     private void MenuTabelaDiariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTabelaDiariaActionPerformed
+        System.gc();
         JScrollPane s = new JScrollPane();
         tabelaDiaria = new TabelaDiaria(tabbed, s);
         s.setViewportView(tabelaDiaria);
         tabbed.addTab("Tabela Diária", s);
+        System.gc();
     }//GEN-LAST:event_MenuTabelaDiariaActionPerformed
 
     private void MenuTabelaMensalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTabelaMensalActionPerformed
+        System.gc();
         JScrollPane s = new JScrollPane();
         tabelaMensal = new TabelaMensal(tabbed, s);
         s.setViewportView(tabelaMensal);
         tabbed.addTab("Tabela Mensal", s);
+        System.gc();
     }//GEN-LAST:event_MenuTabelaMensalActionPerformed
 
     private void MenuBucaStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuBucaStatusActionPerformed
+        System.gc();
         JScrollPane s = new JScrollPane();
         buscaStatus = new BuscaContratosPorStatus(tabbed, s);
         s.setViewportView(buscaStatus);
         tabbed.addTab("Busca Contrato Por Status", s);
+        System.gc();
     }//GEN-LAST:event_MenuBucaStatusActionPerformed
 
     private void menuAlterarLoginSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAlterarLoginSenhaActionPerformed
+        System.gc();
         JScrollPane s = new JScrollPane();
         alterarLoginSena = new AlterarLoginSenhaPanel(logavel,tabbed, s);
         s.setViewportView(alterarLoginSena);
         tabbed.addTab("Alterar Login/Senha", s);
+        System.gc();
     }//GEN-LAST:event_menuAlterarLoginSenhaActionPerformed
 
     private void MostraTabDiariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostraTabDiariaActionPerformed
+        System.gc();
         JScrollPane s = new JScrollPane();
         buscaTabelaDiaria = new BuscaTabelaDiaria(tabbed, s);
         s.setViewportView(buscaTabelaDiaria);
         tabbed.addTab("Mostra Tabela Diaria", s);
+        System.gc();
     }//GEN-LAST:event_MostraTabDiariaActionPerformed
 
     private void menuBoletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBoletoActionPerformed
+        System.gc();
         JScrollPane s = new JScrollPane();
         geradorDeBoleto = new GeradorDeBoleto(tabbed, s);
         s.setViewportView(geradorDeBoleto);
         tabbed.addTab("Gerador De Boletos", s);
+        System.gc();
     }//GEN-LAST:event_menuBoletoActionPerformed
 
     private void MostraTabMensalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostraTabMensalActionPerformed
+        System.gc();
         JScrollPane s = new JScrollPane();
         buscaTabelaMensal = new BuscaTabelaMensal(tabbed, s);
         s.setViewportView(buscaTabelaMensal);
         tabbed.addTab("Buscar Tabelas Mensais", s);
+        System.gc();
     }//GEN-LAST:event_MostraTabMensalActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
