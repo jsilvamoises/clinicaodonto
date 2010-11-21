@@ -1,11 +1,9 @@
 package boleto;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.net.URL;
 import java.util.ArrayList;
 
 import classes.Cliente;
@@ -16,32 +14,47 @@ public class GeradorDeBoletos {
 	private Contrato contrato;
 	private BufferedReader inputStream = null;
 	private PrintWriter outputStream = null;
-	private static final String SEPARATOR =  System.getProperty("file.separator");
-	
+	private static final String SEPARATOR = System
+			.getProperty("file.separator");
+
 	public GeradorDeBoletos(Cliente cliente) {
 		this.cliente = cliente;
 		contrato = cliente.getContrato();
 	}
 
+	private final String diretorioBoleto = "./src/boletoVirgem/";
+
 	public void GerarBoleto() throws Exception {
-		URL path;
+		String path;
+
 		if (cliente == null)
 			throw new Exception("Cliente inválido");
 		if (contrato == null)
 			throw new Exception("Cliente não possui contrato válido");
 		if (contrato.getDuracaoDoContrato() == 12) {
-			path = getClass().getResource("/boletoVirgem/boleto.rtf");
-		} else if (contrato.getDuracaoDoContrato() == 24) {
-			path = getClass().getResource("/boletoVirgem/boleto2.rtf");
-		} else {
-			path = getClass().getResource("/boletoVirgem/boleto3.rtf");
+			path =
+
+			diretorioBoleto + "boleto.rtf";
 		}
+
+		else if (contrato.getDuracaoDoContrato() == 24) {
+			path =
+
+			diretorioBoleto + "boleto2.rtf";
+		}
+
+		else {
+			path =
+
+			diretorioBoleto + "boleto3.rtf";
+		}
+
 		if (path != null)
-			inputStream = new BufferedReader(new FileReader(path.getFile()));
-		
-		new File("Boletos" + SEPARATOR).mkdirs();
-        FileWriter writer = new FileWriter("Boletos" + SEPARATOR + cliente.getCodigo() + ".rtf");
-        outputStream = new PrintWriter(writer);
+			inputStream = new BufferedReader(new FileReader(path));
+
+		FileWriter writer = new FileWriter("Boletos" + SEPARATOR
+				+ cliente.getCodigo() + ".rtf");
+		outputStream = new PrintWriter(writer);
 
 		String line;
 		int contador = 1;

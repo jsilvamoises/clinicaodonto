@@ -2,7 +2,6 @@ package classes;
 
 import java.util.ArrayList;
 
-
 import enums.StatusContrato;
 import enums.TipoDeContrato;
 
@@ -111,7 +110,7 @@ public class Contrato {
 	 *            O preco a ser ajustado a pagar
 	 */
 	public void setPreco(double preco) {
-		if(preco != 0)
+		if (preco != 0)
 			this.preco = preco;
 		this.preco = 70.0;
 	}
@@ -130,21 +129,21 @@ public class Contrato {
 	 * @return A duração em meses para este contrato
 	 */
 	public int getDuracaoDoContrato() {
-		int contador = 0;
-		int anoI = getInicioDoContrato().getAno();
-		int anoF = getTerminoDoContrato().getAno();
+		int anoI = inicioDoContrato.getAno();
+		int anoF = terminoDoContrato.getAno();
 
-		int mesI = getInicioDoContrato().getMes();
-		int mesF = getTerminoDoContrato().getMes();
-		while (anoI != anoF || mesI != mesF) {
-			if (mesI == 12) {
-				anoI++;
-				mesI = 0;
-			}
-			mesI++;
-			contador++;
-		}
-		return contador;
+		int mesI = inicioDoContrato.getMes();
+		int mesF = terminoDoContrato.getMes();
+		
+		//Esse loopzinho era que tava dando estouro
+		/*
+		 * while (anoI != anoF && mesI != mesF) { if (mesI == 12) { anoI++; mesI
+		 * = 0; } mesI++; contador++; }
+		 */
+		// return contador;
+		if (mesF > mesI)
+			return (12 * (anoF - anoI)) + (mesI - mesF);
+		return (12 * (anoF - anoI)) + (mesF - mesI);
 
 	}
 
@@ -156,17 +155,17 @@ public class Contrato {
 				mesAPagar = 1;
 			}
 			numeroParcelas++;
-                        return true;
+			return true;
 		}
-                return false;
+		return false;
 
 	}
 
 	public int getNumeroDeParcelasNaoPagas() {
 		return getDuracaoDoContrato() - numeroParcelas;
 	}
-	
-	public int getParcelaAtual(){
+
+	public int getParcelaAtual() {
 		return numeroParcelas;
 	}
 
@@ -185,30 +184,28 @@ public class Contrato {
 	}
 
 	public ArrayList<String> datasEmPeriodo(int periodoEmMeses) {
-        datas = new ArrayList<String>();
-        int dia = getInicioDoContrato().getDia();
-        int mes = getInicioDoContrato().getMes() + 1;
-        int ano = getInicioDoContrato().getAno();
-        String date = dia + "/" + mes + "/" + ano;
-        datas.add(date);
-        for (int i = 0; i < periodoEmMeses; i++) {
-                mes++;
-                if (getInicioDoContrato().getDia() > getInicioDoContrato()
-                                .numeroDiasDoMes(mes, ano)) {
-                        dia = getInicioDoContrato().numeroDiasDoMes(mes, ano);
-                } else {
-                        dia = getInicioDoContrato().getDia();
-                }
+		datas = new ArrayList<String>();
+		int dia = getInicioDoContrato().getDia();
+		int mes = getInicioDoContrato().getMes() + 1;
+		int ano = getInicioDoContrato().getAno();
+		String date = dia + "/" + mes + "/" + ano;
+		datas.add(date);
+		for (int i = 0; i < periodoEmMeses; i++) {
+			mes++;
+			if (getInicioDoContrato().getDia() > getInicioDoContrato()
+					.numeroDiasDoMes(mes, ano)) {
+				dia = getInicioDoContrato().numeroDiasDoMes(mes, ano);
+			} else {
+				dia = getInicioDoContrato().getDia();
+			}
 
-                if (mes > 12) {
-                        mes = 1;
-                        ano++;
-                }
-                datas.add(dia + "/" + mes + "/" + ano);
-        }
-        return datas;
-}
-
-
+			if (mes > 12) {
+				mes = 1;
+				ano++;
+			}
+			datas.add(dia + "/" + mes + "/" + ano);
+		}
+		return datas;
+	}
 
 }

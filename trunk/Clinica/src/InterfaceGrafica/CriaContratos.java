@@ -164,7 +164,7 @@ public class CriaContratos extends javax.swing.JPanel implements KeyListener{
 
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 507));
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18));
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel1.setText("Cadastros");
 
         jLabel2.setText("Código do Cliente");
@@ -290,7 +290,7 @@ public class CriaContratos extends javax.swing.JPanel implements KeyListener{
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -314,27 +314,28 @@ public class CriaContratos extends javax.swing.JPanel implements KeyListener{
 }//GEN-LAST:event_botaoLimparActionPerformed
 
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
+        System.gc();
         try {
-           if(((String) fieldCodigoCliente.getText()).isEmpty()){
-               throw new Exception("Digite um valor para o preço.");
-           }            
-            
-           String dataI = String.valueOf(comboDia.getSelectedItem()) + "/" + String.valueOf(comboMes.getSelectedItem()) + "/" + String.valueOf(comboAno.getSelectedItem()) ;
-           String  dataF =  String.valueOf(comboDia2.getSelectedItem()) + "/" + String.valueOf(comboMes2.getSelectedItem()) + "/" + String.valueOf(comboAno2.getSelectedItem()) ;
-           String idCliente = (String) fieldCodigoCliente.getText();
-           double preco = 0;
+            if(((String) fieldCodigoCliente.getText()).isEmpty()){
 
-           try{
+                throw new Exception("Digite um valor para o preço.");
+            }
+
+            String dataI = String.valueOf(comboDia.getSelectedItem()) + "/" + String.valueOf(comboMes.getSelectedItem()) + "/" + String.valueOf(comboAno.getSelectedItem()) ;
+            String  dataF =  String.valueOf(comboDia2.getSelectedItem()) + "/" + String.valueOf(comboMes2.getSelectedItem()) + "/" + String.valueOf(comboAno2.getSelectedItem()) ;
+            String idCliente = (String) fieldCodigoCliente.getText();
+            double preco = 0;
+
+            try{
                 preco = Double.parseDouble((String) fieldCodigoCliente.getText());
             }catch (Exception ex){
-               JOptionPane.showMessageDialog(null, ex.getMessage(),
-                    "O código do cliente é composto apenas por números",
-                    JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(),
+                        "O código do cliente é composto apenas por números",
+                        JOptionPane.ERROR_MESSAGE);
             }
-           fachada.criaContrato(dataI, dataF, idCliente, preco);
+            fachada.criaContrato(dataI, dataF, idCliente, preco);
 
-           
-           JOptionPane.showMessageDialog(null, "Contrato criado com sucesso!",
+            JOptionPane.showMessageDialog(null, "Contrato criado com sucesso!",
                     "Cadastrado",
                     JOptionPane.CLOSED_OPTION);
             reiniciaCampos();
