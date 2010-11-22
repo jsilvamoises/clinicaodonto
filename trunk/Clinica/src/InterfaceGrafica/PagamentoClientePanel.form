@@ -16,12 +16,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="837" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="880" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -73,7 +73,7 @@
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="botaoLimpar" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="116" max="32767" attributes="0"/>
+                                          <EmptySpace pref="130" max="32767" attributes="0"/>
                                           <Component id="botaoFechar" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -161,7 +161,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="A busca &#xe9; feita procurando pelo primeiro nome do Cliente"/>
+            <Property name="text" type="java.lang.String" value="A busca &#xe9; feita procurando pelo nome ou sobrenome do Cliente"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="botaoPorID">
@@ -223,12 +223,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Clicando no bot&#xe3;o Visualizar com um Cliente selecionado, ser&#xe3;o"/>
+            <Property name="text" type="java.lang.String" value="Clicando no bot&#xe3;o Efetuar Pagamento com um Cliente selecionado, para"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
-            <Property name="text" type="java.lang.String" value="exibidas informa&#xe7;&#xf5;es cadastrais deste mesmo que fora selecionado"/>
+            <Property name="text" type="java.lang.String" value="que o pagamento seja efetuado"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="botaoLimpar">
