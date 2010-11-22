@@ -1,6 +1,7 @@
 package boleto;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -22,7 +23,7 @@ public class GeradorDeBoletos {
 		contrato = cliente.getContrato();
 	}
 
-	private final String diretorioBoleto = "./src/boletoVirgem/";
+	private final String diretorioBoleto = "boletoVirgem" + SEPARATOR;
 
 	public void GerarBoleto() throws Exception {
 		String path;
@@ -51,7 +52,8 @@ public class GeradorDeBoletos {
 
 		if (path != null)
 			inputStream = new BufferedReader(new FileReader(path));
-
+		
+		new File("Boletos" + SEPARATOR).mkdirs();
 		FileWriter writer = new FileWriter("Boletos" + SEPARATOR
 				+ cliente.getCodigo() + ".rtf");
 		outputStream = new PrintWriter(writer);
