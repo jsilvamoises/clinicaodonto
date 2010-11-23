@@ -114,7 +114,7 @@ public class Login extends JFrame implements KeyListener, ActionListener {
                 cadastro = new JLabel("Cadastro: ");
                 cadastro.setFont(fonte1);
                 cadastro.setForeground(cor5);
-                imagem1 = new JLabel(new Imagem("/imagens/background.jpg")
+                imagem1 = new JLabel(new Imagem("/imagens/background.png")
                                 .carregaImagem());
 
                 campoLogin = new JTextField(20);

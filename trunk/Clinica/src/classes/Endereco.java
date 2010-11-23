@@ -70,9 +70,14 @@ public class Endereco {
 
 	@Override
 	public String toString() {
-		return "Rua: " + getRua() + ", Número: " + getNumero()
-				+ ", Complemento: " + getComplemento() + ", Bairro: "
-				+ getBairro() + ", Cidade: " + getCidade() + ", CEP: "
-				+ getCep() + ".";
+		String rua = getRua();
+		String bairro = getBairro();
+		if(rua.length() > 20)
+			rua = rua.substring(0, 21);
+		if(bairro.length() > 20)
+			bairro = bairro.substring(0, 21);
+		return rua + ", " + getNumero()
+				+ "\n"
+				+ bairro + "\n" + getCidade();
 	}
 }
