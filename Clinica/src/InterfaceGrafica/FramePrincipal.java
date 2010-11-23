@@ -83,6 +83,8 @@ public class FramePrincipal extends JFrame {
         menuSistema = new javax.swing.JMenu();
         menuAlterarLoginSenha = new javax.swing.JMenuItem();
         menuLogout = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        contatosMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -229,6 +231,18 @@ public class FramePrincipal extends JFrame {
         menuSistema.add(menuLogout);
 
         barraDeMenu.add(menuSistema);
+
+        jMenu1.setText("Sobre");
+
+        contatosMenu.setText("Contatos");
+        contatosMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contatosMenuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(contatosMenu);
+
+        barraDeMenu.add(jMenu1);
 
         setJMenuBar(barraDeMenu);
 
@@ -381,6 +395,19 @@ public class FramePrincipal extends JFrame {
         System.gc();
     }//GEN-LAST:event_MostraTabMensalActionPerformed
 
+    private void contatosMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contatosMenuActionPerformed
+        String mensagem = "Falar com:\n" +
+                          "           Tiago Brasileiro Araújo\n" +
+                          "           brasileiroaraujo@gmail.com\n" +
+                          "           (83) 8828-9650\n\n" +
+                          "           Giovani Cavalcante Barbosa\n" +
+                          "           giovanibarbosa@gmail.com\n" +
+                          "           (83) 9918-9357";
+        JOptionPane.showMessageDialog(null, mensagem,
+                "Contatos",
+                JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_contatosMenuActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuBucaStatus;
     private javax.swing.JMenuItem MenuPagamento;
@@ -389,6 +416,8 @@ public class FramePrincipal extends JFrame {
     private javax.swing.JMenuItem MostraTabDiaria;
     private javax.swing.JMenuItem MostraTabMensal;
     private javax.swing.JMenuBar barraDeMenu;
+    private javax.swing.JMenuItem contatosMenu;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem menuAlterarLoginSenha;
     private javax.swing.JMenuItem menuBoleto;
     private javax.swing.JMenuItem menuBuscaContrato;

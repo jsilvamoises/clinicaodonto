@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import classes.Cliente;
@@ -101,8 +102,8 @@ public class GeradorDeBoletos {
 				}
 			}
 			if (line.contains("VALOR_CONTRATO")) {
-				line = line.replace("VALOR_CONTRATO", String.valueOf(contrato
-						.getPreco()));
+				String preco = new DecimalFormat("#.00").format(contrato.getPreco());
+				line = line.replace("VALOR_CONTRATO", String.valueOf(preco));
 			}
 			outputStream.println(line);
 

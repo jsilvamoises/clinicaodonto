@@ -81,11 +81,22 @@ public class SistemaFacade {
 			throws IOException, Exception {
 
 		ClientesDAO dao = ClientesDAO.getInstance();
-
-		Cliente novoCliente = new Cliente(nome, new Codigo(codigo), cPF, rG,
-				new Data(dataDeNascimento), telefone, profissao, email,
-				new Endereco(rua, numero, complemento, bairro, cidade, cep),
-				estado, sexo, estadoCivil, status, statusFinanceiro);
+		
+		Cliente novoCliente = dao.recuperaCliente(cliente.getCodigo());
+		novoCliente.setNome(nome);
+		novoCliente.setCPF(cPF);
+		novoCliente.setRG(rG);
+		novoCliente.setEndereco(new Endereco(rua, numero, complemento, bairro, cidade, cep));
+		novoCliente.setEstado(estado);
+		novoCliente.setSexo(sexo);
+		novoCliente.setEstadoCivil(estadoCivil);
+		novoCliente.setStatus(status);
+		novoCliente.setFinanceiro(statusFinanceiro);
+		
+//		Cliente novoCliente = new Cliente(nome, new Codigo(codigo), cPF, rG,
+//				new Data(dataDeNascimento), telefone, profissao, email,
+//				new Endereco(rua, numero, complemento, bairro, cidade, cep),
+//				estado, sexo, estadoCivil, status, statusFinanceiro);
 		dao.atualizar(cliente, novoCliente);
 		cliente = novoCliente;
 		return cliente;
